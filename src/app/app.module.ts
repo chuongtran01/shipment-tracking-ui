@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {SharedModule} from "./modules/shared/shared.module";
+import {AuthInterceptor} from "./interceptors/auth/auth.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {ErrorResponseInterceptor} from "./interceptors/error/error-response.interceptor";
 
 @NgModule({
   declarations: [
@@ -10,9 +14,21 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorResponseInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

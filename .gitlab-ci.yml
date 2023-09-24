@@ -1,0 +1,32 @@
+image: node:16
+
+stages:
+  - prepare
+  - test
+
+variables:
+  CHROME_BIN: "/usr/bin/google-chrome"
+
+cache:
+  paths:
+    - node_modules/
+
+install_angular_cli:
+  stage: prepare
+  script:
+    - npm install -g @angular/cli
+
+install_dependencies:
+  stage: prepare
+  script:
+    - npm install
+
+angular_test:
+  stage: test
+  script:
+    - npm run test:ci -- --watch=false
+  artifacts:
+    when: always
+    paths:
+      - coverage/
+      - coverage/junit.xml

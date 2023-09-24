@@ -1,0 +1,110 @@
+<div class="sign-up">
+  <div class="sign-up-container">
+    <div class="sign-up-left-container">
+      <img
+        class="sign-up-left-container-img"
+        src="/assets/images/Landing-page-background.png"
+        alt="landing-background"
+      />
+    </div>
+    <div class="sign-up-right-container">
+      <div class="sign-up-right">
+        <div class="sign-up-welcome">
+          <div>{{ constants.registration.createAccount }}</div>
+        </div>
+        <div class="sign-up-no-acc">
+          {{ constants.registration.hasAccount }}
+          <a class="sign-up-sign-up-text" [routerLink]="['/login']">
+            {{ constants.registration.signIn }}
+          </a>
+        </div>
+        <div class="sign-up-form" [formGroup]="registrationFormGroup">
+          <div class="sign-up-field">
+            <div class="sign-up-lable">
+              <label>{{ constants.registration.form.name }}</label>
+            </div>
+            <div>
+              <input
+                class="sign-up-input-field"
+                id="name"
+                type="text"
+                name="name"
+                formControlName="name"
+              />
+            </div>
+          </div>
+          <div class="sign-up-field">
+            <div class="sign-up-lable">
+              <label>{{ constants.registration.form.email }}</label>
+            </div>
+            <div>
+              <input
+                class="sign-up-input-field"
+                id="email"
+                type="email"
+                name="email"
+                formControlName="email"
+              />
+            </div>
+          </div>
+          <div class="sign-up-field">
+            <div class="sign-up-lable">
+              <label>{{ constants.registration.form.password }}</label>
+            </div>
+            <div>
+              <input
+                class="sign-up-input-field"
+                id="password"
+                type="password"
+                name="password"
+                formControlName="password"
+              />
+            </div>
+          </div>
+          <div class="sign-up-field">
+            <div class="sign-up-lable">
+              <label>{{ constants.registration.form.confirmPassword }}</label>
+            </div>
+            <div>
+              <input
+                class="sign-up-input-field"
+                id="confirm-password"
+                type="password"
+                name="confirm-password"
+                formControlName="confirmPassword"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="sign-up-buttons">
+          <div class="sign-up-submit">
+            <app-button
+              classes="button button-green"
+              [isRunning]=false
+              [disabled]=false
+              (click)="handleRegistration()"
+            >
+              {{ constants.registration.form.button }}
+            </app-button>
+          </div>
+          <div class="sign-up-icon-container">
+            <div class="sign-up-icon">
+              <img
+                class="sign-up-icon-google"
+                src="/assets/images/Google Image.png"
+                alt="google-icon"
+              />
+            </div>
+            <div class="sign-up-icon">
+              <img
+                class="sign-up-icon-apple"
+                src="/assets/images/apple logo.png"
+                alt="apple-icon"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

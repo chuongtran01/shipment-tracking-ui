@@ -1,0 +1,91 @@
+<div class="log-in">
+  <div class="log-in-container">
+    <div class="log-in-left-container">
+      <img
+        class="log-in-left-container-img"
+        src="/assets/images/Landing-page-background.png"
+        alt=""/>
+    </div>
+    <div class="log-in-right-container">
+      <div class="log-in-right">
+        <div class="log-in-welcome">
+          <div>
+            {{ constants.login.welcome }}
+            <span class="log-in-file-transform-text">
+              {{ constants.login.name }}
+                </span>
+          </div>
+          <div>{{ constants.login.signIn }}</div>
+        </div>
+        <div class="log-in-no-acc">
+          {{ constants.login.hasNoAccount }}
+          <a class="log-in-sign-up-text" [routerLink]="['/registration']">
+            {{ constants.login.signUp }}
+          </a>
+        </div>
+        <div class="log-in-form" [formGroup]="loginGroup">
+          <div class="log-in-field">
+            <div class="log-in-lable">
+              <label>{{ constants.login.username }}</label>
+            </div>
+            <div>
+              <input
+                class="log-in-input-field"
+                id="username"
+                name="username"
+                formControlName="username"
+              />
+            </div>
+          </div>
+          <div class="log-in-field">
+            <div class="log-in-lable">
+              <label>
+                {{ constants.login.password }}
+              </label>
+            </div>
+            <div>
+              <input
+                class="log-in-input-field"
+                id="password"
+                type="password"
+                name="password"
+                formControlName="password"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="log-in-forgot" (click)="forgotPassword()">
+          {{ constants.login.forgotPassword }}
+        </div>
+        <div class="log-in-buttons">
+          <div class="log-in-submit">
+            <app-button
+              classes="button button-green"
+              [isRunning]=false
+              [disabled]="loginGroup.invalid"
+              (click)="handleSignIn()"
+            >
+              {{ constants.login.signInButton }}
+            </app-button>
+          </div>
+          <div class="log-in-icon-container">
+            <div class="log-in-icon">
+              <img
+                class="log-in-icon-google"
+                src="/assets/images/Google Image.png"
+                alt="google-icon"
+              />
+            </div>
+            <div class="log-in-icon">
+              <img
+                class="log-in-icon-apple"
+                src="/assets/images/apple logo.png"
+                alt="apple-icon"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
