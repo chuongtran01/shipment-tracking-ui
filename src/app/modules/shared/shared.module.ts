@@ -4,9 +4,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import { ToggleSwitchComponent } from "src/app/components/toggle-switch/toggle-switch.component";
 
 const COMPONENTS_FOR_EXPORT = [
-  ButtonComponent
+  ButtonComponent,
+  ToggleSwitchComponent
 ];
 
 const MODULES_FOR_EXPORT = [

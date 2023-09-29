@@ -1,0 +1,14 @@
+<div class="toggle-switch" (click)="onChange(!toggleSwitch.checked)">
+  <input
+    [checked]="isChecked"
+    class="toggle-switch-checkbox"
+    [id]="name"
+    [name]="name"
+    type="checkbox"
+    #toggleSwitch
+  />
+  <label class="toggle-switch-label">
+    <span class="toggle-switch-inner"></span>
+    <span class="toggle-switch-switch"></span>
+  </label>
+</div>
