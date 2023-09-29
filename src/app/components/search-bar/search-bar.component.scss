@@ -1,0 +1,45 @@
+@import "variables";
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  background-color: $search-bar-bg-color;
+  border-radius: 2px;
+  height: 1.9em;
+
+  &:focus-within {
+    outline: 1px solid $search-bar-outline-color;
+    border-radius: 2px;
+  }
+
+  &-icon {
+    color: $search-bar-icon-color;
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 0.5rem;
+    }
+  }
+
+  &-input {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $search-bar-bg-color;
+    width: 100%;
+    padding-left: 0.2rem;
+
+    &::placeholder {
+      font-family: Hellix-Medium;
+      opacity: 0.8;
+    }
+
+    &:focus-visible {
+      outline: 1px solid $search-bar-outline-color;
+      border-radius: 2px;
+    }
+  }
+}

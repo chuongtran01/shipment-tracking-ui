@@ -1,20 +1,20 @@
-import {ButtonComponent} from "../../components/button/button.component";
-import {NgModule} from "@angular/core";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {RouterModule} from "@angular/router";
-import {HttpClientModule} from "@angular/common/http";
-import { ToggleSwitchComponent } from "src/app/components/toggle-switch/toggle-switch.component";
+import { ButtonComponent } from '../../components/button/button.component';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ToggleSwitchComponent } from 'src/app/components/toggle-switch/toggle-switch.component';
+import { SearchBarComponent } from 'src/app/components/search-bar/search-bar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
-  ToggleSwitchComponent
+  ToggleSwitchComponent,
+  SearchBarComponent,
 ];
 
-const MODULES_FOR_EXPORT = [
-  ReactiveFormsModule,
-  FormsModule
-];
+const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule];
 
 @NgModule({
   declarations: [...COMPONENTS_FOR_EXPORT],
@@ -22,11 +22,9 @@ const MODULES_FOR_EXPORT = [
     CommonModule,
     RouterModule,
     HttpClientModule,
-    ...MODULES_FOR_EXPORT
+    FontAwesomeModule,
+    ...MODULES_FOR_EXPORT,
   ],
-  exports: [
-    ...COMPONENTS_FOR_EXPORT,
-    ...MODULES_FOR_EXPORT
-  ]
+  exports: [...COMPONENTS_FOR_EXPORT, ...MODULES_FOR_EXPORT],
 })
 export class SharedModule {}
