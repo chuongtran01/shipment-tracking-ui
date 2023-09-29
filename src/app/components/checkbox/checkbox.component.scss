@@ -1,0 +1,93 @@
+@import 'variables';
+
+.checkbox {
+  user-select: none;
+  cursor: pointer;
+  padding: 1px;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+
+  &-symbol {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+
+  &-container * {
+    box-sizing: border-box;
+  }
+
+  &-input {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  &:not(:last-child) {
+    margin-right: 6px;
+  }
+
+  span {
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+  }
+
+  span:first-child {
+    position: relative;
+    flex: 0 0 15px;
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    transform: scale(1);
+    border: 1px solid $grey-color-text;
+    transition: all 0.3s ease;
+  }
+
+  span:first-child svg {
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    fill: none;
+    stroke: $white;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transform: translate3d(0, 0, 0);
+  }
+
+  span:last-child {
+    padding-left: 8px;
+    line-height: 15px;
+  }
+
+  &:hover span:first-child {
+    border-color: $green;
+  }
+
+  &-input:checked + .checkbox span:first-child {
+    background: $green;
+    border-color: $green;
+    animation: zoom-in-out 0.3s ease;
+  }
+
+  &-input:checked + .checkbox span:first-child svg{
+    stroke-dashoffset: 0;
+  }
+
+  @keyframes zoom-in-out {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+}

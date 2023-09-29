@@ -1,0 +1,31 @@
+<div>
+  <svg class="checkbox-symbol">
+    <symbol id="check" viewBox="0 0 12 10">
+      <polyline
+        points="1.5 6 4.5 9 10.5 1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+      ></polyline>
+    </symbol>
+  </svg>
+
+  <div class="checkbox-container">
+    <input
+      type="checkbox"
+      [checked]="isChecked"
+      class="checkbox-input"
+      [id]="name"
+      [name]="name"
+      (click)="checkboxChanged(checkboxInput.checked)"
+      #checkboxInput
+    />
+    <label class="checkbox" [htmlFor]="name">
+      <span>
+        <svg width="11px" height="9px">
+          <use href="#check"></use>
+        </svg>
+      </span>
+    </label>
+  </div>
+</div>
