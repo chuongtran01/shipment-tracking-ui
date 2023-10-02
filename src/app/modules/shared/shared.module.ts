@@ -8,12 +8,14 @@ import { ToggleSwitchComponent } from 'src/app/components/toggle-switch/toggle-s
 import { SearchBarComponent } from 'src/app/components/search-bar/search-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
+import { RadioButtonComponent } from 'src/app/components/radio-button/radio-button.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
   ToggleSwitchComponent,
   SearchBarComponent,
   CheckboxComponent,
+  RadioButtonComponent,
 ];
 
 const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule];
