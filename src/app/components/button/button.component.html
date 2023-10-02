@@ -1,4 +1,4 @@
-<button [class]="classes" [disabled]="disabled" type="button" (click)="onClick()">
+<button [class]="'button ' + classes" [disabled]="disabled" type="button" (click)="onClick()">
   <ng-container *ngIf="!isRunning; else loadingTemplate">
     <ng-content></ng-content>
   </ng-container>
