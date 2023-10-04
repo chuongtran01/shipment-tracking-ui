@@ -13,6 +13,14 @@ import { constants } from '../../utils/app.constants';
 export class RegistrationComponent {
   protected readonly constants = constants;
 
+  nameError: string = '';
+  emailError: string = '';
+  passwordError: string = '';
+  confirmPasswordError: string = '';
+
+  isSubmitted: boolean = false;
+  isRunning: boolean = false;
+
   constructor(private router: Router, private authService: AuthService) {}
 
   registrationFormGroup = new FormGroup(
@@ -30,22 +38,55 @@ export class RegistrationComponent {
     { validators: confirmPasswordValidator() }
   );
 
-  // TODO: Use these for error notifications on the fields
-  // this.registrationFormGroup.controls.name.valid
-  // this.registrationFormGroup.controls.email.valid
-  // this.registrationFormGroup.controls.password.valid
-  // this.registrationFormGroup.errors?.['passwordMismatch'] - If true, then `confirmPassword` is not valid
+  validateTitleControl(title: string): boolean {
+    const titleControl = this.registrationFormGroup.get(title);
+
+    if (
+      titleControl?.invalid &&
+      (titleControl?.dirty || titleControl?.touched || this.isSubmitted)
+    ) {
+      if (title == 'name') {
+        this.nameError = 'Please enter your Name';
+      } else if (title == 'email') {
+        if (titleControl?.errors?.['required']) {
+          this.emailError = 'Please enter your Email';
+        } else if (titleControl?.errors?.['email']) {
+          this.emailError = 'Invalid email format';
+        }
+      } else if (title == 'password') {
+        if (titleControl?.errors?.['required']) {
+          this.passwordError = 'Please enter your Password';
+        } else if (titleControl?.errors?.['pattern']) {
+          this.passwordError =
+            'Password must be between 8-20 characters, and must contain at least one uppercase and lower letter, one number, and one special character.';
+        }
+      } else if (title == 'confirmPassword') {
+        if (titleControl?.errors?.['required']) {
+          this.confirmPasswordError = 'Please enter your Confirm Password';
+        }
+      }
+      return true;
+    } else if (
+      titleControl?.dirty &&
+      this.registrationFormGroup.errors?.['passwordMismatch']
+    ) {
+      if (title == 'confirmPassword') {
+        this.confirmPasswordError = 'Password and Confirm Password must match';
+        return true;
+      }
+    }
+    return false;
+  }
 
   handleRegistration() {
+    this.isSubmitted = true;
+    this.isRunning = true;
+
     if (this.registrationFormGroup.invalid) {
-      // TODO: show error notifications
+      this.isRunning = false;
       return;
     }
 
-    /**
-     * TODO: The values passed in this registration call are placeholders for now
-     * and modifications should be made for them. Maybe adding more input fields
-     */
     this.authService
       .register({
         firstName: this.registrationFormGroup.value.name as string,
@@ -58,6 +99,7 @@ export class RegistrationComponent {
       .subscribe({
         next: () => {
           this.router.navigateByUrl('/login').then();
+          this.isRunning = false;
         },
       });
   }

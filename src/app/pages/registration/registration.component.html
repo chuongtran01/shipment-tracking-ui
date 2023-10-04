@@ -2,8 +2,7 @@
   <div class="sign-up-container">
     <div class="sign-up-left-container">
       <img
-        class="sign-up-left-container-img"
-        src="/assets/images/Landing-page-background.png"
+        [src]="constants.registration.leftBackground"
         alt="landing-background"
       />
     </div>
@@ -30,7 +29,16 @@
                 type="text"
                 name="name"
                 formControlName="name"
+                [class.sign-up-input-field-invalid]="
+                  validateTitleControl('name')
+                "
               />
+            </div>
+            <div
+              class="sign-up-field-error"
+              *ngIf="validateTitleControl('name')"
+            >
+              {{ nameError }}
             </div>
           </div>
           <div class="sign-up-field">
@@ -44,7 +52,17 @@
                 type="email"
                 name="email"
                 formControlName="email"
+                [class.sign-up-input-field-invalid]="
+                  validateTitleControl('email')
+                "
               />
+            </div>
+
+            <div
+              class="sign-up-field-error"
+              *ngIf="validateTitleControl('email')"
+            >
+              {{ emailError }}
             </div>
           </div>
           <div class="sign-up-field">
@@ -58,7 +76,16 @@
                 type="password"
                 name="password"
                 formControlName="password"
+                [class.sign-up-input-field-invalid]="
+                  validateTitleControl('password')
+                "
               />
+            </div>
+            <div
+              class="sign-up-field-error"
+              *ngIf="validateTitleControl('password')"
+            >
+              {{ passwordError }}
             </div>
           </div>
           <div class="sign-up-field">
@@ -72,7 +99,16 @@
                 type="password"
                 name="confirm-password"
                 formControlName="confirmPassword"
+                [class.sign-up-input-field-invalid]="
+                  validateTitleControl('confirmPassword')
+                "
               />
+            </div>
+            <div
+              class="sign-up-field-error"
+              *ngIf="validateTitleControl('confirmPassword')"
+            >
+              {{ confirmPasswordError }}
             </div>
           </div>
         </div>
@@ -80,8 +116,8 @@
           <div class="sign-up-submit">
             <app-button
               classes="button button-green"
-              [isRunning]=false
-              [disabled]=false
+              [isRunning]="isRunning"
+              [disabled]="registrationFormGroup.invalid"
               (click)="handleRegistration()"
             >
               {{ constants.registration.form.button }}
@@ -90,17 +126,12 @@
           <div class="sign-up-icon-container">
             <div class="sign-up-icon">
               <img
-                class="sign-up-icon-google"
-                src="/assets/images/Google Image.png"
+                [src]="constants.registration.googleIcon"
                 alt="google-icon"
               />
             </div>
             <div class="sign-up-icon">
-              <img
-                class="sign-up-icon-apple"
-                src="/assets/images/apple logo.png"
-                alt="apple-icon"
-              />
+              <img [src]="constants.registration.appleIcon" alt="apple-icon" />
             </div>
           </div>
         </div>
