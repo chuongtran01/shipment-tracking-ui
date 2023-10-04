@@ -21,7 +21,7 @@ export class LoginComponent {
   ) {}
 
   forgotPassword () {
-    // TODO: Implement forgot password logic here
+    this.router.navigateByUrl("/forgot-password");
   }
 
   handleSignIn () {

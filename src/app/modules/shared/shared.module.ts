@@ -20,7 +20,7 @@ const COMPONENTS_FOR_EXPORT = [
   ProductCardComponent,
 ];
 
-const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule];
+const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule, FontAwesomeModule];
 
 @NgModule({
   declarations: [...COMPONENTS_FOR_EXPORT],

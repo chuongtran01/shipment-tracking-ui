@@ -69,6 +69,17 @@ export const constants = {
     googleIcon: '/assets/images/Google Image.png',
     appleIcon: '/assets/images/apple logo.png',
   },
+  forgotPassword: {
+    forgotPassword: "Forgot Password?",
+    description: "Enter in your Email for a reset code",
+    email: "Email",
+    resetPassword: "Reset Password",
+    questionMarks: {
+      alt: "Question Marks",
+      img: "/assets/images/QuestionMarks.png",
+    },
+    backToLogin: "Back to Log in"
+  },
   sourceSelection: {
     selectSource: 'Select Source',
     viewAll: 'View All',

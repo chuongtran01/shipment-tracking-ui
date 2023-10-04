@@ -38,7 +38,11 @@ const routes: Routes = [
         (registration) => registration.RegistrationModule
       ),
   },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import("./pages/forgot-password/forgot-password.module").then(forgotPassword => forgotPassword.ForgotPasswordModule)
+  },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
