@@ -9,6 +9,7 @@ import { SearchBarComponent } from 'src/app/components/search-bar/search-bar.com
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
 import { RadioButtonComponent } from 'src/app/components/radio-button/radio-button.component';
+import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -16,6 +17,7 @@ const COMPONENTS_FOR_EXPORT = [
   SearchBarComponent,
   CheckboxComponent,
   RadioButtonComponent,
+  ProductCardComponent,
 ];
 
 const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule];

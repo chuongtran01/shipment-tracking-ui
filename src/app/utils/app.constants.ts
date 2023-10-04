@@ -1,4 +1,8 @@
 export const constants = {
+  global: {
+    cancel: "Cancel",
+    back: "Back",
+  },
   home: {
     intro: {
       header: {
@@ -57,5 +61,9 @@ export const constants = {
       confirmPassword: "Confirm Password",
       button: "Create Account"
     },
-  }
+  },
+  sourceSelection: {
+    selectSource: "Select Source",
+    viewAll: "View All"
+  },
 }

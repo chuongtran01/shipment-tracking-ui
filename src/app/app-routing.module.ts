@@ -15,7 +15,11 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import("./pages/home/home.module").then(home => home.HomeModule),
-      }
+      },
+      {
+        path: 'select-source',
+        loadChildren: () => import("./pages/source-selection/source-selection.module").then(sourceSelection => sourceSelection.SourceSelectionModule)
+      },
     ]
   },
   {

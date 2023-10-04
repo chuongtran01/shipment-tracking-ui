@@ -1,0 +1,67 @@
+<div class="select-source">
+  <div class="select-source-topbar">
+    <div class="select-source-topbar-container">
+      <button class='select-source-cancel-btn' (click)="onCancelButton()">
+        <fa-icon class="select-source-nav-icon" [icon]="faXmark"></fa-icon>
+        {{ constants.global.cancel }}
+      </button>
+    </div>
+  </div>
+  <div class="select-source-search-container">
+    <div class="select-source-left-width"></div>
+    <div class="select-source-header">
+      <div class="select-source-search">
+        {{ constants.sourceSelection.selectSource }}
+        <app-search-bar placeholder="Search a product" (onChange)="handleSearchChange(searchText)"></app-search-bar>
+      </div>
+    </div>
+  </div>
+  <div class="select-source-container">
+    <div class="select-source-left">
+      <div class="select-source-left-container">
+        <div class="select-source-left-container-scroll">
+          <div class="select-source-left-container-scroll-height">
+            <nav class="select-source-nav">
+              <ul class="select-source-ul">
+                <li *ngFor="let category of categories">
+                  <a (click)="scrollCategory(category.id)" class="select-source-category-link">
+                    <div class="select-source-category-btn active">
+                      {{category.title}}
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <div class="select-source-nav-bottom"></div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="select-source-right-container">
+      <div class="select-source-right">
+        <div class="select-source-categories">
+            <div class="select-source-category" *ngFor="let category of categories" [id]="category.id">
+              <div class="select-source-category-title">{{category.title}}</div>
+              <div class="select-source-category-group">
+                <app-product-card
+                  (onClick)="productCardClicked()"
+                  class="select-source-option"
+                  classes="image-36 align-left"
+                  data-testid="source-option"
+                  [description]="source.type"
+                  [img]="source.img"
+                  *ngFor="let source of sources"
+                  [title]="source.title"
+                ></app-product-card>
+              </div>
+              <div class="select-source-view-all">
+                <button class="select-source-btn">
+                  {{ constants.sourceSelection.viewAll }}
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
