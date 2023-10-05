@@ -1,0 +1,76 @@
+@import 'variables';
+
+.topbar {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  &-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: $medium) {
+      display: none;
+    }
+  }
+
+  &-step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 48px;
+
+    &-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      border: 1px solid;
+      border-radius: 50px;
+      margin-right: 8px;
+    }
+
+    &.disabled {
+      color: $grey-color-text;
+      fill: $grey-color-text;
+    }
+
+    &.completed {
+      color: $green;
+      fill: $green;
+
+      .topbar-step-number {
+        background-color: $green;
+        color: $white;
+      }
+    }
+
+    &-text {
+      margin-right: 16px;
+    }
+  }
+
+  &-top-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    height: 22px;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid $header-text-color;
+    color: $header-text-color;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  &-nav-icon {
+    fill: $bold-blue;
+    margin-right: 8px;
+  }
+}

@@ -1,0 +1,156 @@
+@import 'variables';
+
+.configure-source {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  padding: 42px 40px;
+  background-color: $white;
+  height: 100%;
+  gap: 53px;
+
+  &-topbar {
+    width: 100%;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+    @media screen and (max-width: $medium) {
+      width: 100%;
+    }
+  }
+
+  &-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &-description {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: $grey-color-text;
+    margin-top: 8px;
+  }
+
+  &-dropdown-text {
+    color: $header-text-color;
+    margin-left: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  &-form {
+    width: 100%;
+  }
+
+  &-fields {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-flow: wrap;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  &-field {
+    width: 48%;
+    display: flex;
+    flex-direction: column-reverse;
+
+    @media screen and (max-width: $medium) {
+      width: 100%;
+    }
+
+    &-pipeline {
+      width: 90%;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  &-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: $grey-color-text;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-input-field {
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    border: 1px solid $input-border-grey;
+    border-radius: 3px;
+    padding: 0 10px;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 12px;
+
+    &:focus-visible {
+      border: 1px solid $header-text-color;
+      outline: none;
+
+      + div {
+        label {
+          color: $header-text-color;
+        }
+      }
+    }
+  }
+
+  &-access-text {
+    font-weight: 500;
+    font-size: 14px;
+    color: $input-label-grey;
+    margin: 24px 0;
+  }
+
+  &-highlighted {
+    background-color: $text-highlight;
+  }
+
+  &-switch {
+    display: flex;
+    margin-bottom: 54px;
+    align-items: center;
+    gap: 22px;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      font-size: 14px;
+      gap: 8px;
+    }
+
+    &-description {
+      font-size: 13px;
+      color: $grey-color-text;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+  }
+
+  &-btn {
+    width: 180px;
+    height: 40px;
+    border-radius: 2px;
+    margin-right: 24px;
+  }
+
+  &-icon {
+    fill: $input-label-grey;
+  }
+}

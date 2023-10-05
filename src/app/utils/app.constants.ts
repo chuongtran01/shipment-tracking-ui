@@ -85,4 +85,42 @@ export const constants = {
     selectSource: 'Select Source',
     viewAll: 'View All',
   },
+  pipelineConfiguration: {
+    steps: [
+      {
+        id: 1,
+        title: "Configure Source",
+        chevronRight: true,
+      },
+      {
+        id: 2,
+        title: "Configure Destination",
+        chevronRight: true,
+      },
+      {
+        id: 3,
+        title: "Final Settings",
+        chevronRight: false,
+      }
+    ],
+    configureSource: {
+      title: "Configure Source",
+      description: "Please provide MongoDB connection settings or copy from one of the ",
+      existingSources: "Existing sources",
+      pipelineName: "Pipeline Name",
+      databaseHost: "Database Host",
+      databasePort: "Database Port",
+      databaseUser: "Database User",
+      databasePassword: "Database Password",
+      databaseName: "Auth DB Name",
+      openAccess: "Please open access to MongoDB port from Hero's IP address",
+      ipAddress: "10.2.7.152",
+      SSHconnection: {
+        title: "Connect through SSH",
+        description: "Connect securely through a SSH tunnel server",
+      },
+      testConnection: "Test Connection",
+      testContinue: "Test & Continue",
+    }
+  }
 };

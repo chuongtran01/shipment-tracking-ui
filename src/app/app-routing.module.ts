@@ -24,6 +24,12 @@ const routes: Routes = [
             (sourceSelection) => sourceSelection.SourceSelectionModule
           ),
       },
+      {
+        path: 'configure-source',
+        loadChildren: () => import("./pages/configure-source/configure-source.module").then(
+          configureSource => configureSource.ConfigureSourceModule
+        ),
+      },
     ],
   },
   {

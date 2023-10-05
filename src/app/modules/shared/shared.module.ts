@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
 import { RadioButtonComponent } from 'src/app/components/radio-button/radio-button.component';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
+import { ConfigurationTopbarComponent } from 'src/app/components/configuration-topbar/configuration-topbar.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -18,6 +19,7 @@ const COMPONENTS_FOR_EXPORT = [
   CheckboxComponent,
   RadioButtonComponent,
   ProductCardComponent,
+  ConfigurationTopbarComponent,
 ];
 
 const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule, FontAwesomeModule];
