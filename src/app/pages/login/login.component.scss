@@ -96,6 +96,11 @@
   &-field {
     width: 100%;
     padding: 10px 0 10px 0;
+
+    &-error {
+      color: red;
+      font-size: 15px;
+    }
   }
 
   &-lable {
@@ -117,6 +122,14 @@
     &:focus-visible {
       outline: 1px solid $green;
     }
+
+    &-invalid {
+      border: 1px solid $red;
+
+      &:focus-visible {
+        outline: none
+      }
+  }
   }
 
   &-forgot {

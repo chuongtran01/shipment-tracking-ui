@@ -3,7 +3,7 @@
     <div class="log-in-left-container">
       <img
         class="log-in-left-container-img"
-        src="/assets/images/Landing-page-background.png"
+        [src]="constants.login.leftBackground"
         alt=""/>
     </div>
     <div class="log-in-right-container">
@@ -34,7 +34,14 @@
                 id="username"
                 name="username"
                 formControlName="username"
+                [class.log-in-input-field-invalid]="showUsernameErrorMessage"
               />
+            </div>
+            <div
+              class="log-in-field-error"
+              *ngIf="showUsernameErrorMessage"
+            >
+              {{userNameError}}
             </div>
           </div>
           <div class="log-in-field">
@@ -50,7 +57,14 @@
                 type="password"
                 name="password"
                 formControlName="password"
+                [class.log-in-input-field-invalid]="showPasswordErrorMessage"
               />
+            </div>
+            <div
+              class="log-in-field-error"
+              *ngIf="showPasswordErrorMessage"
+            >
+              {{passwordError}}
             </div>
           </div>
         </div>
@@ -61,7 +75,7 @@
           <div class="log-in-submit">
             <app-button
               classes="button-green"
-              [isRunning]=false
+              [isRunning]="isRunning"
               [disabled]="loginGroup.invalid"
               (click)="handleSignIn()"
             >
@@ -72,14 +86,14 @@
             <div class="log-in-icon">
               <img
                 class="log-in-icon-google"
-                src="/assets/images/Google Image.png"
+                [src]="constants.login.googleIcon"
                 alt="google-icon"
               />
             </div>
             <div class="log-in-icon">
               <img
                 class="log-in-icon-apple"
-                src="/assets/images/apple logo.png"
+                [src]="constants.login.appleIcon"
                 alt="apple-icon"
               />
             </div>

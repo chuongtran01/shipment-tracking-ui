@@ -45,6 +45,7 @@ export const constants = {
     welcome: 'Welcome to',
     name: 'File Transform',
     signIn: 'Sign in to continue',
+    leftBackground: '/assets/images/Landing-page-background.png',
     hasNoAccount: "Don't have an account?",
     signUp: 'Sign up',
     username: 'Username',
