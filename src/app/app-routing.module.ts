@@ -25,22 +25,35 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'pipeline',
+        loadChildren: () =>
+          import('./pages/pipeline/pipeline.module').then(
+            (pipeline) => pipeline.PipelineModule
+          ),
+      },
+      {
         path: 'configure-source',
-        loadChildren: () => import("./pages/configure-source/configure-source.module").then(
-          configureSource => configureSource.ConfigureSourceModule
-        ),
+        loadChildren: () =>
+          import('./pages/configure-source/configure-source.module').then(
+            (configureSource) => configureSource.ConfigureSourceModule
+          ),
       },
       {
         path: 'configure-destination',
-        loadChildren: () => import("./pages/configure-destination/configure-destination.module").then(
-          configureDestination => configureDestination.ConfigureDestinationModule
-        ),
+        loadChildren: () =>
+          import(
+            './pages/configure-destination/configure-destination.module'
+          ).then(
+            (configureDestination) =>
+              configureDestination.ConfigureDestinationModule
+          ),
       },
       {
         path: 'final-settings',
-        loadChildren: () => import("./pages/final-settings/final-settings.module").then(
-          finalSettings => finalSettings.FinalSettingsModule
-        ),
+        loadChildren: () =>
+          import('./pages/final-settings/final-settings.module').then(
+            (finalSettings) => finalSettings.FinalSettingsModule
+          ),
       },
     ],
   },
@@ -58,9 +71,13 @@ const routes: Routes = [
   },
   {
     path: 'forgot-password',
-    loadChildren: () => import("./pages/forgot-password/forgot-password.module").then(forgotPassword => forgotPassword.ForgotPasswordModule)
+    loadChildren: () =>
+      import('./pages/forgot-password/forgot-password.module').then(
+        (forgotPassword) => forgotPassword.ForgotPasswordModule
+      ),
   },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

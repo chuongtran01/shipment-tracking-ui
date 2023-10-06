@@ -2,9 +2,9 @@ export const constants = {
   global: {
     cancel: 'Cancel',
     back: 'Back',
-    continue: "Continue",
-    lastSynched: "Last synched",
-    notSynched: "Not synched yet",
+    continue: 'Continue',
+    lastSynched: 'Last synched',
+    notSynched: 'Not synched yet',
   },
   home: {
     intro: {
@@ -74,15 +74,15 @@ export const constants = {
     appleIcon: '/assets/images/apple logo.png',
   },
   forgotPassword: {
-    forgotPassword: "Forgot Password?",
-    description: "Enter in your Email for a reset code",
-    email: "Email",
-    resetPassword: "Reset Password",
+    forgotPassword: 'Forgot Password?',
+    description: 'Enter in your Email for a reset code',
+    email: 'Email',
+    resetPassword: 'Reset Password',
     questionMarks: {
-      alt: "Question Marks",
-      img: "/assets/images/QuestionMarks.png",
+      alt: 'Question Marks',
+      img: '/assets/images/QuestionMarks.png',
     },
-    backToLogin: "Back to Log in"
+    backToLogin: 'Back to Log in',
   },
   sourceSelection: {
     selectSource: 'Select Source',
@@ -92,51 +92,59 @@ export const constants = {
     steps: [
       {
         id: 1,
-        title: "Configure Source",
+        title: 'Configure Source',
         chevronRight: true,
       },
       {
         id: 2,
-        title: "Configure Destination",
+        title: 'Configure Destination',
         chevronRight: true,
       },
       {
         id: 3,
-        title: "Final Settings",
+        title: 'Final Settings',
         chevronRight: false,
-      }
+      },
     ],
     configureSource: {
-      title: "Configure Source",
-      description: "Please provide MongoDB connection settings or copy from one of the ",
-      existingSources: "Existing sources",
-      pipelineName: "Pipeline Name",
-      databaseHost: "Database Host",
-      databasePort: "Database Port",
-      databaseUser: "Database User",
-      databasePassword: "Database Password",
-      databaseName: "Auth DB Name",
+      title: 'Configure Source',
+      description:
+        'Please provide MongoDB connection settings or copy from one of the ',
+      existingSources: 'Existing sources',
+      pipelineName: 'Pipeline Name',
+      databaseHost: 'Database Host',
+      databasePort: 'Database Port',
+      databaseUser: 'Database User',
+      databasePassword: 'Database Password',
+      databaseName: 'Auth DB Name',
       openAccess: "Please open access to MongoDB port from Hero's IP address",
-      ipAddress: "10.2.7.152",
+      ipAddress: '10.2.7.152',
       SSHconnection: {
-        title: "Connect through SSH",
-        description: "Connect securely through a SSH tunnel server",
+        title: 'Connect through SSH',
+        description: 'Connect securely through a SSH tunnel server',
       },
-      testConnection: "Test Connection",
-      testContinue: "Test & Continue",
+      testConnection: 'Test Connection',
+      testContinue: 'Test & Continue',
     },
     configureDestination: {
-      title: "Select Destination",
-      description: "Select an existing destination or add a new one",
-      addNewDestination: "Add new Destination",
+      title: 'Select Destination',
+      description: 'Select an existing destination or add a new one',
+      addNewDestination: 'Add new Destination',
     },
     finalSettings: {
-      title: "Final Settings",
-      destinationTablePrefix: "Destination Table Prefix",
-      autoMapping: "Auto Mapping",
-      autoMappingDescription: "File Transform will automatically map all event types in this Pipeline",
-      replicateFields: "Replicate Nested Fields as JSON Strings",
-      replicateFieldsDescription: "File Transform will automatically map all event types in this Pipeline",
+      title: 'Final Settings',
+      destinationTablePrefix: 'Destination Table Prefix',
+      autoMapping: 'Auto Mapping',
+      autoMappingDescription:
+        'File Transform will automatically map all event types in this Pipeline',
+      replicateFields: 'Replicate Nested Fields as JSON Strings',
+      replicateFieldsDescription:
+        'File Transform will automatically map all event types in this Pipeline',
     },
-  }
+  },
+  pipeline: {
+    generalLeftSidebar: {
+      icon: '/assets/images/Group-785.svg',
+    },
+  },
 };
