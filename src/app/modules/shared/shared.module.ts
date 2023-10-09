@@ -20,6 +20,7 @@ const COMPONENTS_FOR_EXPORT = [
   RadioButtonComponent,
   ProductCardComponent,
   ConfigurationTopbarComponent,
+  ProductCardComponent,
 ];
 
 const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule, FontAwesomeModule];

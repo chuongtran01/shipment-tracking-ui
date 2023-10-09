@@ -1,0 +1,51 @@
+<div class="configure-destination">
+  <app-configuration-topbar class="configure-destination-topbar"
+    [currentStep]="2"
+    (onBackClicked)="navigateToPreviousPage()"
+    (onCancelClicked)="cancelProcess()"
+  ></app-configuration-topbar>
+  <div class="configure-destination-content">
+    <div class="configure-destination-title">
+      {{constants.pipelineConfiguration.configureDestination.title}}
+    </div>
+    <div class="configure-destination-description">
+      {{constants.pipelineConfiguration.configureDestination.description}}
+      <div class="configure-destination-btn">
+        <app-button
+          classes="button-green font-12 text-bold"
+          (click)="addNewDestination()"
+          id="new-destination-btn">
+          {{constants.pipelineConfiguration.configureDestination.addNewDestination}}
+        </app-button>
+      </div>
+    </div>
+
+    <div class="configure-destination-form">
+      <app-search-bar
+        class="configure-destination-search-bar"
+        classes="h-100"
+        placeholder="Search a product"
+        (onChange)="handleSearchChange(searchText)"
+      ></app-search-bar>
+      <div class="configure-destination-products">
+        <div class="configure-destination-product" *ngFor="let product of products">
+          <app-product-card
+            classes="image-58"
+            [id]="'product-'+product.id"
+            [img]="product.img"
+            [title]="product.title"
+            (onClick)="selectProduct(product.id)">
+          </app-product-card>
+        </div>
+      </div>
+      <div class="configure-destination-btn">
+        <app-button
+          classes="button-green font-16 text-bold"
+          (click)="continueToNextStep()"
+          id="continue-btn">
+          {{constants.global.continue}}
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

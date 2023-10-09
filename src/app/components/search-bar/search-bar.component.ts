@@ -8,6 +8,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 })
 export class SearchBarComponent {
   @Input({ required: true }) placeholder!: string;
+  @Input() classes?: string;
 
   @Output() onChange = new EventEmitter<string>();
 

@@ -30,6 +30,12 @@ const routes: Routes = [
           configureSource => configureSource.ConfigureSourceModule
         ),
       },
+      {
+        path: 'configure-destination',
+        loadChildren: () => import("./pages/configure-destination/configure-destination.module").then(
+          configureDestination => configureDestination.ConfigureDestinationModule
+        ),
+      },
     ],
   },
   {

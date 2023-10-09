@@ -1,0 +1,85 @@
+@import 'variables';
+
+.configure-destination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  padding: 42px 40px;
+  background-color: $white;
+  height: 100%;
+  gap: 53px;
+
+  &-topbar {
+    width: 100%;
+  }
+
+  &-top-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    height: 22px;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid $header-text-color;
+    color: $header-text-color;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    @media screen and (max-width: $small) {
+      width: 100%;
+    }
+  }
+
+  &-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &-description {
+    font-size: 13px;
+    font-weight: 500;
+    color: $grey-color-text;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-btn {
+    width: 180px;
+    height: 40px;
+  }
+
+  &-form {
+    width: 100%;
+  }
+
+  &-search-bar {
+    display: block;
+    height: 40px;
+  }
+
+  &-products {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  &-product {
+    width: 180px;
+    height: 162px;
+  }
+}

@@ -2,6 +2,7 @@ export const constants = {
   global: {
     cancel: 'Cancel',
     back: 'Back',
+    continue: "Continue",
   },
   home: {
     intro: {
@@ -121,6 +122,11 @@ export const constants = {
       },
       testConnection: "Test Connection",
       testContinue: "Test & Continue",
+    },
+    configureDestination: {
+      title: "Select Destination",
+      description: "Select an existing destination or add a new one",
+      addNewDestination: "Add new Destination",
     }
   }
 };
