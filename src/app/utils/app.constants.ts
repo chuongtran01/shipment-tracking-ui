@@ -3,6 +3,8 @@ export const constants = {
     cancel: 'Cancel',
     back: 'Back',
     continue: "Continue",
+    lastSynched: "Last synched",
+    notSynched: "Not synched yet",
   },
   home: {
     intro: {

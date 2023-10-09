@@ -11,6 +11,7 @@ import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.componen
 import { RadioButtonComponent } from 'src/app/components/radio-button/radio-button.component';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { ConfigurationTopbarComponent } from 'src/app/components/configuration-topbar/configuration-topbar.component';
+import { OverviewJobRowComponent } from 'src/app/components/overview-job-row/overview-job-row.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -21,6 +22,7 @@ const COMPONENTS_FOR_EXPORT = [
   ProductCardComponent,
   ConfigurationTopbarComponent,
   ProductCardComponent,
+  OverviewJobRowComponent,
 ];
 
 const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule, FontAwesomeModule];
