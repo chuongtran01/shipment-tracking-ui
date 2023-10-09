@@ -36,6 +36,12 @@ const routes: Routes = [
           configureDestination => configureDestination.ConfigureDestinationModule
         ),
       },
+      {
+        path: 'final-settings',
+        loadChildren: () => import("./pages/final-settings/final-settings.module").then(
+          finalSettings => finalSettings.FinalSettingsModule
+        ),
+      },
     ],
   },
   {

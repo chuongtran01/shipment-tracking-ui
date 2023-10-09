@@ -1,0 +1,75 @@
+<div class="final-settings">
+  <div class="final-settings-topbar">
+    <app-configuration-topbar
+      [currentStep]="3"
+      class="final-settings-topbar"
+      (onBackClicked)="navigateToPreviousPage()"
+      (onCancelClicked)="cancelProcess()"
+    ></app-configuration-topbar>
+  </div>
+  <div class="final-settings-content">
+    <div class="final-settings-title">
+      {{constants.pipelineConfiguration.finalSettings.title}}
+    </div>
+    <div class="final-settings-form-container">
+      <div class="final-settings-form" [formGroup]="finalSettingsFormGroup">
+        <div class="final-settings-field">
+          <input
+            class="final-settings-input-field"
+            id="table-prefix"
+            type="text"
+            name="table-prefix"
+            formControlName="tablePrefix"
+          />
+          <label
+            class="final-settings-label"
+            htmlFor="table-prefix">
+              {{constants.pipelineConfiguration.finalSettings.destinationTablePrefix}}
+          </label>
+        </div>
+        <div class="final-settings-toggle-buttons">
+          <div class="final-settings-toggle-option">
+            <app-toggle-switch
+              name="auto-mapping"
+              [isChecked]="autoMappingChecked"
+              (switchToggled)="setAutoMapping($event)">
+            </app-toggle-switch>
+            <label for="auto-mapping" class="final-settings-toggle-text">
+              <div class="final-settings-toggle-title">
+                {{constants.pipelineConfiguration.finalSettings.autoMapping}}
+              </div>
+              <div class="final-settings-toggle-description">
+                {{constants.pipelineConfiguration.finalSettings.autoMappingDescription}}
+              </div>
+            </label>
+          </div>
+          <div class="final-settings-toggle-option">
+            <app-toggle-switch
+              name="replicate-fields"
+              [isChecked]="replicateFieldsChecked"
+              (switchToggled)="setReplicateFields($event)">
+            </app-toggle-switch>
+            <label for="replicate-fields" class="final-settings-toggle-text">
+              <div class="final-settings-toggle-title">
+                {{constants.pipelineConfiguration.finalSettings.replicateFields}}
+              </div>
+              <div class="final-settings-toggle-description">
+                {{constants.pipelineConfiguration.finalSettings.replicateFieldsDescription}}
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="final-settings-btn">
+          <app-button
+            (click)="continueToNextPage()"
+            [disabled]="finalSettingsFormGroup.invalid"
+            classes="button-green font-16 text-bold"
+            id="continue-btn"
+          >
+            {{constants.global.continue}}
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -127,6 +127,14 @@ export const constants = {
       title: "Select Destination",
       description: "Select an existing destination or add a new one",
       addNewDestination: "Add new Destination",
-    }
+    },
+    finalSettings: {
+      title: "Final Settings",
+      destinationTablePrefix: "Destination Table Prefix",
+      autoMapping: "Auto Mapping",
+      autoMappingDescription: "File Transform will automatically map all event types in this Pipeline",
+      replicateFields: "Replicate Nested Fields as JSON Strings",
+      replicateFieldsDescription: "File Transform will automatically map all event types in this Pipeline",
+    },
   }
 };
