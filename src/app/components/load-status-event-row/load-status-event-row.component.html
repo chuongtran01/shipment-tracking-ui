@@ -1,0 +1,28 @@
+<div class="event-row">
+  <div class="event-row-bar" (click)="changeCollapseState()">
+    <div class="column type">{{eventTitle}}</div>
+    <div class="column replay">{{totalEventNumber}} {{totalEventNumber === 1? ' Event' : ' Events'}}</div>
+    <div class="event-row-divider"></div>
+    <div class="column error">
+      {{eventTypeNumber}} {{constants.loadStatus.types}}
+      <fa-icon [icon]="faChevronDown" *ngIf="isCollapsed"></fa-icon>
+      <fa-icon [icon]="faChevronUp" *ngIf="!isCollapsed"></fa-icon>
+    </div>
+  </div>
+  <div class="event-row-content" [ngClass]="{'active': isCollapsed, 'disabled': !isCollapsed}">
+    <div class="event" *ngFor="let event of events">
+      <div class="column info">
+        <div class="events">{{event.eventNumber}} Events</div>
+        <div class="type">{{event.eventType}}</div>
+        <div class="event-row-divider"></div>
+        <div class="description">{{event.eventDescription}}</div>
+      </div>
+      <div class="event-row-divider"></div>
+      <div class="column actions error">
+        <div class="event-row-text-btn" (click)="rerunEvent()" id="rerunEvent">{{constants.loadStatus.rerun}}</div>
+        <div class="event-row-text-btn" (click)="skipEvent()" id="skipEvent">{{constants.loadStatus.skip}}</div>
+        <div class="event-row-text-btn" (click)="viewEventSample()" id="viewSample">{{constants.loadStatus.viewSample}}</div>
+      </div>
+    </div>
+  </div>
+</div>

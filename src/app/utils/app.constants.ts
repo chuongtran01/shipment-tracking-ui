@@ -147,4 +147,16 @@ export const constants = {
       icon: '/assets/images/Group-785.svg',
     },
   },
+  loadStatus: {
+    eventsFound: "Events Found",
+    skipAll: "Skip All",
+    rerunAll: "Rerun All",
+    eventType: "Event Type",
+    eventsReplayQueue: "Events in Replay Queue",
+    typesError: "Types of Errors",
+    types: "Types",
+    rerun: "RERUN",
+    skip: "SKIP",
+    viewSample: "VIEW SAMPLE",
+  },
 };

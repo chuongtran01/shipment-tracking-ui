@@ -1,0 +1,99 @@
+@import 'variables';
+
+.events-dropdown {
+  padding: 14px 5px;
+  font-family: 'Poppins', sans-serif;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+    padding: 7px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: $white;
+
+    &-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: $black;
+    }
+
+    &-icon {
+      font-size: 20px;
+      color: $black;
+    }
+  }
+
+  &-button-containers {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  &-buttons {
+    display: flex;
+    padding-right: 18px;
+  }
+
+  &-button {
+    height: 30px;
+    width: 94px;
+    margin-right: 8px;
+  }
+
+  &-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 0 18px;
+    height: 100%;
+
+    .icon {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-results {
+    font-size: 11px;
+    font-weight: 500;
+
+    &-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: $grey-color-text;
+      padding: 10px 8px;
+    }
+
+    &-type {
+      flex: 0.6;
+    }
+
+    &-replay {
+      flex: 0.8;
+    }
+
+    &-error {
+      flex: 0.4;
+      display: flex;
+      margin-left: 8px;
+    }
+  }
+
+  &-divider {
+    border-left: solid 1px $divider-grey;
+    height: 85%;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+}

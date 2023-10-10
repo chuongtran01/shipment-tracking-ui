@@ -13,6 +13,9 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
 import { ConfigurationTopbarComponent } from 'src/app/components/configuration-topbar/configuration-topbar.component';
 import { OverviewJobRowComponent } from 'src/app/components/overview-job-row/overview-job-row.component';
 import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
+import { ExpandingSearchBarComponent } from 'src/app/components/expanding-search-bar/expanding-search-bar.component';
+import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-status-events-dropdown/load-status-events-dropdown.component';
+import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -25,6 +28,9 @@ const COMPONENTS_FOR_EXPORT = [
   ProductCardComponent,
   OverviewJobRowComponent,
   GeneralLeftSidebarComponent,
+  ExpandingSearchBarComponent,
+  LoadStatusEventsDropdownComponent,
+  LoadStatusEventRowComponent,
 ];
 
 const MODULES_FOR_EXPORT = [
