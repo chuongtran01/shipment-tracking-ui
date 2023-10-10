@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 
 import { PipelineComponent } from './pipeline.component';
 
@@ -8,7 +10,8 @@ describe('PipelineComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PipelineComponent]
+      declarations: [PipelineComponent],
+      imports: [SharedModule, RouterTestingModule],
     });
     fixture = TestBed.createComponent(PipelineComponent);
     component = fixture.componentInstance;

@@ -12,6 +12,7 @@ import { RadioButtonComponent } from 'src/app/components/radio-button/radio-butt
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { ConfigurationTopbarComponent } from 'src/app/components/configuration-topbar/configuration-topbar.component';
 import { OverviewJobRowComponent } from 'src/app/components/overview-job-row/overview-job-row.component';
+import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -23,9 +24,14 @@ const COMPONENTS_FOR_EXPORT = [
   ConfigurationTopbarComponent,
   ProductCardComponent,
   OverviewJobRowComponent,
+  GeneralLeftSidebarComponent,
 ];
 
-const MODULES_FOR_EXPORT = [ReactiveFormsModule, FormsModule, FontAwesomeModule];
+const MODULES_FOR_EXPORT = [
+  ReactiveFormsModule,
+  FormsModule,
+  FontAwesomeModule,
+];
 
 @NgModule({
   declarations: [...COMPONENTS_FOR_EXPORT],
