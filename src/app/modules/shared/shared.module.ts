@@ -16,6 +16,7 @@ import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sid
 import { ExpandingSearchBarComponent } from 'src/app/components/expanding-search-bar/expanding-search-bar.component';
 import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-status-events-dropdown/load-status-events-dropdown.component';
 import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
+import { SchemaMapperRowComponent } from 'src/app/components/schema-mapper-row/schema-mapper-row.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -31,6 +32,7 @@ const COMPONENTS_FOR_EXPORT = [
   ExpandingSearchBarComponent,
   LoadStatusEventsDropdownComponent,
   LoadStatusEventRowComponent,
+  SchemaMapperRowComponent,
 ];
 
 const MODULES_FOR_EXPORT = [

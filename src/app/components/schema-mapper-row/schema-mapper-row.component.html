@@ -1,0 +1,62 @@
+<div class="mapper-row">
+  <div class="mapper-row-content" [formGroup]="mapperRowFormGroup">
+    <div class="draggable">
+      <fa-icon
+        [icon]="faGripVertical"
+        class="icon">
+      </fa-icon>
+    </div>
+    <div class="source-field">
+      <app-checkbox
+        [name]="'field-'+id"
+        [isChecked]="fieldChecked"
+        (onChange)="setFieldChecked($event)"
+      ></app-checkbox>
+      <label class="name" [htmlFor]="'field-'+id">
+        {{sourceField}}
+      </label>
+    </div>
+    <div class="destination-field field">
+      <input
+        [id]="'destination-'+id"
+        type="text"
+        formControlName="destinationField"
+      />
+    </div>
+    <div class="data-type field">
+      <select
+        name="data-type-{{id}}"
+        id="data-type-{{id}}"
+        formControlName="dataType"
+      >
+        <option value="string">String</option>
+        <option value="number">Number</option>
+        <option value="boolean">Boolean</option>
+        <option value="date">Date</option>
+      </select>
+    </div>
+    <div class="primary-key center">
+      <app-checkbox
+        name="primary-key-{{id}}"
+        [isChecked]="primaryKeyChecked"
+        (onChange)="setPrimaryKeyChecked($event)"
+      ></app-checkbox>
+    </div>
+    <div class="sort-key center">
+      <app-radio-button
+        name="mapper-{{id}}"
+        value="sort-key-{{id}}"
+        [isChecked]="isRadioSelected('sort-key-'+id)"
+        (onChange)="setSelectedRadioBtn($event)"
+      ></app-radio-button>
+    </div>
+    <div class="dist-key center">
+      <app-radio-button
+        name="mapper-{{id}}"
+        value="dist-key-{{id}}"
+        [isChecked]="isRadioSelected('dist-key-'+id)"
+        (onChange)="setSelectedRadioBtn($event)"
+      ></app-radio-button>
+    </div>
+  </div>
+</div>
