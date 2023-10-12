@@ -146,6 +146,11 @@ export const constants = {
     generalLeftSidebar: {
       icon: '/assets/images/Group-785.svg',
     },
+    pipelines: 'Pipelines',
+    searchPipelines: 'Search pipelines',
+    createNew: 'Create new',
+    moveData: 'Move data between any Source and Destination',
+    status: 'Status',
   },
   loadStatus: {
     eventsFound: "Events Found",

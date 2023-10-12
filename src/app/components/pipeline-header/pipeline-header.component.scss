@@ -1,0 +1,75 @@
+@import "variables";
+
+.pipeline-header-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 1rem 0.5rem 1.5rem;
+  gap: 10px;
+  background-color: $white;
+  height: 100%;
+
+  &-option {
+    width: 100%;
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    &-title {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    &-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 0.7em;
+      width: 140px;
+      cursor: pointer;
+    }
+  }
+
+  &-desc {
+    color: #919e9f;
+    font-size: 0.8em;
+  }
+
+  &-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1em;
+
+    &-status {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &-context {
+        font-weight: bold;
+        font-size: 0.7rem;
+      }
+    }
+
+    &-icon {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
