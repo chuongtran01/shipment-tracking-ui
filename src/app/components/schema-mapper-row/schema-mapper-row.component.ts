@@ -11,6 +11,7 @@ export class SchemaMapperRowComponent {
 
   @Input({required: true}) id: number | undefined = 0;
   @Input() sourceField: string = "";
+  @Input() classes?: string;
 
   faGripVertical = faGripVertical;
   fieldChecked: boolean = false;

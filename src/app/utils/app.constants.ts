@@ -164,4 +164,13 @@ export const constants = {
     skip: "SKIP",
     viewSample: "VIEW SAMPLE",
   },
+  schemaMapper: {
+    fieldsAvailable: "Fields Available",
+    sourceField: "Source Field",
+    destinationFieldName: "Destination Field Name",
+    dataType: "Data Type",
+    primaryKey: "Primary Key",
+    sortKey: "Sort Key",
+    distKey: "Dist Key",
+  }
 };

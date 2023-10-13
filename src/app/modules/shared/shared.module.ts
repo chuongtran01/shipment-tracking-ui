@@ -18,6 +18,7 @@ import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-statu
 import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
 import { SchemaMapperRowComponent } from 'src/app/components/schema-mapper-row/schema-mapper-row.component';
 import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
+import { SchemaMapperTableComponent } from 'src/app/components/schema-mapper-table/schema-mapper-table.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -33,8 +34,9 @@ const COMPONENTS_FOR_EXPORT = [
   ExpandingSearchBarComponent,
   LoadStatusEventsDropdownComponent,
   LoadStatusEventRowComponent,
-  SchemaMapperRowComponent,
   PipelineHeaderComponent,
+  SchemaMapperRowComponent,
+  SchemaMapperTableComponent,
 ];
 
 const MODULES_FOR_EXPORT = [

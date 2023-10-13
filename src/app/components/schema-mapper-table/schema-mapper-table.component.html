@@ -1,0 +1,38 @@
+<div class="mapper-table">
+  <div class="mapper-header">
+    <div class="fields-available">
+      {{rows.length}} {{constants.schemaMapper.fieldsAvailable}}
+      <app-expanding-search-bar (onChange)="handleSearchChange($event)"></app-expanding-search-bar>
+    </div>
+    <div class="table-header">
+      <app-checkbox name="header" (onChange)="setAllRowsChecked($event)"></app-checkbox>
+      <div class="source-field">
+        {{constants.schemaMapper.sourceField}}
+      </div>
+      <div class="destination-field">
+        {{constants.schemaMapper.destinationFieldName}}
+      </div>
+      <div class="data-type">
+        {{constants.schemaMapper.dataType}}
+      </div>
+      <div class="primary-key">
+        {{constants.schemaMapper.primaryKey}}
+      </div>
+      <div class="sort-key">
+        {{constants.schemaMapper.sortKey}}
+      </div>
+      <div class="dist-key">
+        {{constants.schemaMapper.distKey}}
+      </div>
+    </div>
+  </div>
+  <div class="mapper-rows">
+    <app-schema-mapper-row
+      *ngFor="let row of rows; index as i"
+      class="schema-mapper-row"
+      [classes]="i%2===1?'bg-green':''"
+      [id]="row.id"
+      [sourceField]="row.sourceField"
+    ></app-schema-mapper-row>
+  </div>
+</div>

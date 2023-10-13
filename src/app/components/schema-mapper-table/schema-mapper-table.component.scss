@@ -1,0 +1,45 @@
+@import 'variables';
+
+.mapper-table {
+  font-family: 'Poppins', sans-serif;
+  background-color: $white;
+
+  .mapper-header {
+    font-weight: 500;
+    font-size: 13px;
+
+    .fields-available {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 45.5px;
+      padding: 0 20px;
+    }
+
+    .table-header {
+      color: $grey-color-text;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 12.5px 20px;
+      border-top: 1px solid #CDD2D3;
+      border-bottom: 1px solid #CDD2D3;
+
+      .source-field {
+        display: flex;
+        gap: 10px;
+        flex: 0.4;
+        align-items: center;
+      }
+
+      .data-type, .destination-field {
+        flex: 0.3;
+      }
+
+      .primary-key, .sort-key, .dist-key {
+        flex: 0.2;
+        text-align: center;
+      }
+    }
+  }
+}
