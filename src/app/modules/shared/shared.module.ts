@@ -22,6 +22,7 @@ import { SchemaMapperTableComponent } from 'src/app/components/schema-mapper-tab
 import { SchemaMapperCreateTableComponent } from 'src/app/components/schema-mapper-create-table/schema-mapper-create-table.component';
 import { FinalSettingsComponent } from 'src/app/pages/pipeline/final-settings/final-settings.component';
 import { ConfigureDestinationComponent } from 'src/app/pages/pipeline/configure-destination/configure-destination.component';
+import { PipelineBodyComponent } from 'src/app/components/pipeline-body/pipeline-body.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -37,10 +38,11 @@ const COMPONENTS_FOR_EXPORT = [
   ExpandingSearchBarComponent,
   LoadStatusEventsDropdownComponent,
   LoadStatusEventRowComponent,
-  PipelineHeaderComponent,
   SchemaMapperRowComponent,
   SchemaMapperTableComponent,
   SchemaMapperCreateTableComponent,
+  PipelineHeaderComponent,
+  PipelineBodyComponent,
 ];
 
 const MODULES_FOR_EXPORT = [

@@ -3,10 +3,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { PipelineComponent } from './pipeline.component';
 
 describe('PipelineComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [PipelineComponent]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [PipelineComponent],
+    })
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(PipelineComponent);

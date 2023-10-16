@@ -9,6 +9,22 @@
         <app-pipeline-header></app-pipeline-header>
       </div>
     </div>
-    <div class="pipeline-right-body"></div>
+    <div class="pipeline-right-body">
+      <ng-container *ngIf="loading; else checkPipelines">
+        <div class="pipeline-right-body-loading">Loading...</div>
+      </ng-container>
+
+      <ng-template #checkPipelines>
+        <ng-container *ngIf="pipelines.length === 0; else showPipelines">
+          <div class="pipeline-right-body-no-pipeline">No pipeline found</div>
+        </ng-container>
+      </ng-template>
+
+      <ng-template #showPipelines>
+        <ng-container *ngFor="let pipeline of pipelines">
+          <app-pipeline-body [pipeline]="pipeline"></app-pipeline-body>
+        </ng-container>
+      </ng-template>
+    </div>
   </div>
 </div>

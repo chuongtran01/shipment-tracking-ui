@@ -63,7 +63,7 @@ describe('PipelinePageComponent', () => {
 
   it('should subscribe to SearchBarService and update message', () => {
     component.ngOnInit();
-    expect(component.message).toEqual(testData);
+    expect(component.pipelineName).toEqual(testData);
   });
 
   it('should unsubscribe on component destroy', () => {

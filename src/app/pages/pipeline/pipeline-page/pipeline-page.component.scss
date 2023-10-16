@@ -28,14 +28,33 @@
       }
 
       &-body {
-        background-color: blue;
         height: calc(100% - 2rem);
       }
     }
 
     &-body {
-      background-color: green;
-      margin: 0 10px;
+      padding: 10px 10px;
+      gap: 0.5rem;
+      display: flex;
+      flex-direction: column;
+
+      &-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $grey-color-text;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+
+      &-no-pipeline {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $grey-color-text;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
     }
   }
 }
