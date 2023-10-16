@@ -165,6 +165,9 @@ export const constants = {
     viewSample: "VIEW SAMPLE",
   },
   schemaMapper: {
+    tableName: "Table Name",
+    tableNameDescription: "A unique name for the table with a maximum of 127 characters.",
+    createTableAndMap: "Create Table & Map",
     fieldsAvailable: "Fields Available",
     sourceField: "Source Field",
     destinationFieldName: "Destination Field Name",
