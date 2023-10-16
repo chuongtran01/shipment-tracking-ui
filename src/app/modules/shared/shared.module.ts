@@ -12,17 +12,14 @@ import { RadioButtonComponent } from 'src/app/components/radio-button/radio-butt
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { ConfigurationTopbarComponent } from 'src/app/components/configuration-topbar/configuration-topbar.component';
 import { OverviewJobRowComponent } from 'src/app/components/overview-job-row/overview-job-row.component';
-import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 import { ExpandingSearchBarComponent } from 'src/app/components/expanding-search-bar/expanding-search-bar.component';
 import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-status-events-dropdown/load-status-events-dropdown.component';
 import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
 import { SchemaMapperRowComponent } from 'src/app/components/schema-mapper-row/schema-mapper-row.component';
-import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
 import { SchemaMapperTableComponent } from 'src/app/components/schema-mapper-table/schema-mapper-table.component';
 import { SchemaMapperCreateTableComponent } from 'src/app/components/schema-mapper-create-table/schema-mapper-create-table.component';
 import { FinalSettingsComponent } from 'src/app/pages/pipeline/final-settings/final-settings.component';
 import { ConfigureDestinationComponent } from 'src/app/pages/pipeline/configure-destination/configure-destination.component';
-import { PipelineBodyComponent } from 'src/app/components/pipeline-body/pipeline-body.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -34,15 +31,12 @@ const COMPONENTS_FOR_EXPORT = [
   ConfigurationTopbarComponent,
   ProductCardComponent,
   OverviewJobRowComponent,
-  GeneralLeftSidebarComponent,
   ExpandingSearchBarComponent,
   LoadStatusEventsDropdownComponent,
   LoadStatusEventRowComponent,
   SchemaMapperRowComponent,
   SchemaMapperTableComponent,
   SchemaMapperCreateTableComponent,
-  PipelineHeaderComponent,
-  PipelineBodyComponent,
 ];
 
 const MODULES_FOR_EXPORT = [

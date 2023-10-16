@@ -55,7 +55,7 @@ describe('PipelineHeaderComponent', () => {
       By.css('.pipeline-header-body-filter-status-context')
     );
     expect(filterStatusElement.nativeElement.textContent).toContain(
-      CONSTANTS.pipeline.status
+      CONSTANTS.pipeline.filter
     );
   });
 });

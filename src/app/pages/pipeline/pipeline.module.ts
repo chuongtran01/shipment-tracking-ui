@@ -6,13 +6,21 @@ import { PipelineComponent } from './pipeline.component';
 import { ConfigureDestinationComponent } from './configure-destination/configure-destination.component';
 import { FinalSettingsComponent } from './final-settings/final-settings.component';
 import { PipelinePageComponent } from './pipeline-page/pipeline-page.component';
+import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
+import { PipelineBodyComponent } from 'src/app/components/pipeline-body/pipeline-body.component';
+import { CreatePipelineComponent } from 'src/app/components/create-pipeline/create-pipeline.component';
+import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 
 @NgModule({
   declarations: [
     PipelineComponent,
     PipelinePageComponent,
+    PipelineHeaderComponent,
+    PipelineBodyComponent,
     ConfigureDestinationComponent,
     FinalSettingsComponent,
+    CreatePipelineComponent,
+    GeneralLeftSidebarComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
 })

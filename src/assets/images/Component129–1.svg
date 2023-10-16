@@ -1,0 +1,14 @@
+<svg id="Component_129_1" data-name="Component 129 – 1" xmlns="http://www.w3.org/2000/svg" width="70" height="52" viewBox="0 0 70 52">
+  <text id="Connections" transform="translate(0 48)" fill="#ebebeb" font-size="11" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">Connections</tspan></text>
+  <g id="connection-two-way" transform="translate(16 -3)">
+    <path id="Path_1471" data-name="Path 1471" d="M12,12h2.207v4.414H12Z" transform="translate(-2.118 -2.103)" fill="#f2f2f2"/>
+    <path id="Path_1472" data-name="Path 1472" d="M12,21h2.207v4.414H12Z" transform="translate(-2.118 -4.207)" fill="#f2f2f2"/>
+    <path id="Path_1473" data-name="Path 1473" d="M21,12h2.207v4.414H21Z" transform="translate(-4.237 -2.103)" fill="#f2f2f2"/>
+    <path id="Path_1474" data-name="Path 1474" d="M21,21h2.207v4.414H21Z" transform="translate(-4.237 -4.207)" fill="#f2f2f2"/>
+    <path id="Path_1475" data-name="Path 1475" d="M12,30h2.207v4.414H12Z" transform="translate(-2.118 -6.31)" fill="#f2f2f2"/>
+    <path id="Path_1476" data-name="Path 1476" d="M21,30h2.207v4.414H21Z" transform="translate(-4.237 -6.31)" fill="#f2f2f2"/>
+    <path id="Path_1477" data-name="Path 1477" d="M40.241,30.621H31.226l2.847,2.858-1.556,1.556L27,29.517,32.517,24l1.556,1.556-2.847,2.858h9.015Z" transform="translate(-5.171 -4.448)" fill="#f2f2f2"/>
+    <path id="Path_1478" data-name="Path 1478" d="M28.5,15.621h9.015l-2.847,2.858,1.556,1.556,5.517-5.517L36.224,9l-1.556,1.556,2.847,2.858H28.5Z" transform="translate(-5.568 -1.586)" fill="#f2f2f2"/>
+    <path id="Path_1479" data-name="Path 1479" d="M32.78,30.429v2.286H5.291V5.286H23.617V7.571h2.291V5.286A2.288,2.288,0,0,0,23.617,3H5.291A2.288,2.288,0,0,0,3,5.286V35H35.07V30.429Z" transform="translate(0 0)" fill="#f2f2f2"/>
+  </g>
+</svg>

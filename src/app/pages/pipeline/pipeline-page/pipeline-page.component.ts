@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { debounceTime, Subscription } from 'rxjs';
 import { SearchBarService } from 'src/app/services/search-bar/search-bar.service';
 import { IPipeline } from 'src/app/models/Pipeline';
 import { PipelineService } from 'src/app/services/pipeline/pipeline.service';
+import { constants } from '../../../utils/app.constants';
 
 @Component({
   selector: 'app-pipeline-page',
@@ -13,6 +14,8 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
   _pipelineName: string = '';
   $subs: Subscription = new Subscription();
   loading: boolean = false;
+  showCreatePipelineModal: boolean = false;
+  CONSTANTS = constants;
 
   pipelines: IPipeline[] = [
     {
@@ -38,12 +41,34 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.$subs.add(
-      this.searchBarService.receiveSearchInput().subscribe((data) => {
-        this.pipelineName = data;
-      })
+      this.searchBarService
+        .receiveSearchInput()
+        .pipe(debounceTime(300))
+        .subscribe((data) => {
+          this.pipelineName = data;
+        })
     );
 
     // TODO: Remove comment when having API set up
+    // this.$subs.add(
+    //   this.searchBarService
+    //     .receiveSearchInput()
+    //     .pipe(debounceTime(300))
+    //     .subscribe((data) => {
+    //       this.loading = true; // Show loading indicator while searching
+    //       this.pipelineService.searchPipelines(data).subscribe({
+    //         next: (response) => {
+    //           this.pipelines = response;
+    //           this.loading = false; // Hide loading indicator after search
+    //         },
+    //         error: (error) => {
+    //           console.error('Error searching pipelines:', error);
+    //           this.loading = false; // Hide loading indicator on error
+    //         }
+    //       });
+    //     })
+    // );
+
     // this.loading = true;
 
     // this.$subs.add(
@@ -66,6 +91,10 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
 
   set pipelineName(value: string) {
     this._pipelineName = value;
+  }
+
+  hoverCreatePipelinePopup() {
+    this.showCreatePipelineModal = !this.showCreatePipelineModal;
   }
 
   ngOnDestroy(): void {

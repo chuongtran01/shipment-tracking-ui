@@ -6,7 +6,9 @@
     <div class="pipeline-right-top">
       <div class="pipeline-right-top-navbar"></div>
       <div class="pipeline-right-top-body">
-        <app-pipeline-header></app-pipeline-header>
+        <app-pipeline-header
+          (openPopupEvent)="hoverCreatePipelinePopup()"
+        ></app-pipeline-header>
       </div>
     </div>
     <div class="pipeline-right-body">
@@ -16,7 +18,15 @@
 
       <ng-template #checkPipelines>
         <ng-container *ngIf="pipelines.length === 0; else showPipelines">
-          <div class="pipeline-right-body-no-pipeline">No pipeline found</div>
+          <div class="pipeline-right-body-no-pipeline">
+            <div>{{ CONSTANTS.pipeline.noPipelineFound }}</div>
+            <div
+              class="pipeline-right-body-no-pipeline-create-new"
+              (click)="hoverCreatePipelinePopup()"
+            >
+              {{ CONSTANTS.pipeline.createNew }}
+            </div>
+          </div>
         </ng-container>
       </ng-template>
 
@@ -28,3 +38,7 @@
     </div>
   </div>
 </div>
+<app-create-pipeline
+  [showCreatePipelineModal]="showCreatePipelineModal"
+  (closeModalEvent)="showCreatePipelineModal = false"
+></app-create-pipeline>

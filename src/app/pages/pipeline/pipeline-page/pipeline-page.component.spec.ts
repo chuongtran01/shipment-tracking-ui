@@ -6,6 +6,10 @@ import { SearchBarService } from 'src/app/services/search-bar/search-bar.service
 import { PipelinePageComponent } from './pipeline-page.component';
 import { constants } from '../../../utils/app.constants';
 import { By } from '@angular/platform-browser';
+import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
+import { PipelineBodyComponent } from 'src/app/components/pipeline-body/pipeline-body.component';
+import { CreatePipelineComponent } from 'src/app/components/create-pipeline/create-pipeline.component';
+import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 
 describe('PipelinePageComponent', () => {
   let component: PipelinePageComponent;
@@ -22,7 +26,13 @@ describe('PipelinePageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PipelinePageComponent],
+      declarations: [
+        PipelinePageComponent,
+        PipelineHeaderComponent,
+        PipelineBodyComponent,
+        CreatePipelineComponent,
+        GeneralLeftSidebarComponent,
+      ],
       imports: [SharedModule, RouterTestingModule],
       providers: [{ provide: SearchBarService, useValue: searchServiceSpy }],
     });

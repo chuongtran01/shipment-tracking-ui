@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   faPlus,
   faArrowUpWideShort,
@@ -16,4 +16,9 @@ export class PipelineHeaderComponent {
   faPlus = faPlus;
   faArrowUpWideShort = faArrowUpWideShort;
   faRotateRight = faRotateRight;
+  @Output() openPopupEvent = new EventEmitter<boolean>();
+
+  openPopup() {
+    this.openPopupEvent.emit(true);
+  }
 }
