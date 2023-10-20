@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
-import { SharedModule } from '../../modules/shared/shared.module';
-import { AuthService } from '../../services/auth/auth.service';
+import { SharedModule } from '../../../modules/shared/shared.module';
+import { AuthService } from '../../../services/auth/auth.service';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { ButtonComponent } from '../../components/button/button.component';
+import { ButtonComponent } from '../../../components/button/button.component';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { constants } from '../../utils/app.constants';
+import { constants } from '../../../utils/app.constants';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -233,7 +233,7 @@ describe('LoginComponent', () => {
       expect(authService.setRefreshToken).toHaveBeenCalledOnceWith(
         'sample-refresh-token'
       );
-      expect(router.navigateByUrl).toHaveBeenCalledOnceWith('/home');
+      expect(router.navigateByUrl).toHaveBeenCalledOnceWith('/pipeline');
     });
 
     it('click event - with non valid values', () => {

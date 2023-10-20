@@ -9,20 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'pipeline',
         pathMatch: 'full',
-      },
-      {
-        path: 'home',
-        loadChildren: () =>
-          import('./pages/home/home.module').then((home) => home.HomeModule),
-      },
-      {
-        path: 'select-source',
-        loadChildren: () =>
-          import('./pages/source-selection/source-selection.module').then(
-            (sourceSelection) => sourceSelection.SourceSelectionModule
-          ),
       },
       {
         path: 'pipeline',
@@ -32,51 +20,24 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'configure-source',
+        path: 'connection',
         loadChildren: () =>
-          import('./pages/configure-source/configure-source.module').then(
-            (configureSource) => configureSource.ConfigureSourceModule
-          ),
-      },
-      {
-        path: 'configure-destination',
-        loadChildren: () =>
-          import(
-            './pages/configure-destination/configure-destination.module'
-          ).then(
-            (configureDestination) =>
-              configureDestination.ConfigureDestinationModule
-          ),
-      },
-      {
-        path: 'final-settings',
-        loadChildren: () =>
-          import('./pages/final-settings/final-settings.module').then(
-            (finalSettings) => finalSettings.FinalSettingsModule
+          import('./pages/connection/connection.module').then(
+            (connection) => connection.ConnectionModule
           ),
       },
     ],
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () =>
-      import('./pages/login/login.module').then((login) => login.LoginModule),
+      import('./pages/home/home.module').then((home) => home.HomeModule),
   },
   {
-    path: 'registration',
+    path: 'auth',
     loadChildren: () =>
-      import('./pages/registration/registration.module').then(
-        (registration) => registration.RegistrationModule
-      ),
+      import('./pages/auth/auth.module').then((auth) => auth.AuthModule),
   },
-  {
-    path: 'forgot-password',
-    loadChildren: () =>
-      import('./pages/forgot-password/forgot-password.module').then(
-        (forgotPassword) => forgotPassword.ForgotPasswordModule
-      ),
-  },
-
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 

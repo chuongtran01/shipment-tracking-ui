@@ -20,6 +20,8 @@ import { SchemaMapperRowComponent } from 'src/app/components/schema-mapper-row/s
 import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
 import { SchemaMapperTableComponent } from 'src/app/components/schema-mapper-table/schema-mapper-table.component';
 import { SchemaMapperCreateTableComponent } from 'src/app/components/schema-mapper-create-table/schema-mapper-create-table.component';
+import { FinalSettingsComponent } from 'src/app/pages/pipeline/final-settings/final-settings.component';
+import { ConfigureDestinationComponent } from 'src/app/pages/pipeline/configure-destination/configure-destination.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,

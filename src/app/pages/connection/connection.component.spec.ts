@@ -1,22 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { PipelineComponent } from './pipeline.component';
+import { ConnectionComponent } from './connection.component';
 
-describe('PipelineComponent', () => {
+describe('ConnectionComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [PipelineComponent]
+    declarations: [ConnectionComponent]
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(PipelineComponent);
+    const fixture = TestBed.createComponent(ConnectionComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'pipeline'`, () => {
-    const fixture = TestBed.createComponent(PipelineComponent);
+  it(`should have as title 'connection'`, () => {
+    const fixture = TestBed.createComponent(ConnectionComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('pipeline');
+    expect(app.title).toEqual('connection');
   });
 });

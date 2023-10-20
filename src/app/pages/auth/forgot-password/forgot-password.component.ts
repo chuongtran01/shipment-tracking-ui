@@ -28,7 +28,7 @@ export class ForgotPasswordComponent {
   }
 
   handleBackToLogin() {
-    this.router.navigateByUrl("/login");
+    this.router.navigateByUrl("/auth/login");
   }
 
 }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth/auth.service';
-import { PrincipalService } from '../../services/principal/principal.service';
-import { constants } from '../../utils/app.constants';
+import { AuthService } from '../../../services/auth/auth.service';
+import { PrincipalService } from '../../../services/principal/principal.service';
+import { constants } from '../../../utils/app.constants';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginComponent {
   ) {}
 
   forgotPassword() {
-    this.router.navigateByUrl('/forgot-password');
+    this.router.navigateByUrl('/auth/forgot-password');
   }
 
   handleSignIn() {
@@ -50,7 +50,7 @@ export class LoginComponent {
           this.isRunning = false;
           this.authService.setAccessToken(response.accessToken);
           this.authService.setRefreshToken(response.refreshToken);
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/pipeline');
         },
         error: (err) => {
           this.isRunning = false;

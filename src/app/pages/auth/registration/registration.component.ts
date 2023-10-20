@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { confirmPasswordValidator } from '../../utils/form-validators';
-import { constants } from '../../utils/app.constants';
+import { confirmPasswordValidator } from '../../../utils/form-validators';
+import { constants } from '../../../utils/app.constants';
 
 @Component({
   selector: 'app-registration',
@@ -98,7 +98,7 @@ export class RegistrationComponent {
       })
       .subscribe({
         next: () => {
-          this.router.navigateByUrl('/login').then();
+          this.router.navigateByUrl('/auth/login').then();
           this.isRunning = false;
         },
       });

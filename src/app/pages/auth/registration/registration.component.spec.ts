@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistrationComponent } from './registration.component';
-import { SharedModule } from '../../modules/shared/shared.module';
+import { SharedModule } from '../../../modules/shared/shared.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ButtonComponent } from 'src/app/components/button/button.component';
@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
-import { constants } from '../../utils/app.constants';
+import { constants } from '../../../utils/app.constants';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -253,7 +253,7 @@ describe('RegistrationComponent', () => {
         organizationId: 'demo-org-1',
       });
 
-      expect(router.navigateByUrl).toHaveBeenCalledOnceWith('/login');
+      expect(router.navigateByUrl).toHaveBeenCalledOnceWith('/auth/login');
     });
 
     it('click event - with non valid values', () => {
