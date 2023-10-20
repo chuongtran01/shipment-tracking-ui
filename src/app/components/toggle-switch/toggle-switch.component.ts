@@ -9,6 +9,7 @@ export class ToggleSwitchComponent {
 
   @Input() name: string = '';
   @Input() isChecked: boolean = false;
+  @Input() classes?: string;
   @Output() switchToggled = new EventEmitter<boolean>();
 
   onChange(value: boolean) {

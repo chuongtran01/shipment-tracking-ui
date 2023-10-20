@@ -1,0 +1,46 @@
+@import 'variables';
+
+.schema-mapper {
+  display: flex;
+
+  &-left {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  &-right {
+    width: 100%;
+    height: 100vh;
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      box-sizing: border-box;
+      padding: 22px 32px 0px 32px;
+
+      &-toggle {
+        background-color: $white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: $font-medium;
+        padding: 16px;
+        color: $input-label-color;
+
+        app-toggle-switch {
+          line-height: 0;
+        }
+
+        &-description {
+          color: $grey-color-text;
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+
+}

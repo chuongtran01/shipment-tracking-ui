@@ -15,7 +15,7 @@ export class GeneralLeftSidebarComponent {
   constructor(private router: Router) {}
 
   activeClass(name: string) {
-    if (this.router.url === name) {
+    if (this.router.url.includes(name)) {
       return 'sidebar-option-active';
     } else {
       return '';

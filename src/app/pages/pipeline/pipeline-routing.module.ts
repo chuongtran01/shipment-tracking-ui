@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SchemaMapperComponent } from './schema-mapper/schema-mapper.component';
 import { PipelinePageComponent } from './pages/pipeline-page/pipeline-page.component';
-import { ConfigureJobComponent } from './pages/configure-job/configure-job.component';
-import { FinalSettingsComponent } from './pages/final-settings/final-settings.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { LoadStatusComponent } from './pages/load-status/load-status.component';
+import { ConfigureJobComponent } from './pages/configure-job/configure-job.component';
+import { FinalSettingsComponent } from './pages/final-settings/final-settings.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
         path: 'overview',
         component: OverviewComponent,
         title: 'Overview',
+      },
+      {
+        path: 'schema-mapper',
+        component: SchemaMapperComponent,
+        title: 'Schema Mapper',
       },
       {
         path: 'load-status',

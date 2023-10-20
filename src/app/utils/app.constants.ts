@@ -211,6 +211,8 @@ export const constants = {
     primaryKey: "Primary Key",
     sortKey: "Sort Key",
     distKey: "Dist Key",
+    autoMapping: "Auto mapping Disabled:",
+    autoMappingDescription: "Enable Auto mapping to automatically map all Event Types in this pipeline",
   },
   connection: {
     title: 'Connections',

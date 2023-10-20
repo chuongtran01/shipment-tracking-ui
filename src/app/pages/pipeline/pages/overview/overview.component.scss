@@ -1,65 +1,84 @@
 @import 'variables';
 
 .overview {
-  box-sizing: border-box;
-  padding: 22px 32px;
+  display: flex;
   height: 100vh;
   background-color: $text-area;
 
-  &-job {
+  &-left {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  &-right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 22px;
+
     &-container {
-      &-header {
-        color: $grey-color-text;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 14px;
-        font-weight: $font-medium;
-        gap: 15px;
-        padding: 6px 10px;
+      box-sizing: border-box;
+      padding: 22px 32px 0 32px;
+      width: 100%;
 
-        & .checkbox {
-          flex-shrink: 0;
-        }
+      &-jobs {
 
-        & .jobs {
-          flex: 0.7;
-        }
-
-        & .message {
-          flex: 0.4;
-        }
-
-        & .events-ingested {
-          flex: 0.6;
-          text-align: center;
-        }
-
-        & .buttons {
-          flex: 1.9;
+        &-header {
+          color: $grey-color-text;
           display: flex;
-          justify-content: flex-end;
-          gap: 16px;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 14px;
+          font-weight: $font-medium;
+          gap: 15px;
+          padding: 6px 10px;
 
-          & .icon {
-            cursor: pointer;
+          & .checkbox {
+            flex-shrink: 0;
+          }
 
-            &:hover {
-              opacity: 0.7;
+          & .jobs {
+            flex: 0.7;
+          }
+
+          & .message {
+            flex: 0.4;
+          }
+
+          & .events-ingested {
+            flex: 0.6;
+            text-align: center;
+          }
+
+          & .buttons {
+            flex: 1.9;
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+
+            & .icon {
+              cursor: pointer;
+
+              &:hover {
+                opacity: 0.7;
+              }
+            }
+
+            & .create-job {
+              width: 80px;
             }
           }
+        }
 
-          & .create-job {
-            width: 80px;
-          }
+        &-body {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
         }
       }
 
-      &-body {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
     }
   }
 }

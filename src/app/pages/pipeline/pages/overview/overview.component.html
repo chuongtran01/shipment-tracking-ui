@@ -1,42 +1,54 @@
 <div class="overview">
-  <div class="overview-job-container">
-    <div class="overview-job-container-header">
-      <div class="checkbox">
-        <app-checkbox></app-checkbox>
-      </div>
-      <div class="jobs">{{constants.pipeline.overview.jobs}}</div>
-      <div class="message"></div>
-      <div class="events-ingested">{{constants.pipeline.overview.eventsIngested}}</div>
-      <div class="graph"></div>
-      <div class="event-message"></div>
-      <div class="status"></div>
-      <div class="buttons">
-        <div class="create-job">
-          <app-button classes="button-green font-10 p-v-5 p-h-10" (click)="goToConfigureJob()">
-            {{constants.pipeline.createJob}}
-          </app-button>
-        </div>
-        <div class="filter icon">
-          {{constants.global.filter}}
-          <fa-icon [icon]="faFilter"></fa-icon>
-        </div>
-        <div class="refresh" (click)="getAllJobs()">
-          <fa-icon class="icon" [icon]="faRotateRight"></fa-icon>
-        </div>
-        <div class="ellipsis">
-          <fa-icon class="icon" [icon]="faEllipsisVertical"></fa-icon>
-        </div>
-      </div>
+  <div class="overview-left">
+    <app-general-left-sidebar></app-general-left-sidebar>
+  </div>
+  <div class="overview-right">
+    <div class="overview-right-navbar">
+      <!-- TODO: add teams information -->
+      <app-header-navbar name="CM" [teams]="[]"></app-header-navbar>
     </div>
-    <div class="overview-job-container-body">
-      <app-overview-job-row
-        *ngFor="let job of jobs"
-        [id]="job.id"
-        [title]="job.name"
-        eventsIngested="0"
-        jobStatus="active"
-        [lastSyncedTime]="getLastUpdatedDate(job.modifiedAt)"
-      ></app-overview-job-row>
+    <div class="overview-right-container">
+      <!-- TODO: Add pipeline info header and pipeline navbar -->
+      <div class="overview-right-container-jobs">
+        <div class="overview-right-container-jobs-header">
+          <div class="checkbox">
+            <app-checkbox></app-checkbox>
+          </div>
+          <div class="jobs">{{constants.pipeline.overview.jobs}}</div>
+          <div class="message"></div>
+          <div class="events-ingested">{{constants.pipeline.overview.eventsIngested}}</div>
+          <div class="graph"></div>
+          <div class="event-message"></div>
+          <div class="status"></div>
+          <div class="buttons">
+            <div class="create-job">
+              <app-button classes="button-green font-10 p-v-5 p-h-10 text-medium" (click)="goToConfigureJob()">
+                {{constants.pipeline.createJob}}
+              </app-button>
+            </div>
+            <div class="filter icon">
+              {{constants.global.filter}}
+              <fa-icon [icon]="faFilter"></fa-icon>
+            </div>
+            <div class="refresh" (click)="getAllJobs()">
+              <fa-icon class="icon" [icon]="faRotateRight"></fa-icon>
+            </div>
+            <div class="ellipsis">
+              <fa-icon class="icon" [icon]="faEllipsisVertical"></fa-icon>
+            </div>
+          </div>
+        </div>
+        <div class="overview-right-container-jobs-body">
+          <app-overview-job-row
+            *ngFor="let job of jobs"
+            [id]="job.id"
+            [title]="job.name"
+            eventsIngested="0"
+            jobStatus="active"
+            [lastSyncedTime]="getLastUpdatedDate(job.modifiedAt)"
+          ></app-overview-job-row>
+        </div>
+      </div>
     </div>
   </div>
 </div>

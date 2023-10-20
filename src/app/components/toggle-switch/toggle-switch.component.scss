@@ -76,4 +76,22 @@
       }
     }
   }
+
+  &.small {
+    width: 31px;
+
+    & .toggle-switch-inner {
+      &:before,
+      &:after {
+        height: 13px;
+      }
+    }
+
+    & .toggle-switch-switch {
+      width: 11px;
+      top: 0px;
+      bottom: 0px;
+      right: 18px;
+    }
+  }
 }
