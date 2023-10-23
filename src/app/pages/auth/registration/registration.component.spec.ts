@@ -25,7 +25,7 @@ describe('RegistrationComponent', () => {
   AuthServiceStub.register
     .withArgs({
       firstName: 'sample.name',
-      lastName: 'sample.name',
+      lastName: 'sample.lastName',
       username: 'sample.email@email.com',
       email: 'sample.email@email.com',
       password: 'Secure_password2',
@@ -72,27 +72,32 @@ describe('RegistrationComponent', () => {
     });
 
     it("Check for input field's label", () => {
-      const nameLabel = fixture.nativeElement.querySelector(
+      const firstNameLabel = fixture.nativeElement.querySelector(
         '.sign-up-form .sign-up-field:nth-child(1) label'
       );
-      expect(nameLabel.textContent).toContain(CONSTANTS.registration.form.name);
+      expect(firstNameLabel.textContent).toContain(CONSTANTS.registration.form.firstName);
+
+      const lastNameLabel = fixture.nativeElement.querySelector(
+        '.sign-up-form .sign-up-field:nth-child(2) label'
+      );
+      expect(lastNameLabel.textContent).toContain(CONSTANTS.registration.form.lastName);
 
       const emailLabel = fixture.nativeElement.querySelector(
-        '.sign-up-form .sign-up-field:nth-child(2) label'
+        '.sign-up-form .sign-up-field:nth-child(3) label'
       );
       expect(emailLabel.textContent).toContain(
         CONSTANTS.registration.form.email
       );
 
       const passwordLabel = fixture.nativeElement.querySelector(
-        '.sign-up-form .sign-up-field:nth-child(3) label'
+        '.sign-up-form .sign-up-field:nth-child(4) label'
       );
       expect(passwordLabel.textContent).toContain(
         CONSTANTS.registration.form.password
       );
 
       const confirmPasswordLabel = fixture.nativeElement.querySelector(
-        '.sign-up-form .sign-up-field:nth-child(4) label'
+        '.sign-up-form .sign-up-field:nth-child(5) label'
       );
       expect(confirmPasswordLabel.textContent).toContain(
         CONSTANTS.registration.form.confirmPassword
@@ -101,12 +106,12 @@ describe('RegistrationComponent', () => {
   });
 
   describe('validateTitleControl()', () => {
-    it('test for empty input', () => {
-      const input = component.registrationFormGroup.controls['name'];
+    it('test for empty first name input', () => {
+      const input = component.registrationFormGroup.controls['firstName'];
       input.setValue('');
       input.markAsTouched();
 
-      const validation = component.validateTitleControl('name');
+      const validation = component.validateTitleControl('firstName');
       expect(validation).toBeTrue();
 
       fixture.detectChanges();
@@ -116,7 +121,26 @@ describe('RegistrationComponent', () => {
       );
 
       expect(errorMessage.nativeElement.innerHTML).toContain(
-        'Please enter your Name'
+        'Please enter your First Name'
+      );
+    });
+
+    it('test for empty last name input', () => {
+      const input = component.registrationFormGroup.controls['lastName'];
+      input.setValue('');
+      input.markAsTouched();
+
+      const validation = component.validateTitleControl('lastName');
+      expect(validation).toBeTrue();
+
+      fixture.detectChanges();
+
+      const errorMessage = fixture.debugElement.query(
+        By.css('.sign-up-form .sign-up-field:nth-child(2) .sign-up-field-error')
+      );
+
+      expect(errorMessage.nativeElement.innerHTML).toContain(
+        'Please enter your Last Name'
       );
     });
 
@@ -132,7 +156,7 @@ describe('RegistrationComponent', () => {
       fixture.detectChanges();
 
       const errorMessage = fixture.debugElement.query(
-        By.css('.sign-up-form .sign-up-field:nth-child(2) .sign-up-field-error')
+        By.css('.sign-up-form .sign-up-field:nth-child(3) .sign-up-field-error')
       );
 
       expect(errorMessage.nativeElement.innerHTML).toContain(
@@ -150,7 +174,7 @@ describe('RegistrationComponent', () => {
       fixture.detectChanges();
 
       const errorMessage = fixture.debugElement.query(
-        By.css('.sign-up-form .sign-up-field:nth-child(3) .sign-up-field-error')
+        By.css('.sign-up-form .sign-up-field:nth-child(4) .sign-up-field-error')
       );
 
       expect(errorMessage.nativeElement.innerHTML).toContain(
@@ -174,7 +198,7 @@ describe('RegistrationComponent', () => {
       expect(validation).toBeTrue();
 
       const errorMessage = fixture.debugElement.query(
-        By.css('.sign-up-form .sign-up-field:nth-child(4) .sign-up-field-error')
+        By.css('.sign-up-form .sign-up-field:nth-child(5) .sign-up-field-error')
       );
 
       expect(errorMessage.nativeElement.innerHTML).toContain(
@@ -183,13 +207,13 @@ describe('RegistrationComponent', () => {
     });
 
     it('test for valid input value', () => {
-      const input = component.registrationFormGroup.controls['name'];
+      const input = component.registrationFormGroup.controls['firstName'];
       input.setValue('sample.name');
       input.markAsTouched();
 
       fixture.detectChanges();
 
-      const validationName = component.validateTitleControl('name');
+      const validationName = component.validateTitleControl('firstName');
 
       expect(validationName).toBeFalse();
 
@@ -207,7 +231,8 @@ describe('RegistrationComponent', () => {
     it('click event - with valid values', () => {
       spyOn(component, 'handleRegistration').and.callThrough();
 
-      component.registrationFormGroup.controls['name'].setValue('sample.name');
+      component.registrationFormGroup.controls['firstName'].setValue('sample.name');
+      component.registrationFormGroup.controls['lastName'].setValue('sample.lastName');
       component.registrationFormGroup.controls['email'].setValue(
         'sample.email@email.com'
       );
@@ -230,7 +255,10 @@ describe('RegistrationComponent', () => {
       button.click();
 
       expect(
-        component.registrationFormGroup.controls['name'].valid
+        component.registrationFormGroup.controls['firstName'].valid
+      ).toBeTruthy();
+      expect(
+        component.registrationFormGroup.controls['lastName'].valid
       ).toBeTruthy();
       expect(
         component.registrationFormGroup.controls['email'].valid
@@ -246,7 +274,7 @@ describe('RegistrationComponent', () => {
       expect(component.handleRegistration).toHaveBeenCalled();
       expect(authService.register).toHaveBeenCalledOnceWith({
         firstName: 'sample.name',
-        lastName: 'sample.name',
+        lastName: 'sample.lastName',
         username: 'sample.email@email.com',
         email: 'sample.email@email.com',
         password: 'Secure_password2',
@@ -259,7 +287,8 @@ describe('RegistrationComponent', () => {
     it('click event - with non valid values', () => {
       spyOn(component, 'handleRegistration');
 
-      component.registrationFormGroup.controls['name'].setValue('sample.name');
+      component.registrationFormGroup.controls['firstName'].setValue('sample.name');
+      component.registrationFormGroup.controls['lastName'].setValue('sample.lastName');
       component.registrationFormGroup.controls['email'].setValue(
         'sample.invalid-email'
       );
@@ -282,7 +311,10 @@ describe('RegistrationComponent', () => {
       button.click();
 
       expect(
-        component.registrationFormGroup.controls['name'].valid
+        component.registrationFormGroup.controls['firstName'].valid
+      ).toBeTruthy();
+      expect(
+        component.registrationFormGroup.controls['lastName'].valid
       ).toBeTruthy();
       expect(
         component.registrationFormGroup.controls['email'].valid
@@ -301,7 +333,8 @@ describe('RegistrationComponent', () => {
     it('click event - with empty values', () => {
       spyOn(component, 'handleRegistration');
 
-      component.registrationFormGroup.controls['name'].setValue('');
+      component.registrationFormGroup.controls['firstName'].setValue('');
+      component.registrationFormGroup.controls['lastName'].setValue('');
       component.registrationFormGroup.controls['email'].setValue('');
       component.registrationFormGroup.controls['password'].setValue('');
       component.registrationFormGroup.controls['confirmPassword'].setValue('');
@@ -318,7 +351,10 @@ describe('RegistrationComponent', () => {
       button.click();
 
       expect(
-        component.registrationFormGroup.controls['name'].valid
+        component.registrationFormGroup.controls['firstName'].valid
+      ).toBeFalse();
+      expect(
+        component.registrationFormGroup.controls['lastName'].valid
       ).toBeFalse();
       expect(
         component.registrationFormGroup.controls['email'].valid

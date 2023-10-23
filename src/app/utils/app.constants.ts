@@ -64,7 +64,8 @@ export const constants = {
     signIn: 'Sign In',
     leftBackground: '/assets/images/Landing-page-background.png',
     form: {
-      name: 'Name',
+      firstName: 'First Name',
+      lastName: 'Last Name',
       email: 'Email',
       password: 'Password',
       confirmPassword: 'Confirm Password',

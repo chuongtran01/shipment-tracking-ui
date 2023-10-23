@@ -13,7 +13,8 @@ import { constants } from '../../../utils/app.constants';
 export class RegistrationComponent {
   protected readonly constants = constants;
 
-  nameError: string = '';
+  firstNameError: string = '';
+  lastNameError: string = '';
   emailError: string = '';
   passwordError: string = '';
   confirmPasswordError: string = '';
@@ -25,7 +26,8 @@ export class RegistrationComponent {
 
   registrationFormGroup = new FormGroup(
     {
-      name: new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
@@ -45,8 +47,10 @@ export class RegistrationComponent {
       titleControl?.invalid &&
       (titleControl?.dirty || titleControl?.touched || this.isSubmitted)
     ) {
-      if (title == 'name') {
-        this.nameError = 'Please enter your Name';
+      if (title == 'firstName') {
+        this.firstNameError = 'Please enter your First Name';
+      } else if (title == 'lastName') {
+        this.lastNameError = 'Please enter your Last Name';
       } else if (title == 'email') {
         if (titleControl?.errors?.['required']) {
           this.emailError = 'Please enter your Email';
@@ -89,8 +93,8 @@ export class RegistrationComponent {
 
     this.authService
       .register({
-        firstName: this.registrationFormGroup.value.name as string,
-        lastName: this.registrationFormGroup.value.name as string,
+        firstName: this.registrationFormGroup.value.firstName as string,
+        lastName: this.registrationFormGroup.value.lastName as string,
         username: this.registrationFormGroup.value.email as string,
         email: this.registrationFormGroup.value.email as string,
         organizationId: 'demo-org-1',
