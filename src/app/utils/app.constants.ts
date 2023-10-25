@@ -5,6 +5,8 @@ export const constants = {
     continue: 'Continue',
     lastSynched: 'Last synched',
     notSynched: 'Not synched yet',
+    createNew: 'Create New',
+    filter: "Filter",
   },
   home: {
     intro: {
@@ -175,16 +177,20 @@ export const constants = {
     viewSample: 'VIEW SAMPLE',
   },
   schemaMapper: {
-    tableName: 'Table Name',
-    tableNameDescription:
-      'A unique name for the table with a maximum of 127 characters.',
-    createTableAndMap: 'Create Table & Map',
-    fieldsAvailable: 'Fields Available',
-    sourceField: 'Source Field',
-    destinationFieldName: 'Destination Field Name',
-    dataType: 'Data Type',
-    primaryKey: 'Primary Key',
-    sortKey: 'Sort Key',
-    distKey: 'Dist Key',
+    tableName: "Table Name",
+    tableNameDescription: "A unique name for the table with a maximum of 127 characters.",
+    createTableAndMap: "Create Table & Map",
+    fieldsAvailable: "Fields Available",
+    sourceField: "Source Field",
+    destinationFieldName: "Destination Field Name",
+    dataType: "Data Type",
+    primaryKey: "Primary Key",
+    sortKey: "Sort Key",
+    distKey: "Dist Key",
   },
+  connection: {
+    title: 'Connections',
+    description: 'Create Connections to use in Pipelines',
+    noConnectionsFound: 'No Connections Found',
+  }
 };

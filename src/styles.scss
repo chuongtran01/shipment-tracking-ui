@@ -32,6 +32,9 @@ code {
 .text-bold {
   font-weight: bold !important;
 }
+.text-semibold {
+  font-weight: $font-semibold !important;
+}
 .text-medium {
   font-weight: 500 !important;
 }

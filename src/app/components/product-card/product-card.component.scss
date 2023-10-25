@@ -48,7 +48,7 @@
     overflow: hidden;
   }
 
-  &-description {
+  &-description, &-footer {
     font-size: 10px;
     color: $grey-color-text;
     margin-bottom: 10px;
@@ -63,4 +63,24 @@
 .image-36 img {
   height: 36px;
   width: 36px;
+}
+
+.connection-card {
+  background-color: $white;
+
+  & img {
+    height: 58px;
+    width: 58px;
+  }
+
+  & .product-card-title {
+    color: $black-2;
+    margin-bottom: 6px;
+  }
+
+  & .product-card-description, .product-card-footer {
+    color: $grey-color-text;
+    font-weight: $font-regular;
+    margin-bottom: 4px;
+  }
 }

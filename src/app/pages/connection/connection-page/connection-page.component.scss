@@ -1,0 +1,113 @@
+@import "variables";
+
+.connection {
+  display: flex;
+  flex-direction: row;
+
+  &-left {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  &-right {
+    width: calc(100% - 10px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-top {
+
+      &-body {
+        background-color: $white;
+        padding: 26px 32px 8px 32px;
+        box-sizing: border-box;
+
+        & .connection {
+
+          &-header {
+            &-title {
+              display: flex;
+              gap: 20px;
+              font-weight: $font-semibold;
+              font-size: 25px;
+            }
+
+            &-description {
+              font-size: 13px;
+              color: $divider-grey;
+            }
+
+            &-btn {
+              width: 114px;
+              height: 31px;
+
+              .icon {
+                margin-right: 8px;
+              }
+            }
+          }
+
+          &-filters {
+            display: flex;
+            gap: 16px;
+            justify-content: end;
+            font-size: 13px;
+            font-weight: $font-medium;
+
+            & .filter {
+              &:hover {
+                cursor: pointer;
+                opacity: 0.6;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-body {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      color: $grey-color-text;
+      font-weight: $font-semibold;
+
+      & .connection-cards {
+        padding: 0 32px;
+        display: flex;
+      }
+
+      & .no-connections {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        font-size: 18px;
+
+        &-image {
+          object-fit: none;
+          height: 90px;
+        }
+
+        &-description {
+          font-weight: $font-medium;
+        }
+
+        & .link {
+          color: $blue;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &-card {
+    height: 162px;
+    width: 180px;
+    margin: 8px;
+  }
+}

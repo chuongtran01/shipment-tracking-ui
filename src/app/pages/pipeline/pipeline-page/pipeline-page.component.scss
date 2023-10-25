@@ -5,12 +5,10 @@
   flex-direction: row;
 
   &-left {
-    flex: 4rem;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     height: 100vh;
-    width: 10px;
   }
 
   &-right {

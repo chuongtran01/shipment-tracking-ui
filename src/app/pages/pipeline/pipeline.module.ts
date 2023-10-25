@@ -9,7 +9,6 @@ import { PipelinePageComponent } from './pipeline-page/pipeline-page.component';
 import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
 import { PipelineBodyComponent } from 'src/app/components/pipeline-body/pipeline-body.component';
 import { CreatePipelineComponent } from 'src/app/components/create-pipeline/create-pipeline.component';
-import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sid
     ConfigureDestinationComponent,
     FinalSettingsComponent,
     CreatePipelineComponent,
-    GeneralLeftSidebarComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
 })

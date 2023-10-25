@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SourceSelectionComponent } from './source-selection/source-selection.component';
 import { ConfigureSourceComponent } from './configure-source/configure-source.component';
+import { ConnectionPageComponent } from './connection-page/connection-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'select-source',
-    pathMatch: 'full'
+    component: ConnectionPageComponent,
+    title: 'Connections',
   },
   {
     path: 'select-source',

@@ -18,8 +18,7 @@ import { LoadStatusEventRowComponent } from 'src/app/components/load-status-even
 import { SchemaMapperRowComponent } from 'src/app/components/schema-mapper-row/schema-mapper-row.component';
 import { SchemaMapperTableComponent } from 'src/app/components/schema-mapper-table/schema-mapper-table.component';
 import { SchemaMapperCreateTableComponent } from 'src/app/components/schema-mapper-create-table/schema-mapper-create-table.component';
-import { FinalSettingsComponent } from 'src/app/pages/pipeline/final-settings/final-settings.component';
-import { ConfigureDestinationComponent } from 'src/app/pages/pipeline/configure-destination/configure-destination.component';
+import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -37,6 +36,7 @@ const COMPONENTS_FOR_EXPORT = [
   SchemaMapperRowComponent,
   SchemaMapperTableComponent,
   SchemaMapperCreateTableComponent,
+  GeneralLeftSidebarComponent,
 ];
 
 const MODULES_FOR_EXPORT = [

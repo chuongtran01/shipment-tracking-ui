@@ -10,6 +10,7 @@ export class ProductCardComponent {
   @Input() img: string = '';
   @Input() title: string = '';
   @Input() description?: string;
+  @Input() footer?: string;
   @Input() classes?: string = '';
   @Output() onClick = new EventEmitter<any>();
 
