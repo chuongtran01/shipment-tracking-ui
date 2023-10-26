@@ -3,24 +3,25 @@
 .select-source {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
   background-color: $white;
   scroll-behavior: smooth;
+  height: 100vh;
 
   &-container {
     display: flex;
     flex-direction: row;
     width: 100%;
+    justify-content: center;
   }
 
   &-topbar {
     width: 100%;
-    display: flex;
-    justify-content: end;
 
     &-container {
+      display: flex;
+      justify-content: space-between;
       padding: 20px 40px;
     }
   }
@@ -50,6 +51,7 @@
   }
 
   &-search {
+    margin-top: 15px;
     width: 80%;
 
     &-container {
@@ -210,5 +212,13 @@
   &-nav-icon {
     fill: $bold-blue;
     margin-right: 8px;
+  }
+
+  & .continue-btn {
+    width: 106px;
+    height: 40px;
+    position: absolute;
+    right: 26px;
+    bottom: 46px;
   }
 }

@@ -88,7 +88,7 @@ export const constants = {
     backToLogin: 'Back to Log in',
   },
   sourceSelection: {
-    selectSource: 'Select Source',
+    title: 'Select Connection Source',
     viewAll: 'View All',
   },
   pipelineConfiguration: {

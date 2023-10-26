@@ -53,6 +53,15 @@
     color: $grey-color-text;
     margin-bottom: 10px;
   }
+
+  &.selected {
+    background-color: $green;
+    color: $white;
+
+    & .product-card-description {
+      color: $white;
+    }
+  }
 }
 
 .image-58 img {

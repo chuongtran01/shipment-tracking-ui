@@ -7,11 +7,21 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
+import { constants } from 'src/app/utils/app.constants';
+import { of } from 'rxjs';
 
 describe('SourceSelectionComponent', () => {
   let component: SourceSelectionComponent;
   let fixture: ComponentFixture<SourceSelectionComponent>;
   let router: Router;
+
+  const testSearch = 'MongoDB';
+
+  const searchServiceSpy = jasmine.createSpyObj('SearchBarService', [
+    'receiveSearchInput',
+  ]);
+
+  searchServiceSpy.receiveSearchInput.and.returnValue(of(testSearch));
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -28,59 +38,102 @@ describe('SourceSelectionComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    component.categories = [{id: 1, title: "Popular"}, {id: 2, title: "Data bases"}, {id: 3, title: "CRM"}]
-    component.sources = [{ id: 1, title: "Salesforce", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", type: "CRM" }, { id: 2, title: "Microsoft SQL", img: "https://user-images.githubusercontent.com/4249331/52232852-e2c4f780-28bd-11e9-835d-1e3cf3e43888.png", type: "DataBase" }]
+    component.sources = [
+      {
+        id: "4448de1a-cfab-4c5c-b2dd-a8e9e3ca3ae6",
+        createdAt: null,
+        modifiedAt: null,
+        createdBy: null,
+        modifiedBy: null,
+        typeName: "MongoDB",
+        description: "Database"
+    },
+    {
+        id: "4448de1a-cfab-4c5c-b2dd-a8e9e3ca3de3",
+        createdAt: null,
+        modifiedAt: null,
+        createdBy: null,
+        modifiedBy: null,
+        typeName: "MySQL",
+        description: "Database"
+    }];
+    fixture.detectChanges();
 
     const cancelButton = fixture.nativeElement.querySelector('.select-source-cancel-btn');
     expect(cancelButton).toBeTruthy();
 
-    const title = fixture.nativeElement.querySelector('.select-source-search');
+    const title = fixture.nativeElement.querySelector('.select-source-header');
     expect(title).toBeTruthy();
-    expect(title.textContent).toContain('Select Source');
+    expect(title.textContent).toContain(constants.sourceSelection.title);
 
     const searchBar = fixture.nativeElement.querySelector('app-search-bar');
     expect(searchBar).toBeTruthy();
-
-    const leftScroll = fixture.nativeElement.querySelector('.select-source-left-container-scroll');
-    expect(leftScroll).toBeTruthy();
-
-    const categoryTab = fixture.nativeElement.querySelector('.select-source-category-link');
-    expect(categoryTab).toBeTruthy();
-
-    const categoriesContainer = fixture.nativeElement.querySelector('.select-source-categories');
-    expect(categoriesContainer).toBeTruthy();
 
     const productCard = fixture.nativeElement.querySelector('app-product-card');
     expect(productCard).toBeTruthy();
 
   });
 
-  it('should navigate to "/configure-source" when a product card is clicked', () => {
-    component.productCardClicked();
-    expect(router.navigateByUrl).toHaveBeenCalledOnceWith("/configure-source");
+  it('should navigate to "/configure-source" when clicked Continue', () => {
+    const sourceSelected = {
+      id: "4448de1a-cfab-4c5c-b2dd-a8e9e3ca3ae6",
+      createdAt: null,
+      modifiedAt: null,
+      createdBy: null,
+      modifiedBy: null,
+      typeName: "MongoDB",
+      description: "Database"
+    };
+    component.productCardClicked(sourceSelected);
+    const continueBtn = fixture.nativeElement.querySelector('.continue-btn app-button');
+    continueBtn.click();
+    spyOn(component, 'continue').and.callThrough();
+
+    expect(router.navigateByUrl).toHaveBeenCalledOnceWith("/connection/configure-source", { state: { typeId: sourceSelected.id, typeName: sourceSelected.typeName }});
   });
 
-  it('should handle search change', () => {
-    const searchText = 'test search';
-    component.handleSearchChange(searchText);
-    expect(component.searchText).toEqual(searchText);
+  it('should select a connection source when clicked', () => {
+    component.sources = [
+      {
+        id: "4448de1a-cfab-4c5c-b2dd-a8e9e3ca3ae6",
+        createdAt: null,
+        modifiedAt: null,
+        createdBy: null,
+        modifiedBy: null,
+        typeName: "MongoDB",
+        description: "Database"
+      },
+      {
+        id: "4448de1a-cfab-4c5c-b2dd-a8e9e3ca3de3",
+        createdAt: null,
+        modifiedAt: null,
+        createdBy: null,
+        modifiedBy: null,
+        typeName: "MySQL",
+        description: "Database"
+    }];
+
+    const sourceSelected = {
+      id: "4448de1a-cfab-4c5c-b2dd-a8e9e3ca3ae6",
+      createdAt: null,
+      modifiedAt: null,
+      createdBy: null,
+      modifiedBy: null,
+      typeName: "MongoDB",
+      description: "Database"
+    };
+    spyOn(component, 'productCardClicked').and.callThrough();
+    fixture.detectChanges();
+    const sourceCard = fixture.nativeElement.querySelector('app-product-card div');
+    sourceCard.click();
+
+    expect(component.sourceSelected).toEqual(component.sources[0]);
+    expect(component.productCardClicked).toHaveBeenCalled();
   });
 
-  it('should show the selected category clicked', () => {
-    component.categories = [{id: 1, title: "Popular"}, {id: 2, title: "Data bases"}, {id: 3, title: "CRM"}]
-    component.sources = [{ id: 1, title: "Salesforce", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/2560px-Salesforce.com_logo.svg.png", type: "CRM" }, { id: 2, title: "Microsoft SQL", img: "https://user-images.githubusercontent.com/4249331/52232852-e2c4f780-28bd-11e9-835d-1e3cf3e43888.png", type: "DataBase" }]
-    fixture.detectChanges();
-
-    const navItem = fixture.nativeElement.querySelector('.select-source-category-btn');
-    navItem.addEventListener('click', (event: any) => {
-      event.preventDefault();
-    });
-    const navItemId = '1';
-    fixture.detectChanges();
-    navItem.click();
-
-    const expectedUrl = `/select-source#${navItemId}`;
-    expect(router.navigateByUrl).toHaveBeenCalledWith(expectedUrl);
-
+  it('should unsubscribe on component destroy', () => {
+    spyOn(component.$subs, 'unsubscribe');
+    component.ngOnDestroy();
+    expect(component.$subs.unsubscribe).toHaveBeenCalled();
   });
 });

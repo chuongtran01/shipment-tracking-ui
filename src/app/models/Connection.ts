@@ -10,3 +10,13 @@ export interface ConnectionResponse {
   connectionTypeId: string;
   connectionString: string;
 }
+
+export interface ConnectionTypeResponse {
+  id: string;
+  createdAt: string | null;
+  modifiedAt: string | null;
+  createdBy: string | null;
+  modifiedBy: string | null;
+  typeName: string;
+  description: string;
+}
