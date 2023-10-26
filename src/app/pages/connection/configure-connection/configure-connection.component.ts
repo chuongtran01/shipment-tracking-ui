@@ -3,13 +3,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { constants } from 'src/app/utils/app.constants';
 import { faArrowLeft, faXmark, faChevronRight, faChevronDown, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { ConnectionService } from 'src/app/services/connection/connection.service';
 
 @Component({
-  selector: 'app-configure-source',
-  templateUrl: './configure-source.component.html',
-  styleUrls: ['./configure-source.component.scss']
+  selector: 'app-configure-connection',
+  templateUrl: './configure-connection.component.html',
+  styleUrls: ['./configure-connection.component.scss']
 })
-export class ConfigureSourceComponent {
+export class ConfigureConnectionComponent {
 
   protected readonly constants = constants;
   faArrowLeft = faArrowLeft;
@@ -20,10 +21,19 @@ export class ConfigureSourceComponent {
 
   currentStep : number = 1;
   sshConnection : boolean = false;
+  typeId: string = '';
+  typeName: string = '';
+  isContinueRunning = false;
 
   constructor(
     private router: Router,
+    private connectionService: ConnectionService,
   ) {}
+
+  ngOnInit() {
+    this.typeId = history.state?.typeId;
+    this.typeName = history.state?.typeName;
+  }
 
   configureSourceFormGroup = new FormGroup({
     pipelineName: new FormControl('', Validators.required),
@@ -35,12 +45,11 @@ export class ConfigureSourceComponent {
   });
 
   navigateToPreviousPage() {
-    this.router.navigateByUrl('/select-source');
+    this.router.navigateByUrl('/connection/select-source');
   }
 
-  // TODO: Implement cancel process
   cancelProcess() {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/connection');
   }
 
   // TODO: Implement testing of source connection based on inputs
@@ -53,17 +62,34 @@ export class ConfigureSourceComponent {
     const databaseName = this.configureSourceFormGroup.get('databaseName')?.value;
   }
 
-  // TODO: Implement handling saving the database information through the process
+  // TODO: Change organizationId and teamId to be dynamic
   testAndContinue() {
-    const pipelineName = this.configureSourceFormGroup.get('pipelineName')?.value;
-    const databaseHost = this.configureSourceFormGroup.get('databaseHost')?.value;
-    const databasePort = this.configureSourceFormGroup.get('databasePort')?.value;
-    const databaseUser = this.configureSourceFormGroup.get('databaseUser')?.value;
-    const databasePassword = this.configureSourceFormGroup.get('databasePassword')?.value;
-    const databaseName = this.configureSourceFormGroup.get('databaseName')?.value;
-
+    this.isContinueRunning = true;
     this.testSourceConnection(); // Testing could be done differently
-    this.router.navigateByUrl('/configure-destination');
+
+    this.connectionService.addConnection({
+      teamId: '1',
+      connectionName: this.configureSourceFormGroup.value.pipelineName as string,
+      connectionTypeId: this.typeId,
+      connectionTypeName: this.typeName,
+      hostname: this.configureSourceFormGroup.value.databaseHost as string,
+      port: this.configureSourceFormGroup.value.databasePort as unknown as number,
+      username: this.configureSourceFormGroup.value.databaseUser as string,
+      password: this.configureSourceFormGroup.value.databasePassword as string,
+      databaseName: this.configureSourceFormGroup.value.databaseName as string,
+      organizationId: "demo-org-1",
+    }).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/connection');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+        this.isContinueRunning = false;
+      }
+    });
+
   }
 
   sshConnectionToggled(value: boolean) {

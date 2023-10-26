@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SourceSelectionComponent } from './source-selection/source-selection.component';
-import { ConfigureSourceComponent } from './configure-source/configure-source.component';
+import { ConfigureConnectionComponent } from './configure-connection/configure-connection.component';
 import { ConnectionPageComponent } from './connection-page/connection-page.component';
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'configure-source',
-    component: ConfigureSourceComponent,
+    component: ConfigureConnectionComponent,
     title: 'Configure Source',
   },
 ];

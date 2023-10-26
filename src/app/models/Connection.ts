@@ -20,3 +20,16 @@ export interface ConnectionTypeResponse {
   typeName: string;
   description: string;
 }
+
+export interface ConnectionRequest {
+  teamId: string,
+  connectionName: string,
+  connectionTypeId: string,
+  connectionTypeName: string,
+  hostname: string,
+  port: number,
+  username: string,
+  password: string,
+  databaseName: string,
+  organizationId: string,
+}

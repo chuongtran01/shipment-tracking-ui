@@ -91,6 +91,26 @@ export const constants = {
     title: 'Select Connection Source',
     viewAll: 'View All',
   },
+  configureConnection: {
+    title: 'Configure Connection',
+    description1: 'Please provide ',
+    description2: ' connection settings or copy from one of the ',
+    existingConnections: 'Existing Connections',
+    pipelineName: 'Pipeline Name',
+    databaseHost: 'Database Host',
+    databasePort: 'Database Port',
+    databaseUser: 'Database User',
+    databasePassword: 'Database Password',
+    databaseName: 'Auth DB Name',
+    openAccess: "Please open access to MongoDB port from Hero's IP address",
+    ipAddress: '10.2.7.152',
+    SSHconnection: {
+      title: 'Connect through SSH',
+      description: 'Connect securely through a SSH tunnel server',
+    },
+    testConnection: 'Test Connection',
+    testContinue: 'Test & Continue',
+  },
   pipelineConfiguration: {
     steps: [
       {
@@ -109,26 +129,6 @@ export const constants = {
         chevronRight: false,
       },
     ],
-    configureSource: {
-      title: 'Configure Source',
-      description:
-        'Please provide MongoDB connection settings or copy from one of the ',
-      existingSources: 'Existing sources',
-      pipelineName: 'Pipeline Name',
-      databaseHost: 'Database Host',
-      databasePort: 'Database Port',
-      databaseUser: 'Database User',
-      databasePassword: 'Database Password',
-      databaseName: 'Auth DB Name',
-      openAccess: "Please open access to MongoDB port from Hero's IP address",
-      ipAddress: '10.2.7.152',
-      SSHconnection: {
-        title: 'Connect through SSH',
-        description: 'Connect securely through a SSH tunnel server',
-      },
-      testConnection: 'Test Connection',
-      testContinue: 'Test & Continue',
-    },
     configureDestination: {
       title: 'Select Destination',
       description: 'Select an existing destination or add a new one',

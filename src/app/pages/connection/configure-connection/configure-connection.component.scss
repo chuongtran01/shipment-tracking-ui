@@ -1,6 +1,6 @@
 @import 'variables';
 
-.configure-source {
+.configure-connection {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +13,35 @@
 
   &-topbar {
     width: 100%;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 40px;
+    }
+
+  }
+
+  &-nav-icon {
+    fill: $bold-blue;
+    margin-right: 8px;
+  }
+
+  &-cancel-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    height: 22px;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid $header-text-color;
+    color: $header-text-color;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &-content {
@@ -38,13 +67,18 @@
     margin-top: 8px;
   }
 
+  &-type-name {
+    color: $blue;
+  }
+
   &-dropdown-text {
-    color: $header-text-color;
+    color: $blue;
     margin-left: 6px;
     cursor: pointer;
     display: inline-flex;
     gap: 6px;
     align-items: center;
+    text-decoration: underline;
   }
 
   &-form {
