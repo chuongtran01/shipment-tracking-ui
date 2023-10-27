@@ -8,8 +8,9 @@ import { constants } from '../../../utils/app.constants';
 import { By } from '@angular/platform-browser';
 import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
 import { PipelineBodyComponent } from 'src/app/components/pipeline-body/pipeline-body.component';
-import { CreatePipelineComponent } from 'src/app/components/create-pipeline/create-pipeline.component';
 import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
+import { HeaderNavbarComponent } from 'src/app/components/pipeline-header-navbar/header-navbar.component';
+import { CreatePipelineComponent } from 'src/app/components/create-pipeline/create-pipeline.component';
 
 describe('PipelinePageComponent', () => {
   let component: PipelinePageComponent;
@@ -32,6 +33,7 @@ describe('PipelinePageComponent', () => {
         PipelineBodyComponent,
         CreatePipelineComponent,
         GeneralLeftSidebarComponent,
+        HeaderNavbarComponent,
       ],
       imports: [SharedModule, RouterTestingModule],
       providers: [{ provide: SearchBarService, useValue: searchServiceSpy }],
@@ -54,7 +56,7 @@ describe('PipelinePageComponent', () => {
     expect(headerText).toContain(CONSTANTS.pipeline.pipelines);
 
     const buttonText = fixture.nativeElement.querySelector(
-      '.button.button-green.p-h-10.p-v-7'
+      '.button-green.font-10.p-v-7.text-semibold'
     ).textContent;
     expect(buttonText).toContain(CONSTANTS.pipeline.createNew);
 

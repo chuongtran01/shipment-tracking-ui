@@ -4,7 +4,9 @@
   </div>
   <div class="pipeline-right">
     <div class="pipeline-right-top">
-      <div class="pipeline-right-top-navbar"></div>
+      <div class="pipeline-right-top-navbar">
+        <app-header-navbar name="CM" [teams]="teams"></app-header-navbar>
+      </div>
       <div class="pipeline-right-top-body">
         <app-pipeline-header
           (openPopupEvent)="hoverCreatePipelinePopup()"
@@ -19,12 +21,19 @@
       <ng-template #checkPipelines>
         <ng-container *ngIf="pipelines.length === 0; else showPipelines">
           <div class="pipeline-right-body-no-pipeline">
-            <div>{{ CONSTANTS.pipeline.noPipelineFound }}</div>
-            <div
-              class="pipeline-right-body-no-pipeline-create-new"
-              (click)="hoverCreatePipelinePopup()"
-            >
-              {{ CONSTANTS.pipeline.createNew }}
+            <div class="pipeline-right-body-no-pipeline-image">
+              <img src="assets/images/PuzzlePieces.svg" alt="Puzzle Pieces" />
+            </div>
+            <div class="pipeline-right-body-no-pipeline-text">
+              <div>
+                {{ CONSTANTS.pipeline.noPipelineFound }}
+              </div>
+              <div
+                class="pipeline-right-body-no-pipeline-create-new"
+                (click)="hoverCreatePipelinePopup()"
+              >
+                {{ CONSTANTS.pipeline.createNew }}
+              </div>
             </div>
           </div>
         </ng-container>

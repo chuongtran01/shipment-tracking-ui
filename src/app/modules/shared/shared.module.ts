@@ -19,6 +19,7 @@ import { SchemaMapperRowComponent } from 'src/app/components/schema-mapper-row/s
 import { SchemaMapperTableComponent } from 'src/app/components/schema-mapper-table/schema-mapper-table.component';
 import { SchemaMapperCreateTableComponent } from 'src/app/components/schema-mapper-create-table/schema-mapper-create-table.component';
 import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
+import { HeaderNavbarComponent } from 'src/app/components/pipeline-header-navbar/header-navbar.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -37,6 +38,7 @@ const COMPONENTS_FOR_EXPORT = [
   SchemaMapperTableComponent,
   SchemaMapperCreateTableComponent,
   GeneralLeftSidebarComponent,
+  HeaderNavbarComponent,
 ];
 
 const MODULES_FOR_EXPORT = [

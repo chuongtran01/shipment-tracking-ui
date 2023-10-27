@@ -21,7 +21,6 @@
       height: 10rem;
 
       &-navbar {
-        background-color: red;
         height: 2rem;
       }
 
@@ -48,6 +47,7 @@
 
       &-no-pipeline {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         color: $grey-color-text;
@@ -64,6 +64,14 @@
           &:hover {
             opacity: 0.8;
           }
+        }
+
+        &-text {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 0.2rem;
         }
       }
     }

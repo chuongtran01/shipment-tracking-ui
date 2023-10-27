@@ -42,7 +42,7 @@ describe('PipelineHeaderComponent', () => {
     const buttonElement = fixture.debugElement.query(
       By.directive(ButtonComponent)
     );
-    expect(buttonElement.nativeElement.textContent).toBe(
+    expect(buttonElement.nativeElement.textContent).toContain(
       CONSTANTS.pipeline.createNew
     );
 

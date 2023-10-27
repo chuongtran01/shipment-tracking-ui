@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { debounceTime, Subscription } from 'rxjs';
 import { SearchBarService } from 'src/app/services/search-bar/search-bar.service';
 import { IPipeline } from 'src/app/models/Pipeline';
+import { ITeam } from 'src/app/models/Team';
 import { PipelineService } from 'src/app/services/pipeline/pipeline.service';
 import { constants } from '../../../utils/app.constants';
 
@@ -17,22 +18,37 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
   showCreatePipelineModal: boolean = false;
   CONSTANTS = constants;
 
-  pipelines: IPipeline[] = [
+  // pipelines: IPipeline[] = [
+  //   {
+  //     id: '1',
+  //     name: 'Pipeline 1',
+  //     source: 'MySQL-source-new-1',
+  //     databaseName: 'MySQL',
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Pipeline 2',
+  //     source: 'PostgreSQL-source-new-2',
+  //     databaseName: 'PostgreSQL',
+  //   },
+  // ];
+
+  pipelines: IPipeline[] = [];
+
+  teams: ITeam[] = [
     {
       id: '1',
-      name: 'Pipeline 1',
-      source: 'MySQL-source-new-1',
-      databaseName: 'MySQL',
+      name: 'Team 1',
     },
     {
       id: '2',
-      name: 'Pipeline 2',
-      source: 'PostgreSQL-source-new-2',
-      databaseName: 'PostgreSQL',
+      name: 'ADS Team',
+    },
+    {
+      id: '3',
+      name: 'XRP Team',
     },
   ];
-
-  // pipelines: IPipeline[] = [];
 
   constructor(
     private searchBarService: SearchBarService,
