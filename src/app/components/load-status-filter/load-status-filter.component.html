@@ -1,0 +1,22 @@
+<div class="load-status-filter">
+  <div class="load-status-filter-title">
+    {{constants.loadStatus.loadStatus}}
+  </div>
+  <div
+    *ngFor="let time of timeFilters; let index = index"
+    id="time-filter-{{index}}"
+    class="load-status-filter-option {{activeTimeFilter === time? 'active' : ''}}"
+    (click)="setActiveTimeFilter(time)">
+    {{time}}
+  </div>
+  <div class="load-status-filter-title">
+    {{constants.loadStatus.loadStatusStage}}
+  </div>
+  <div
+    *ngFor="let stage of stageFilters; let index = index"
+    id="stage-filter-{{index}}"
+    class="load-status-filter-option {{activeStageFilter === stage? 'active' : ''}}"
+    (click)="setActiveStageFilter(stage)">
+    {{stage}}
+  </div>
+</div>

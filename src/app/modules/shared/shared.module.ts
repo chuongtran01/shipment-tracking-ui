@@ -13,8 +13,6 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
 import { ConfigurationTopbarComponent } from 'src/app/components/configuration-topbar/configuration-topbar.component';
 import { OverviewJobRowComponent } from 'src/app/components/overview-job-row/overview-job-row.component';
 import { ExpandingSearchBarComponent } from 'src/app/components/expanding-search-bar/expanding-search-bar.component';
-import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-status-events-dropdown/load-status-events-dropdown.component';
-import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
 import { SchemaMapperRowComponent } from 'src/app/components/schema-mapper-row/schema-mapper-row.component';
 import { SchemaMapperTableComponent } from 'src/app/components/schema-mapper-table/schema-mapper-table.component';
 import { SchemaMapperCreateTableComponent } from 'src/app/components/schema-mapper-create-table/schema-mapper-create-table.component';
@@ -32,8 +30,6 @@ const COMPONENTS_FOR_EXPORT = [
   ProductCardComponent,
   OverviewJobRowComponent,
   ExpandingSearchBarComponent,
-  LoadStatusEventsDropdownComponent,
-  LoadStatusEventRowComponent,
   SchemaMapperRowComponent,
   SchemaMapperTableComponent,
   SchemaMapperCreateTableComponent,

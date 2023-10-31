@@ -175,6 +175,18 @@ export const constants = {
     rerun: 'RERUN',
     skip: 'SKIP',
     viewSample: 'VIEW SAMPLE',
+    loadStatus: 'Load Status',
+    loadStatusStage: 'Load Status Stage',
+    stageFilters: ['All', 'Transformations', 'Schema Mapper', 'Destination'],
+    timeFilters: [
+      'All',
+      'In last 30 minutes',
+      'In last 3 hours',
+      'In last 12 hours',
+      'In last 24 hours',
+      'In last 7 days',
+      'In last 30 days',
+    ],
   },
   schemaMapper: {
     tableName: "Table Name",

@@ -9,6 +9,9 @@ import { PipelinePageComponent } from './pipeline-page/pipeline-page.component';
 import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
 import { PipelineBodyComponent } from 'src/app/components/pipeline-body/pipeline-body.component';
 import { CreatePipelineComponent } from 'src/app/components/create-pipeline/create-pipeline.component';
+import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-status-events-dropdown/load-status-events-dropdown.component';
+import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
+import { LoadStatusFilterComponent } from 'src/app/components/load-status-filter/load-status-filter.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { CreatePipelineComponent } from 'src/app/components/create-pipeline/crea
     ConfigureDestinationComponent,
     FinalSettingsComponent,
     CreatePipelineComponent,
+    LoadStatusEventsDropdownComponent,
+    LoadStatusEventRowComponent,
+    LoadStatusFilterComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
 })
