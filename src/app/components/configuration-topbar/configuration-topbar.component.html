@@ -5,20 +5,6 @@
       {{constants.global.back}}
     </button>
   </div>
-  <div class="topbar-navigation">
-    <div
-      *ngFor="let step of constants.pipelineConfiguration.steps"
-      [class]="'topbar-step ' + getTopbarClasses(step.id)"
-    >
-      <div class="topbar-step-number">
-        {{step.id}}
-      </div>
-      <div class="topbar-step-text">
-        {{step.title}}
-      </div>
-      <fa-icon *ngIf="step.chevronRight" class="topbar-nav-icon" [icon]="faChevronRight"></fa-icon>
-    </div>
-  </div>
   <div class="topbar-cancel-btn">
     <button class='topbar-top-btn' (click)="cancelProcess()">
       <fa-icon class="topbar-nav-icon" [icon]="faXmark"></fa-icon>

@@ -7,7 +7,7 @@ import { constants } from 'src/app/utils/app.constants';
   styleUrls: ['./overview-job-row.component.scss']
 })
 export class OverviewJobRowComponent {
-  @Input() id: number | null = null;
+  @Input() id: number | string | null = null;
   @Input() title: string = '';
   @Input() description?: string;
   @Input() alertMessage?: string;

@@ -8,6 +8,7 @@ export interface ConnectionResponse {
   connectionName: string;
   teamId: string;
   connectionTypeId: string;
+  connectionTypeName: string;
   connectionString: string;
 }
 

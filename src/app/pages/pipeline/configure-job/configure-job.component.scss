@@ -1,14 +1,13 @@
 @import 'variables';
 
-.configure-destination {
+.configure-job {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  font-family: 'Poppins', sans-serif;
   padding: 42px 40px;
   background-color: $white;
-  height: 100%;
+  box-sizing: border-box;
+  height: 100vh;
   gap: 53px;
 
   &-topbar {
@@ -55,6 +54,34 @@
     align-items: center;
   }
 
+  &-name {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    & label {
+      color: #919E9F;
+      font-size: 14px;
+      font-weight: $font-medium;
+    }
+
+    & input {
+      width: 100%;
+      height: 40px;
+      border: 1px solid #E2E4E8;
+      border-radius: 4px;
+      box-sizing: border-box;
+      padding: 10px;
+      font-family: $poppins;
+      font-size: 12px;
+      font-weight: $font-semibold;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+
   &-btn {
     width: 180px;
     height: 40px;
@@ -72,7 +99,7 @@
   &-products {
     display: flex;
     flex-flow: wrap;
-    justify-content: center;
+    justify-content: start;
     gap: 20px;
     margin-top: 30px;
     margin-bottom: 50px;

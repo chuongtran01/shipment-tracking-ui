@@ -14,7 +14,6 @@ export class ConfigurationTopbarComponent {
   faXmark = faXmark;
   faChevronRight = faChevronRight;
 
-  @Input() currentStep : number = 1;
   @Output() onBackClicked = new EventEmitter<any>();
   @Output() onCancelClicked = new EventEmitter<any>();
 
@@ -24,16 +23,6 @@ export class ConfigurationTopbarComponent {
 
   cancelProcess() {
     this.onCancelClicked.emit();
-  }
-
-  getTopbarClasses(stepID : number) {
-    if (this.currentStep < stepID) {
-      return 'disabled';
-    }
-    if (this.currentStep > stepID) {
-      return 'completed';
-    }
-    return '';
   }
 
 }

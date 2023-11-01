@@ -20,26 +20,6 @@ describe('ConfigurationTopbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set the current step to 1 by default', () => {
-    expect(component.currentStep).toBe(1);
-  });
-
-  it('should apply "disabled" class to step with ID greater than currentStep', () => {
-    component.currentStep = 2;
-    const stepElement = fixture.nativeElement.querySelectorAll('.topbar-step')[2];
-    fixture.detectChanges();
-
-    expect(stepElement.classList.contains('disabled')).toBeTruthy();
-  });
-
-  it('should apply "completed" class to step with ID less than currentStep', () => {
-    component.currentStep = 2;
-    const stepElement = fixture.nativeElement.querySelector('.topbar-step');
-    fixture.detectChanges();
-
-    expect(stepElement.classList.contains('completed')).toBeTruthy();
-  });
-
   it('should call navigateToPreviousPage method when back button is clicked', () => {
     spyOn(component, 'navigateToPreviousPage');
     const backButton = fixture.nativeElement.querySelector('.topbar-back-btn button');

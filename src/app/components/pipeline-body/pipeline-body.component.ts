@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { faCircle, faCirclePause } from '@fortawesome/free-solid-svg-icons';
 import { Pipeline } from 'src/app/models/Pipeline';
 
@@ -12,4 +13,10 @@ export class PipelineBodyComponent {
 
   faCircle = faCircle;
   faCirclePause = faCirclePause;
+
+  constructor(private router: Router) {}
+
+  goToDashboard() {
+    this.router.navigate(['pipeline', this.pipeline.id, 'overview']);
+  }
 }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreatePipeline, Pipeline } from 'src/app/models/Pipeline';
+import { CreatePipeline, Pipeline, Job, CreateJob } from 'src/app/models/Pipeline';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -30,5 +30,13 @@ export class PipelineService {
 
   createPipeline(pipeline: CreatePipeline): Observable<object> {
     return this.http.post(environment.apiUrl + this.path, pipeline);
+  }
+
+  createJob(jobInfo: CreateJob): Observable<Job> {
+    return this.http.post<Job>(environment.apiUrl + '/metadata/job', jobInfo);
+  }
+
+  getJobsByPipelineId(pipelineId: string): Observable<Job[]> {
+    return this.http.get<Job[]>(environment.apiUrl + '/metadata/job/pipelineId/' + pipelineId);
   }
 }

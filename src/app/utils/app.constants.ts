@@ -162,7 +162,18 @@ export const constants = {
       descriptionPlaceholder: 'Let people know details about your pipeline',
       create: 'Create',
     },
+    createJob: 'Create Job',
+    overview: {
+      jobs: 'Jobs',
+      eventsIngested: 'Events Ingested',
+    },
     noPipelineFound: 'No pipeline found',
+    jobSourceDescription: 'Select an existing Source or add a new Connection',
+    jobName: 'Job Name',
+    addNewConnection: 'Add new connection',
+    selectJobDestination: 'Select Job Destination',
+    jobDestinationDescription: 'Select an existing destination or add a new one',
+    addNewDestination: 'Add new destination',
   },
   loadStatus: {
     eventsFound: 'Events Found',

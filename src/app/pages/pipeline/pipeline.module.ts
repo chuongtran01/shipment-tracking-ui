@@ -3,7 +3,7 @@ import { SharedModule } from '../../modules/shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { PipelineRoutingModule } from './pipeline-routing.module';
 import { PipelineComponent } from './pipeline.component';
-import { ConfigureDestinationComponent } from './configure-destination/configure-destination.component';
+import { ConfigureJobComponent } from './configure-job/configure-job.component';
 import { FinalSettingsComponent } from './final-settings/final-settings.component';
 import { PipelinePageComponent } from './pipeline-page/pipeline-page.component';
 import { PipelineHeaderComponent } from 'src/app/components/pipeline-header/pipeline-header.component';
@@ -12,6 +12,7 @@ import { CreatePipelineComponent } from 'src/app/components/create-pipeline/crea
 import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-status-events-dropdown/load-status-events-dropdown.component';
 import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
 import { LoadStatusFilterComponent } from 'src/app/components/load-status-filter/load-status-filter.component';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { LoadStatusFilterComponent } from 'src/app/components/load-status-filter
     PipelinePageComponent,
     PipelineHeaderComponent,
     PipelineBodyComponent,
-    ConfigureDestinationComponent,
+    ConfigureJobComponent,
     FinalSettingsComponent,
     CreatePipelineComponent,
     LoadStatusEventsDropdownComponent,
     LoadStatusEventRowComponent,
     LoadStatusFilterComponent,
+    OverviewComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
 })

@@ -45,6 +45,7 @@ describe('ConnectionPageComponent', () => {
       connectionName: "Postgres1",
       teamId: "1",
       connectionTypeId: "1",
+      connectionTypeName: "PostgreSQL",
       connectionString: ""
     }];
     fixture.detectChanges();
