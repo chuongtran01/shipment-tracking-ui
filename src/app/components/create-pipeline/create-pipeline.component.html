@@ -20,9 +20,9 @@
         <div>
           <input
             class="create-pipeline-input-field"
-            id="pipelineName"
-            name="pipelineName"
-            formControlName="pipelineName"
+            id="name"
+            name="name"
+            formControlName="name"
             [class.create-pipeline-input-field-invalid]="
               showPipelineNameErrorMessage
             "
@@ -59,7 +59,9 @@
       <div class="create-pipeline-create-button">
         <app-button
           classes="button-green p-v-7 p-h-10"
-          (click)="createPipeline()"
+          (click)="handleCreatePipeline()"
+          [isRunning]="isRunning"
+          [disabled]="createPipelineGroup.invalid"
           >{{ CONSTANTS.pipeline.createPipelineModal.create }}</app-button
         >
       </div>

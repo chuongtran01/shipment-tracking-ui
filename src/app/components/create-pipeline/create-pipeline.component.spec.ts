@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
@@ -6,20 +11,26 @@ import { ButtonComponent } from '../button/button.component';
 
 import { CreatePipelineComponent } from './create-pipeline.component';
 import { constants } from '../../utils/app.constants';
+import { PipelineService } from 'src/app/services/pipeline/pipeline.service';
+import { CreatePipeline } from 'src/app/models/Pipeline';
+import { of } from 'rxjs';
 
 describe('CreatePipelineComponent', () => {
   let component: CreatePipelineComponent;
   let fixture: ComponentFixture<CreatePipelineComponent>;
   let CONSTANTS = constants;
+  let pipelineService: PipelineService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CreatePipelineComponent, ButtonComponent],
       imports: [FontAwesomeModule, SharedModule],
+      providers: [PipelineService],
     });
     fixture = TestBed.createComponent(CreatePipelineComponent);
     component = fixture.componentInstance;
     component.showCreatePipelineModal = true;
+    pipelineService = TestBed.inject(PipelineService);
     fixture.detectChanges();
   });
 
@@ -85,9 +96,7 @@ describe('CreatePipelineComponent', () => {
 
   it('should reset the form when closePopup is called', () => {
     const closeSpy = spyOn(component.createPipelineGroup, 'reset');
-    component.createPipelineGroup.controls.pipelineName.setValue(
-      'Test Pipeline'
-    );
+    component.createPipelineGroup.controls.name.setValue('Test Pipeline');
 
     component.closePopup();
 
@@ -95,9 +104,7 @@ describe('CreatePipelineComponent', () => {
   });
 
   it('should have a valid form when both fields are filled', () => {
-    component.createPipelineGroup.controls.pipelineName.setValue(
-      'Test Pipeline'
-    );
+    component.createPipelineGroup.controls.name.setValue('Test Pipeline');
     component.createPipelineGroup.controls.description.setValue(
       'Test Description'
     );
@@ -105,8 +112,7 @@ describe('CreatePipelineComponent', () => {
   });
 
   it('should display an error message when pipelineName is invalid', () => {
-    const pipelineNameInput =
-      component.createPipelineGroup.controls['pipelineName'];
+    const pipelineNameInput = component.createPipelineGroup.controls['name'];
     pipelineNameInput.setValue('');
     pipelineNameInput.markAsTouched();
 
@@ -127,4 +133,35 @@ describe('CreatePipelineComponent', () => {
       'Please enter Pipeline name'
     );
   });
+
+  it('should handle create pipeline', fakeAsync(() => {
+    spyOn(component.createPipelineEvent, 'emit');
+    spyOn(component.closeModalEvent, 'emit');
+    spyOn(pipelineService, 'createPipeline').and.returnValue(of({}));
+
+    component.createPipelineGroup.controls['name'].setValue(
+      'pipeline-name-test'
+    );
+    component.createPipelineGroup.controls['description'].setValue(
+      'pipeline-description-test'
+    );
+
+    const newPipeline: CreatePipeline = {
+      name: 'pipeline-name-test',
+      organizationId: '101',
+      description: 'pipeline-description-test',
+      teamId: '1',
+    };
+
+    pipelineService.createPipeline;
+
+    component.handleCreatePipeline();
+    tick();
+
+    expect(component.isRunning).toBe(false);
+    expect(component.closeModalEvent.emit).toHaveBeenCalledWith(false);
+    expect(component.createPipelineEvent.emit).toHaveBeenCalledOnceWith();
+
+    expect(pipelineService.createPipeline).toHaveBeenCalledWith(newPipeline);
+  }));
 });

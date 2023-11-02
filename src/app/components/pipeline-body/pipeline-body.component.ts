@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { faCircle, faCirclePause } from '@fortawesome/free-solid-svg-icons';
-import { IPipeline } from 'src/app/models/Pipeline';
+import { Pipeline } from 'src/app/models/Pipeline';
 
 @Component({
   selector: 'app-pipeline-body',
@@ -8,7 +8,7 @@ import { IPipeline } from 'src/app/models/Pipeline';
   styleUrls: ['./pipeline-body.component.scss'],
 })
 export class PipelineBodyComponent {
-  @Input({ required: true }) pipeline!: IPipeline;
+  @Input({ required: true }) pipeline!: Pipeline;
 
   faCircle = faCircle;
   faCirclePause = faCirclePause;

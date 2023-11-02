@@ -44,10 +44,12 @@
           <app-pipeline-body [pipeline]="pipeline"></app-pipeline-body>
         </ng-container>
       </ng-template>
+      
     </div>
   </div>
 </div>
 <app-create-pipeline
   [showCreatePipelineModal]="showCreatePipelineModal"
   (closeModalEvent)="showCreatePipelineModal = false"
+  (createPipelineEvent)="handleCreatePipelineEvent()"
 ></app-create-pipeline>

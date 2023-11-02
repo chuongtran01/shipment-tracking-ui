@@ -1,7 +1,18 @@
-export interface IPipeline {
-  // TODO: Modified it correctly when having API set up
+export interface Pipeline {
   id: string;
+  createdAt: number;
+  modifiedAt: number;
+  createdBy: string | null;
+  modifiedBy: string | null;
+  organizationId: string;
   name: string;
-  source: string;
-  databaseName: string;
+  teamId: string;
+  description: string;
+}
+
+export interface CreatePipeline {
+  name: string;
+  organizationId: string;
+  description?: string;
+  teamId: string;
 }

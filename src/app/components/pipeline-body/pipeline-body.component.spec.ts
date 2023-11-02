@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { IPipeline } from 'src/app/models/Pipeline';
+import { Pipeline } from 'src/app/models/Pipeline';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { PipelineService } from 'src/app/services/pipeline/pipeline.service';
 import { PipelineBodyComponent } from './pipeline-body.component';
@@ -9,11 +9,16 @@ describe('PipelineBodyComponent', () => {
   let component: PipelineBodyComponent;
   let fixture: ComponentFixture<PipelineBodyComponent>;
 
-  let mockPipeline: IPipeline = {
-    id: '1',
-    name: 'Pipeline 1',
-    source: 'MySQL-source-new-1',
-    databaseName: 'MySQL',
+  let mockPipeline: Pipeline = {
+    id: 'demo-id-1',
+    createdAt: 1698935594000,
+    modifiedAt: 1698935594000,
+    createdBy: null,
+    modifiedBy: null,
+    organizationId: '1',
+    name: 'pipeline-demo-1',
+    teamId: '1',
+    description: 'des1',
   };
 
   const pipelineServiceStub = {
@@ -42,18 +47,6 @@ describe('PipelineBodyComponent', () => {
       '.pipeline-body-left'
     );
     expect(pipelineNameElement.textContent).toContain(mockPipeline.name);
-
-    const pipelineSourceElement = fixture.nativeElement.querySelector(
-      '.pipeline-body-right-title-top'
-    );
-    expect(pipelineSourceElement.textContent).toContain(mockPipeline.source);
-
-    const pipelineDatabaseNameElement = fixture.nativeElement.querySelector(
-      '.pipeline-body-right-title-bottom-database-name'
-    );
-    expect(pipelineDatabaseNameElement.textContent).toContain(
-      mockPipeline.databaseName
-    );
 
     const viewButtonElement =
       fixture.nativeElement.querySelector('.button-green');

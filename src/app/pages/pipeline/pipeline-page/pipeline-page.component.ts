@@ -1,7 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { debounceTime, Subscription } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  Observable,
+  Subscription,
+  switchMap,
+} from 'rxjs';
 import { SearchBarService } from 'src/app/services/search-bar/search-bar.service';
-import { IPipeline } from 'src/app/models/Pipeline';
+import { Pipeline } from 'src/app/models/Pipeline';
 import { ITeam } from 'src/app/models/Team';
 import { PipelineService } from 'src/app/services/pipeline/pipeline.service';
 import { constants } from '../../../utils/app.constants';
@@ -12,28 +19,14 @@ import { constants } from '../../../utils/app.constants';
   styleUrls: ['./pipeline-page.component.scss'],
 })
 export class PipelinePageComponent implements OnInit, OnDestroy {
-  _pipelineName: string = '';
   $subs: Subscription = new Subscription();
   loading: boolean = false;
   showCreatePipelineModal: boolean = false;
   CONSTANTS = constants;
+  pipelineName: string = '';
+  currentTeam: string = '1';
 
-  // pipelines: IPipeline[] = [
-  //   {
-  //     id: '1',
-  //     name: 'Pipeline 1',
-  //     source: 'MySQL-source-new-1',
-  //     databaseName: 'MySQL',
-  //   },
-  //   {
-  //     id: '2',
-  //     name: 'Pipeline 2',
-  //     source: 'PostgreSQL-source-new-2',
-  //     databaseName: 'PostgreSQL',
-  //   },
-  // ];
-
-  pipelines: IPipeline[] = [];
+  pipelines: Pipeline[] = [];
 
   teams: ITeam[] = [
     {
@@ -56,71 +49,60 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.$subs.add(
       this.searchBarService
         .receiveSearchInput()
-        .pipe(debounceTime(300))
-        .subscribe((data) => {
-          this.pipelineName = data;
-        })
+        .pipe(
+          debounceTime(300),
+          distinctUntilChanged(),
+          switchMap((query) => {
+            this.pipelineName = query;
+            return this.fetchPipelines(query);
+          })
+        )
+        .subscribe(this.handlePipelineDataSubscription())
     );
-
-    // TODO: Remove comment when having API set up
-    // this.$subs.add(
-    //   this.searchBarService
-    //     .receiveSearchInput()
-    //     .pipe(debounceTime(300))
-    //     .subscribe((data) => {
-    //       this.loading = true; // Show loading indicator while searching
-    //       this.pipelineService.searchPipelines(data).subscribe({
-    //         next: (response) => {
-    //           this.pipelines = response;
-    //           this.loading = false; // Hide loading indicator after search
-    //         },
-    //         error: (error) => {
-    //           console.error('Error searching pipelines:', error);
-    //           this.loading = false; // Hide loading indicator on error
-    //         }
-    //       });
-    //     })
-    // );
-
-    // this.loading = true;
-
-    // this.$subs.add(
-    //   this.pipelineService.searchPipelines(message).subscribe({
-    //     next: (response) => {
-    //       this.pipelines = response;
-    //       this.loading = false;
-    //     },
-    //     error: (error) => {
-    //       console.error('Error fetching pipelines:', error);
-    //       this.loading = false;
-    //     }
-    //   })
-    // );
-  }
-
-  get pipelineName(): string {
-    return this._pipelineName;
-  }
-
-  set pipelineName(value: string) {
-    this._pipelineName = value;
   }
 
   hoverCreatePipelinePopup() {
     this.showCreatePipelineModal = !this.showCreatePipelineModal;
   }
 
+  fetchPipelines(query: string): Observable<any> {
+    this.loading = true;
+    this.pipelineName = query;
+    const pipelineObservable =
+      query.length === 0
+        ? this.pipelineService.fetchAll(this.currentTeam)
+        : this.pipelineService.searchByName(this.currentTeam, query);
+
+    return pipelineObservable.pipe(
+      map((data) => {
+        return data.sort((a, b) => b.createdAt - a.createdAt);
+      })
+    );
+  }
+
+  handleCreatePipelineEvent() {
+    this.fetchPipelines(this.pipelineName).subscribe(
+      this.handlePipelineDataSubscription()
+    );
+  }
+
+  handlePipelineDataSubscription() {
+    return {
+      next: (data: Pipeline[]) => {
+        this.pipelines = data;
+        this.loading = false;
+      },
+      error: (error: Error) => {
+        this.loading = false;
+      },
+    };
+  }
+
   ngOnDestroy(): void {
     this.$subs.unsubscribe();
   }
-
-  // TODO: Remove comments when having API set up
-  // fetchPipelines() {
-  //   this.pipelineService.getPipelines().subscribe((data) => {
-  //     this.pipelines = data;
-  //   })
-  // }
 }
