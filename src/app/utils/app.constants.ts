@@ -7,6 +7,7 @@ export const constants = {
     notSynched: 'Not synched yet',
     createNew: 'Create New',
     filter: "Filter",
+    settings: 'Settings',
   },
   home: {
     intro: {
@@ -215,5 +216,11 @@ export const constants = {
     title: 'Connections',
     description: 'Create Connections to use in Pipelines',
     noConnectionsFound: 'No Connections Found',
+  },
+  teams: {
+    teamMembers: 'Team Members',
+    members: 'Members',
+    analytics: 'Analytics',
+    name: 'Name',
   }
 };

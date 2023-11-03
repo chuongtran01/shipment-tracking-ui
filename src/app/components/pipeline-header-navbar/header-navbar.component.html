@@ -39,7 +39,7 @@
         <ul class="pipeline-header-navbar-team-settings-dropdown-menu">
           <ng-container *ngFor="let teamSetting of teamSettings">
             <li>
-              <div>{{ teamSetting.title }}</div>
+              <div [routerLink]="[teamSetting.navigate]">{{ teamSetting.title }}</div>
             </li>
           </ng-container>
         </ul>

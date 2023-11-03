@@ -26,6 +26,13 @@ const routes: Routes = [
             (connection) => connection.ConnectionModule
           ),
       },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./pages/settings/settings.module').then(
+            (settings) => settings.SettingsModule
+          ),
+      },
     ],
   },
   {

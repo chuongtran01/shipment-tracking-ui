@@ -28,7 +28,7 @@ export class HeaderNavbarComponent {
     {
       id: '1',
       title: 'Team Settings',
-      navigate: 'team-settings',
+      navigate: '/settings/team/members',
     },
     {
       id: '2',

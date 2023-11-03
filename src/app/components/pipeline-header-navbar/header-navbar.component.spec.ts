@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderNavbarComponent } from './header-navbar.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderNavbarComponent', () => {
   let component: HeaderNavbarComponent;
@@ -43,7 +44,7 @@ describe('HeaderNavbarComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderNavbarComponent],
-      imports: [FontAwesomeModule],
+      imports: [FontAwesomeModule, RouterTestingModule],
     });
     fixture = TestBed.createComponent(HeaderNavbarComponent);
     component = fixture.componentInstance;
