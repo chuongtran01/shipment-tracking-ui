@@ -6,7 +6,7 @@ export const constants = {
     lastSynched: 'Last synched',
     notSynched: 'Not synched yet',
     createNew: 'Create New',
-    filter: "Filter",
+    filter: 'Filter',
     settings: 'Settings',
   },
   home: {
@@ -168,12 +168,21 @@ export const constants = {
       jobs: 'Jobs',
       eventsIngested: 'Events Ingested',
     },
+    createTeamModal: {
+      createTeam: 'Create team',
+      teamName: 'Team name',
+      description: 'Description',
+      descriptionPlaceholder: 'Let people know what this team is all about',
+      back: 'Back',
+      create: 'Create',
+    },
     noPipelineFound: 'No pipeline found',
     jobSourceDescription: 'Select an existing Source or add a new Connection',
     jobName: 'Job Name',
     addNewConnection: 'Add new connection',
     selectJobDestination: 'Select Job Destination',
-    jobDestinationDescription: 'Select an existing destination or add a new one',
+    jobDestinationDescription:
+      'Select an existing destination or add a new one',
     addNewDestination: 'Add new destination',
   },
   loadStatus: {
@@ -201,18 +210,20 @@ export const constants = {
     ],
   },
   schemaMapper: {
-    tableName: "Table Name",
-    tableNameDescription: "A unique name for the table with a maximum of 127 characters.",
-    createTableAndMap: "Create Table & Map",
-    fieldsAvailable: "Fields Available",
-    sourceField: "Source Field",
-    destinationFieldName: "Destination Field Name",
-    dataType: "Data Type",
-    primaryKey: "Primary Key",
-    sortKey: "Sort Key",
-    distKey: "Dist Key",
-    autoMapping: "Auto mapping Disabled:",
-    autoMappingDescription: "Enable Auto mapping to automatically map all Event Types in this pipeline",
+    tableName: 'Table Name',
+    tableNameDescription:
+      'A unique name for the table with a maximum of 127 characters.',
+    createTableAndMap: 'Create Table & Map',
+    fieldsAvailable: 'Fields Available',
+    sourceField: 'Source Field',
+    destinationFieldName: 'Destination Field Name',
+    dataType: 'Data Type',
+    primaryKey: 'Primary Key',
+    sortKey: 'Sort Key',
+    distKey: 'Dist Key',
+    autoMapping: 'Auto mapping Disabled:',
+    autoMappingDescription:
+      'Enable Auto mapping to automatically map all Event Types in this pipeline',
   },
   connection: {
     title: 'Connections',
@@ -224,5 +235,5 @@ export const constants = {
     members: 'Members',
     analytics: 'Analytics',
     name: 'Name',
-  }
+  },
 };

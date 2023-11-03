@@ -1,10 +1,11 @@
-export interface ITeam {
+export interface Team {
   id: string;
   name: string;
 }
 
-export interface ITeamSetting {
+export interface TeamSetting {
   id: string;
   title: string;
-  navigate: string;
+  navigate?: string;
+  action?: () => void;
 }

@@ -5,7 +5,11 @@
   <div class="pipeline-right">
     <div class="pipeline-right-top">
       <div class="pipeline-right-top-navbar">
-        <app-header-navbar name="CM" [teams]="teams"></app-header-navbar>
+        <app-header-navbar
+          name="CM"
+          [teams]="teams"
+          (createTeamEvent)="showCreateTeamModal = true"
+        ></app-header-navbar>
       </div>
       <div class="pipeline-right-top-body">
         <app-pipeline-header
@@ -44,7 +48,6 @@
           <app-pipeline-body [pipeline]="pipeline"></app-pipeline-body>
         </ng-container>
       </ng-template>
-      
     </div>
   </div>
 </div>
@@ -53,3 +56,7 @@
   (closeModalEvent)="showCreatePipelineModal = false"
   (createPipelineEvent)="handleCreatePipelineEvent()"
 ></app-create-pipeline>
+<app-create-team
+  [showCreateTeamModal]="showCreateTeamModal"
+  (closeModalEvent)="showCreateTeamModal = false"
+></app-create-team>

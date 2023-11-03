@@ -27,17 +27,14 @@ describe('HeaderNavbarComponent', () => {
     {
       id: '1',
       title: 'Team Settings',
-      navigate: 'team-settings',
     },
     {
       id: '2',
       title: 'Join Team',
-      navigate: 'join-team',
     },
     {
       id: '3',
       title: 'Create Team',
-      navigate: 'create-team',
     },
   ];
 
@@ -51,7 +48,6 @@ describe('HeaderNavbarComponent', () => {
     fixture.detectChanges();
 
     component.teams = teams;
-    component.teamSettings = teamSettings;
 
     fixture.detectChanges();
   });

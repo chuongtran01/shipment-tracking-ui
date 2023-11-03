@@ -1,7 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreatePipeline, Pipeline } from 'src/app/pages/pipeline/models/Pipeline';
+import {
+  CreatePipeline,
+  Pipeline,
+} from 'src/app/pages/pipeline/models/Pipeline';
 import { environment } from '../../../../../environments/environment';
 
 @Injectable({
@@ -17,9 +20,12 @@ export class PipelineService {
       .set('name', pipelineName)
       .set('teamId', teamId);
 
-    return this.http.get<Pipeline[]>(environment.apiUrl + this.path + `/name`, {
-      params,
-    });
+    return this.http.get<Pipeline[]>(
+      environment.apiUrl + this.path + `/search`,
+      {
+        params,
+      }
+    );
   }
 
   fetchAll(teamId: string) {

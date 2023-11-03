@@ -13,6 +13,7 @@ import { HeaderNavbarComponent } from 'src/app/components/header-navbar/header-n
 import { CreatePipelineComponent } from 'src/app/pages/pipeline/components/create-pipeline/create-pipeline.component';
 import { Pipeline } from 'src/app/pages/pipeline/models/Pipeline';
 import { PipelineService } from 'src/app/pages/pipeline/services/pipeline/pipeline.service';
+import { CreateTeamComponent } from 'src/app/pages/pipeline/components/create-team/create-team.component';
 
 describe('PipelinePageComponent', () => {
   let component: PipelinePageComponent;
@@ -56,6 +57,7 @@ describe('PipelinePageComponent', () => {
         CreatePipelineComponent,
         GeneralLeftSidebarComponent,
         HeaderNavbarComponent,
+        CreateTeamComponent,
       ],
       imports: [SharedModule, RouterTestingModule],
       providers: [SearchBarService, PipelineService],

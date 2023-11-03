@@ -1,0 +1,106 @@
+<div class="create-team-overlay" *ngIf="showCreateTeamModal">
+  <div class="create-team-content">
+    <div class="create-team-close-button">
+      <fa-icon
+        class="create-team-close-button-icon"
+        [icon]="faXmark"
+        (click)="closePopup()"
+      ></fa-icon>
+    </div>
+    <div class="create-team-title">
+      {{ CONSTANTS.pipeline.createTeamModal.createTeam }}
+    </div>
+    <ng-container *ngIf="!isTeamTypeChosen; else createTeamInputEntry">
+      <div class="create-team-type">
+        <ng-container *ngFor="let teamType of teamTypes">
+          <div
+            class="create-team-type-container"
+            (click)="handleChooseTeamType(teamType.title)"
+          >
+            <div class="create-team-type-left">
+              <div
+                class="create-team-type-left-icon-container"
+                [class.create-team-type-left-icon-container-lock]="
+                  teamType.title === 'Private'
+                "
+                [class.create-team-type-left-icon-container-globe]="
+                  teamType.title === 'Public'
+                "
+              >
+                <fa-icon
+                  class="create-team-type-left-icon"
+                  [icon]="teamType.icon"
+                ></fa-icon>
+              </div>
+            </div>
+            <div class="create-team-type-right">
+              <div class="create-team-type-right-title">
+                {{ teamType.title }}
+              </div>
+              <div class="create-team-type-right-description">
+                {{ teamType.description }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-template #createTeamInputEntry>
+      <form class="create-team-form" [formGroup]="createTeamGroup">
+        <div class="create-team-field">
+          <div class="create-team-label">
+            <label>{{ CONSTANTS.pipeline.createTeamModal.teamName }}</label>
+          </div>
+          <div>
+            <input
+              class="create-team-input-field"
+              id="name"
+              name="name"
+              formControlName="name"
+              [class.create-team-input-field-invalid]="showTeamNameErrorMessage"
+            />
+          </div>
+          <div class="create-team-field-error" *ngIf="showTeamNameErrorMessage">
+            {{ teamNameError }}
+          </div>
+        </div>
+        <div class="create-team-field">
+          <div class="create-team-label">
+            <label>{{ CONSTANTS.pipeline.createTeamModal.description }}</label>
+          </div>
+          <div>
+            <textarea
+              class="create-team-textarea-field"
+              id="description"
+              name="description"
+              formControlName="description"
+              [placeholder]="
+                CONSTANTS.pipeline.createTeamModal.descriptionPlaceholder
+              "
+              [class.create-team-textarea-field-no-text]="
+                createTeamGroup.controls.description.value?.length == 0 ||
+                !createTeamGroup.controls.description.dirty
+              "
+            ></textarea>
+          </div>
+        </div>
+      </form>
+      <div class="create-team-create-button-container">
+        <div class="create-team-back-button" (click)="handleBackButton()">
+          <div>|</div>
+          <fa-icon [icon]="faArrowLeftLong"></fa-icon>
+          <div class="create-team-back-button-text">Back</div>
+        </div>
+        <div class="create-team-create-button">
+          <app-button
+            classes="button-green p-v-7 p-h-10"
+            (click)="handleCreateTeam()"
+            [isRunning]="false"
+            [disabled]="createTeamGroup.invalid"
+            >{{ CONSTANTS.pipeline.createTeamModal.create }}</app-button
+          >
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -37,11 +37,15 @@
 
       <ng-container *ngIf="isTeamDropdownSettingsOpen">
         <ul class="pipeline-header-navbar-team-settings-dropdown-menu">
-          <ng-container *ngFor="let teamSetting of teamSettings">
-            <li>
-              <div [routerLink]="[teamSetting.navigate]">{{ teamSetting.title }}</div>
-            </li>
-          </ng-container>
+          <li [routerLink]="['/settings/team/members']">
+            <div>Team Settings</div>
+          </li>
+          <li>
+            <div>Join Team</div>
+          </li>
+          <li (click)="handleCreateTeam()">
+            <div>Create Team</div>
+          </li>
         </ul>
       </ng-container>
     </div>

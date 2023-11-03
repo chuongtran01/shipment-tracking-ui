@@ -9,7 +9,7 @@ import {
 } from 'rxjs';
 import { SearchBarService } from 'src/app/services/search-bar/search-bar.service';
 import { Pipeline } from 'src/app/pages/pipeline/models/Pipeline';
-import { ITeam } from 'src/app/models/Team';
+import { Team } from 'src/app/models/Team';
 import { PipelineService } from 'src/app/pages/pipeline/services/pipeline/pipeline.service';
 import { constants } from '../../../../utils/app.constants';
 
@@ -22,13 +22,14 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
   $subs: Subscription = new Subscription();
   loading: boolean = false;
   showCreatePipelineModal: boolean = false;
+  showCreateTeamModal: boolean = false;
   CONSTANTS = constants;
   pipelineName: string = '';
   currentTeam: string = '1';
 
   pipelines: Pipeline[] = [];
 
-  teams: ITeam[] = [
+  teams: Team[] = [
     {
       id: '1',
       name: 'Team 1',
@@ -88,6 +89,10 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
     this.fetchPipelines(this.pipelineName).subscribe(
       this.handlePipelineDataSubscription()
     );
+  }
+
+  openCreateTeamModal() {
+    console.log('test');
   }
 
   handlePipelineDataSubscription() {
