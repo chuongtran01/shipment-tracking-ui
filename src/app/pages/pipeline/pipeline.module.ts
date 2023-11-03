@@ -13,6 +13,7 @@ import { LoadStatusEventsDropdownComponent } from 'src/app/components/load-statu
 import { LoadStatusEventRowComponent } from 'src/app/components/load-status-event-row/load-status-event-row.component';
 import { LoadStatusFilterComponent } from 'src/app/components/load-status-filter/load-status-filter.component';
 import { OverviewComponent } from './overview/overview.component';
+import { LoadStatusComponent } from './load-status/load-status.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { OverviewComponent } from './overview/overview.component';
     LoadStatusEventRowComponent,
     LoadStatusFilterComponent,
     OverviewComponent,
+    LoadStatusComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
 })

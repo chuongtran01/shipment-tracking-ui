@@ -1,0 +1,21 @@
+<div class="load-status">
+  <div class="load-status-sidebar">
+    <app-general-left-sidebar></app-general-left-sidebar>
+  </div>
+  <div class="load-status-content">
+    <!-- TODO: Add top navbar -->
+    <div class="load-status-content-body">
+      <div class="load-status-header">
+        <!-- TODO: Place the pipeline navbar -->
+      </div>
+      <div class="load-status-body">
+        <div class="load-status-body-left">
+          <app-load-status-filter></app-load-status-filter>
+        </div>
+        <div class="load-status-body-right">
+          <app-load-status-events-dropdown [totalEvents]="0"></app-load-status-events-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
