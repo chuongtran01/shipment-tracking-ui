@@ -36,7 +36,7 @@ export class ConfigureConnectionComponent {
   }
 
   configureSourceFormGroup = new FormGroup({
-    pipelineName: new FormControl('', Validators.required),
+    connectionName: new FormControl('', Validators.required),
     databaseHost: new FormControl('', [Validators.required]),
     databasePort: new FormControl('', [Validators.required]),
     databaseUser: new FormControl('', [Validators.required]),
@@ -54,7 +54,7 @@ export class ConfigureConnectionComponent {
 
   // TODO: Implement testing of source connection based on inputs
   testSourceConnection() {
-    const pipelineName = this.configureSourceFormGroup.get('pipelineName')?.value;
+    const connectionName = this.configureSourceFormGroup.get('connectionName')?.value;
     const databaseHost = this.configureSourceFormGroup.get('databaseHost')?.value;
     const databasePort = this.configureSourceFormGroup.get('databasePort')?.value;
     const databaseUser = this.configureSourceFormGroup.get('databaseUser')?.value;
@@ -69,7 +69,7 @@ export class ConfigureConnectionComponent {
 
     this.connectionService.addConnection({
       teamId: '1',
-      connectionName: this.configureSourceFormGroup.value.pipelineName as string,
+      connectionName: this.configureSourceFormGroup.value.connectionName as string,
       connectionTypeId: this.typeId,
       connectionTypeName: this.typeName,
       hostname: this.configureSourceFormGroup.value.databaseHost as string,

@@ -37,8 +37,8 @@ describe('ConfigureConnectionComponent', () => {
 
     const form = fixture.nativeElement.querySelector('.configure-connection-form');
     expect(form).toBeTruthy();
-    expect(form.querySelector('input#pipeline-name')).toBeTruthy();
-    expect(form.querySelector('label[htmlFor="pipeline-name"]')).toBeTruthy();
+    expect(form.querySelector('input#connection-name')).toBeTruthy();
+    expect(form.querySelector('label[htmlFor="connection-name"]')).toBeTruthy();
     expect(form.querySelector('input#database-host')).toBeTruthy();
     expect(form.querySelector('label[htmlFor="database-host"]')).toBeTruthy();
     expect(form.querySelector('input#database-port')).toBeTruthy();
@@ -70,7 +70,7 @@ describe('ConfigureConnectionComponent', () => {
 
   it('should test source connection when the "Test Connection" button is clicked', () => {
     component.configureSourceFormGroup.setValue({
-      pipelineName: 'Test Pipeline',
+      connectionName: 'Test Pipeline',
       databaseHost: 'localhost',
       databasePort: '5432',
       databaseUser: 'testuser',
@@ -105,7 +105,7 @@ describe('ConfigureConnectionComponent', () => {
     const testAndContinueButton = fixture.nativeElement.querySelector('#test-continue button');
 
     component.configureSourceFormGroup.setValue({
-      pipelineName: 'Test Pipeline',
+      connectionName: 'Test Pipeline',
       databaseHost: 'localhost',
       databasePort: '5432',
       databaseUser: 'testuser',
@@ -126,7 +126,7 @@ describe('ConfigureConnectionComponent', () => {
     const testAndContinueButton = fixture.nativeElement.querySelector('#test-continue button');
 
     component.configureSourceFormGroup.setValue({
-      pipelineName: '',
+      connectionName: '',
       databaseHost: '',
       databasePort: '',
       databaseUser: '',

@@ -97,7 +97,7 @@ export const constants = {
     description1: 'Please provide ',
     description2: ' connection settings or copy from one of the ',
     existingConnections: 'Existing Connections',
-    pipelineName: 'Pipeline Name',
+    connectionName: 'Connection Name',
     databaseHost: 'Database Host',
     databasePort: 'Database Port',
     databaseUser: 'Database User',

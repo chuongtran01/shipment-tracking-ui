@@ -32,9 +32,9 @@
         <div class="connection-cards">
           <div class="connection-card" *ngFor="let connection of connections">
             <app-product-card
-              [img]="getConnectionImage(connection.connectionString)"
+              [img]="getConnectionImage(connection.connectionTypeName)"
               [title]="connection.connectionName"
-              description="Source: {{connection.connectionString}}"
+              description="Source: {{connection.connectionTypeName}}"
               footer="Created {{getDate(connection.createdAt)}}"
               classes="connection-card"
             ></app-product-card>
