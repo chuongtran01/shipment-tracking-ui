@@ -27,9 +27,6 @@ describe('PipelinePageComponent', () => {
     {
       id: 'a7c0301d-f5af-4730-9b6c-d44f99e8148e',
       createdAt: 1698935594000,
-      modifiedAt: 1698935594000,
-      createdBy: null,
-      modifiedBy: null,
       organizationId: '1',
       name: 'pipeline 1',
       teamId: '1',
@@ -38,9 +35,6 @@ describe('PipelinePageComponent', () => {
     {
       id: 'a7c0301d-f5af-4730-9b6c-d44f99e8148e',
       createdAt: 1698935594000,
-      modifiedAt: 1698935594000,
-      createdBy: null,
-      modifiedBy: null,
       organizationId: '1',
       name: 'pipeline 2',
       teamId: '1',
@@ -120,26 +114,6 @@ describe('PipelinePageComponent', () => {
     expect(pipelineService.searchByName).toHaveBeenCalledWith(
       currentTeam,
       searchInput
-    );
-    expect(component.pipelines).toEqual(mockPipelines);
-    fixture.detectChanges();
-  });
-
-  it("should handle search input's length equal 0 and fetch pipelines", () => {
-    const searchInput = '';
-
-    spyOn(searchBarService, 'receiveSearchInput').and.returnValue(
-      of(searchInput)
-    );
-    spyOn(pipelineService, 'fetchAll').and.returnValue(of(mockPipelines));
-
-    component.ngOnInit();
-
-    fixture.detectChanges();
-
-    expect(component.pipelineName).toBe(searchInput);
-    expect(pipelineService.fetchAll).toHaveBeenCalledWith(
-      component.currentTeam
     );
     expect(component.pipelines).toEqual(mockPipelines);
     fixture.detectChanges();

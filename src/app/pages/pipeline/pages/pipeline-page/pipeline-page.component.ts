@@ -73,10 +73,10 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
   fetchPipelines(query: string): Observable<any> {
     this.loading = true;
     this.pipelineName = query;
-    const pipelineObservable =
-      query.length === 0
-        ? this.pipelineService.fetchAll(this.currentTeam)
-        : this.pipelineService.searchByName(this.currentTeam, query);
+    const pipelineObservable = this.pipelineService.searchByName(
+      this.currentTeam,
+      query
+    );
 
     return pipelineObservable.pipe(
       map((data) => {
@@ -89,10 +89,6 @@ export class PipelinePageComponent implements OnInit, OnDestroy {
     this.fetchPipelines(this.pipelineName).subscribe(
       this.handlePipelineDataSubscription()
     );
-  }
-
-  openCreateTeamModal() {
-    console.log('test');
   }
 
   handlePipelineDataSubscription() {

@@ -28,10 +28,15 @@ export class PipelineService {
     );
   }
 
-  fetchAll(teamId: string) {
+  fetchAll(teamId: string): Observable<Pipeline[]> {
     return this.http.get<Pipeline[]>(
       environment.apiUrl + this.path + `/all/${teamId}`
     );
+  }
+
+  fetchById(pipelineId: string, teamId: string): Observable<Pipeline> {
+    const params = new HttpParams().set('id', pipelineId).set('teamId', teamId);
+    return this.http.get<Pipeline>(environment.apiUrl + this.path, { params });
   }
 
   createPipeline(pipeline: CreatePipeline): Observable<object> {

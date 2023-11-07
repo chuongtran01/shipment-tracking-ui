@@ -23,6 +23,8 @@ import { JobService } from './services/job/job.service';
 import { ConnectionService } from '../connection/services/connection/connection.service';
 import { SchemaMapperComponent } from './schema-mapper/schema-mapper.component';
 import { CreateTeamComponent } from 'src/app/pages/pipeline/components/create-team/create-team.component';
+import { PipelineDashboardInformationComponent } from 'src/app/pages/pipeline/components/pipeline-dashboard-information/pipeline-dashboard-information.component';
+import { PipelineDashboardNavbarComponent } from './components/pipeline-dashboard-navbar/pipeline-dashboard-navbar.component';
 
 const PIPELINE_COMPONENTS = [
   PipelineHeaderComponent,
@@ -36,6 +38,8 @@ const PIPELINE_COMPONENTS = [
   SchemaMapperCreateTableComponent,
   OverviewJobRowComponent,
   CreateTeamComponent,
+  PipelineDashboardInformationComponent,
+  PipelineDashboardNavbarComponent,
 ];
 
 @NgModule({

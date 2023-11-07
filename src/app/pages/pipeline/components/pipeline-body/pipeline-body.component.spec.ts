@@ -12,9 +12,6 @@ describe('PipelineBodyComponent', () => {
   let mockPipeline: Pipeline = {
     id: 'demo-id-1',
     createdAt: 1698935594000,
-    modifiedAt: 1698935594000,
-    createdBy: null,
-    modifiedBy: null,
     organizationId: '1',
     name: 'pipeline-demo-1',
     teamId: '1',

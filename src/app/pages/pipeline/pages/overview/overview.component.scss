@@ -1,9 +1,8 @@
-@import 'variables';
+@import "variables";
 
 .overview {
   display: flex;
-  height: 100vh;
-  background-color: $text-area;
+  flex-direction: row;
 
   &-left {
     position: -webkit-sticky;
@@ -13,17 +12,28 @@
   }
 
   &-right {
+    width: calc(100% - 10px);
     display: flex;
     flex-direction: column;
-    width: 100%;
-    gap: 22px;
+    gap: 10px;
 
-    &-container {
-      box-sizing: border-box;
-      padding: 22px 32px 0 32px;
-      width: 100%;
+    &-top {
+    }
 
-      &-jobs {
+    &-body {
+      padding: 30px 30px;
+      gap: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      &-bottom {
+
+        &-body {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
 
         &-header {
           color: $grey-color-text;
@@ -71,14 +81,7 @@
             }
           }
         }
-
-        &-body {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
       }
-
     }
   }
 }

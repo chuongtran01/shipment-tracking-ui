@@ -3,14 +3,22 @@
     <app-general-left-sidebar></app-general-left-sidebar>
   </div>
   <div class="overview-right">
-    <div class="overview-right-navbar">
-      <!-- TODO: add teams information -->
-      <app-header-navbar name="CM" [teams]="[]"></app-header-navbar>
+    <div class="overview-right-top">
+      <app-header-navbar
+        name="CM"
+        [teams]="teams"
+        (createTeamEvent)="showCreateTeamModal = true"
+      ></app-header-navbar>
     </div>
-    <div class="overview-right-container">
-      <!-- TODO: Add pipeline info header and pipeline navbar -->
-      <div class="overview-right-container-jobs">
-        <div class="overview-right-container-jobs-header">
+    <div class="overview-right-body">
+      <div class="overview-right-body-top">
+        <app-pipeline-dashboard-information
+          [pipeline]="pipeline"
+        ></app-pipeline-dashboard-information>
+        <app-pipeline-dashboard-navbar></app-pipeline-dashboard-navbar>
+      </div>
+      <div class="overview-right-body-bottom">
+        <div class="overview-right-body-bottom-header">
           <div class="checkbox">
             <app-checkbox></app-checkbox>
           </div>
@@ -22,7 +30,7 @@
           <div class="status"></div>
           <div class="buttons">
             <div class="create-job">
-              <app-button classes="button-green font-10 p-v-5 p-h-10 text-medium" (click)="goToConfigureJob()">
+              <app-button classes="button-green font-10 p-v-5 p-h-10" (click)="goToConfigureJob()">
                 {{constants.pipeline.createJob}}
               </app-button>
             </div>
@@ -38,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="overview-right-container-jobs-body">
+        <div class="overview-right-body-bottom-body">
           <app-overview-job-row
             *ngFor="let job of jobs"
             [id]="job.id"
@@ -52,3 +60,7 @@
     </div>
   </div>
 </div>
+<app-create-team
+  [showCreateTeamModal]="showCreateTeamModal"
+  (closeModalEvent)="showCreateTeamModal = false"
+></app-create-team>

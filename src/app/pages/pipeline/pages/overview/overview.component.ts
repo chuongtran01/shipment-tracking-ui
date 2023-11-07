@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faEllipsisVertical, faFilter, faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEllipsisVertical,
+  faFilter,
+  faRotateRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { Job } from 'src/app/pages/pipeline/models/Job';
 import { JobService } from '../../services/job/job.service';
+
+import { forkJoin, Subscription } from 'rxjs';
+import { Team } from 'src/app/models/Team';
 import { constants } from 'src/app/utils/app.constants';
+import { Pipeline } from '../../models/Pipeline';
+import { PipelineService } from '../../services/pipeline/pipeline.service';
 
 @Component({
   selector: 'app-overview',
@@ -12,31 +21,72 @@ import { constants } from 'src/app/utils/app.constants';
 })
 export class OverviewComponent {
   pipelineId: string = '';
-  private sub: any;
+  $subs: Subscription = new Subscription();
+  userId: string = '';
   constants = constants;
-  jobs: Job[] = []
+  jobs: Job[] = [];
+  pipeline!: Pipeline;
 
   faFilter = faFilter;
   faRotateRight = faRotateRight;
   faEllipsisVertical = faEllipsisVertical;
+  showCreatePipelineModal: boolean = false;
+  showCreateTeamModal: boolean = false;
+
+  // TODO: Remove later
+  currentTeam: string = '1';
+
+  // TODO: Remove later
+  teams: Team[] = [
+    {
+      id: '1',
+      name: 'Team 1',
+    },
+    {
+      id: '2',
+      name: 'ADS Team',
+    },
+    {
+      id: '3',
+      name: 'XRP Team',
+    },
+  ];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private jobService: JobService,
+    private pipelineService: PipelineService
   ) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe((params) => (this.pipelineId = params['id']));
-    this.getAllJobs();
-  }
+    this.$subs.add(
+      this.route.params.subscribe((params) => (this.pipelineId = params['id']))
+    );
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.userId = this.getUserId();
+
+    forkJoin({
+      jobsData: this.jobService.getJobsByPipelineId(this.pipelineId),
+      pipelineData: this.pipelineService.fetchById(
+        this.userId,
+        this.currentTeam
+      ),
+    }).subscribe((data) => {
+      this.jobs = data.jobsData;
+      this.pipeline = data.pipelineData;
+    });
   }
 
   goToConfigureJob() {
     this.router.navigate(['../job-source'], { relativeTo: this.route });
+  }
+
+  getUserId() {
+    const url = window.location.href;
+    const paths = url.split('/');
+
+    return paths[4];
   }
 
   getAllJobs() {
@@ -49,5 +99,9 @@ export class OverviewComponent {
   getLastUpdatedDate(date: string) {
     const newDate = new Date(date);
     return `${String(newDate.getHours())}:${String(newDate.getMinutes())}`;
+  }
+
+  ngOnDestroy() {
+    this.$subs.unsubscribe();
   }
 }
