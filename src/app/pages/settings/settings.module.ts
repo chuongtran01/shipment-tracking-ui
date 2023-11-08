@@ -3,7 +3,7 @@ import { SharedModule } from '../../modules/shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
-import { TeamMembersComponent } from './team-members/team-members.component';
+import { TeamMembersComponent } from './pages/team-members/team-members.component';
 
 @NgModule({
   declarations: [
@@ -11,5 +11,6 @@ import { TeamMembersComponent } from './team-members/team-members.component';
     TeamMembersComponent,
   ],
   imports: [SharedModule, SettingsRoutingModule, CommonModule],
+  providers: [],
 })
 export class SettingsModule {}

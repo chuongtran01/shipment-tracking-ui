@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PipelinePageComponent } from './pipeline-page/pipeline-page.component';
-import { ConfigureJobComponent } from './configure-job/configure-job.component';
-import { FinalSettingsComponent } from './final-settings/final-settings.component';
-import { OverviewComponent } from './overview/overview.component';
-import { LoadStatusComponent } from './load-status/load-status.component';
+import { PipelinePageComponent } from './pages/pipeline-page/pipeline-page.component';
+import { ConfigureJobComponent } from './pages/configure-job/configure-job.component';
+import { FinalSettingsComponent } from './pages/final-settings/final-settings.component';
+import { OverviewComponent } from './pages/overview/overview.component';
+import { LoadStatusComponent } from './pages/load-status/load-status.component';
 
 const routes: Routes = [
   {
