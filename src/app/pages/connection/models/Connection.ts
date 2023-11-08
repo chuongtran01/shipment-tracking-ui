@@ -34,3 +34,8 @@ export interface ConnectionRequest {
   databaseName: string,
   organizationId: string,
 }
+
+export interface ConnectionTypeRequest {
+  typeName: string;
+  description: string;
+}

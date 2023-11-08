@@ -20,11 +20,15 @@ export class ConnectionService {
   }
 
   getConnectionTypeByName(name: string) {
-    return this.http.get<ConnectionTypeResponse[]>(environment.apiUrl + "/metadata/connectionType/name/" + name);
+    return this.http.get<ConnectionTypeResponse[]>(environment.apiUrl + "/metadata/connectionType/search/" + name);
   }
 
   getConnectionTypeById(id: string) {
     return this.http.get<ConnectionTypeResponse[]>(environment.apiUrl + "/metadata/connectionType/" + id);
+  }
+
+  addConnectionType(connectionType: ConnectionTypeResponse): Observable<object> {
+    return this.http.post(environment.apiUrl + "/metadata/connectionType", connectionType);
   }
 
   // TODO: Possibly change the API based on the source selected. Postgres as default now.

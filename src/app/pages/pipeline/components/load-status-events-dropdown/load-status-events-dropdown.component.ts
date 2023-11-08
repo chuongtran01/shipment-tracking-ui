@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { faArrowRotateRight, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import { LoadStatusEventProps } from 'src/app/models/LoadStatus';
+import { LoadStatusEventProps } from 'src/app/pages/pipeline/models/LoadStatus';
 import { constants } from 'src/app/utils/app.constants';
 
 @Component({
