@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { SearchBarService } from 'src/app/services/search-bar/search-bar.service';
 
 @Component({
   selector: 'app-expanding-search-bar',
@@ -8,12 +9,13 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 })
 export class ExpandingSearchBarComponent {
   @Input() classes?: string;
-  @Output() onChange = new EventEmitter<string>();
 
   faMagnifyingGlass = faMagnifyingGlass;
 
-  handleInputChange($event: Event) {
-    const searchText: string = ($event.target as HTMLInputElement).value;
-    this.onChange.emit(searchText);
+  constructor(private searchBarService: SearchBarService) {}
+
+  handleInputChange(event: any) {
+    const inputValue = event.target.value;
+    this.searchBarService.sendSearchInput(inputValue);
   }
 }

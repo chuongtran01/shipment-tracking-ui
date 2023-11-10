@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faArrowLeft, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Observable, Subscription, switchMap } from 'rxjs';
 import { ConnectionTypeResponse } from 'src/app/pages/connection/models/Connection';
 import { ConnectionService } from 'src/app/pages/connection/services/connection/connection.service';
 import { SearchBarService } from 'src/app/services/search-bar/search-bar.service';
@@ -34,16 +34,37 @@ export class SourceSelectionComponent {
   }
 
   ngOnInit(): void {
-    this.$subs = this.searchBarService
-      .receiveSearchInput()
-      .subscribe((data) => {
-        this.searchText = data;
-        if (data !== '') {
-          this.connectionService.getConnectionTypeByName(data).subscribe(connections => this.sources = connections);
-        } else {
-          this.connectionService.getAllConnectionTypes().subscribe(connections => this.sources = connections);
-        }
-      });
+    this.$subs.add(
+      this.searchBarService
+        .receiveSearchInput()
+        .pipe(
+          debounceTime(300),
+          distinctUntilChanged(),
+          switchMap((query) => {
+            this.searchText = query;
+            return this.fetchConnections(query);
+          })
+        )
+        .subscribe(this.handleConnectionTypeDataSubscription())
+    );
+  }
+
+  fetchConnections(query: string): Observable<any> {
+    this.searchText = query;
+    return query.length === 0 ?
+      this.connectionService.getAllConnectionTypes()
+      : this.connectionService.getConnectionTypeByName(query);
+  }
+
+  handleConnectionTypeDataSubscription() {
+    return {
+      next: (data: ConnectionTypeResponse[]) => {
+        this.sources = data;
+      },
+      error: (error: Error) => {
+        // TODO: Show error message
+      },
+    };
   }
 
   scrollCategory(categoryId: number) {

@@ -33,21 +33,12 @@ describe('LoadStatusEventsDropdownComponent', () => {
 
   });
 
-  it('should handle search change', () => {
-    const elements = fixture.nativeElement;
-    const searchInput = elements.querySelector('.expanding-search-input');
-    searchInput.value = 'test';
-    searchInput.dispatchEvent(new Event('change'));
-    fixture.detectChanges();
-    expect(component.searchValue).toBe('test');
-  });
-
   it('should handle skip all events', () => {
     spyOn(component, 'skipAllEvents');
     const skipAllButton = fixture.nativeElement.querySelector('app-button#skipAll');
     skipAllButton.click();
     fixture.detectChanges();
-    
+
     expect(component.skipAllEvents).toHaveBeenCalled();
   });
 
