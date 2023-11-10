@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 1rem 0.5rem 1.5rem;
+  padding: 0.5rem 2rem;
   gap: 10px;
   background-color: $white;
   height: 100%;
@@ -20,7 +20,6 @@
     gap: 20px;
 
     &-title {
-      font-weight: bold;
       font-weight: $font-semibold;
       font-size: 25px;
     }
@@ -45,6 +44,7 @@
     flex-direction: row;
     justify-content: flex-end;
     gap: 1em;
+    font-size: 13px;
 
     &-status {
       display: flex;
@@ -60,7 +60,6 @@
 
       &-context {
         font-weight: bold;
-        font-size: 0.7rem;
       }
     }
 

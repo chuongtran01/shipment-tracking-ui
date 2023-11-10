@@ -8,10 +8,17 @@ import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorResponseInterceptor } from './interceptors/error/error-response.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

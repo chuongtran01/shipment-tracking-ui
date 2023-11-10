@@ -56,22 +56,22 @@ describe('HeaderNavbarComponent', () => {
     expect(component).toBeTruthy();
 
     const bellElement = fixture.debugElement.query(
-      By.css('.pipeline-header-navbar-bell-component')
+      By.css('.header-navbar-bell-component')
     ).nativeElement;
     expect(bellElement).toBeTruthy();
 
     const userElement = fixture.debugElement.query(
-      By.css('.pipeline-header-navbar-name')
+      By.css('.header-navbar-name')
     ).nativeElement;
     expect(userElement).toBeTruthy();
 
     const teamSettingElement = fixture.debugElement.query(
-      By.css('.pipeline-header-navbar-team-settings')
+      By.css('.header-navbar-team-settings')
     ).nativeElement;
     expect(teamSettingElement).toBeTruthy();
 
     const teamElement = fixture.debugElement.query(
-      By.css('.pipeline-header-navbar-team')
+      By.css('.header-navbar-team')
     ).nativeElement;
     expect(teamElement).toBeTruthy();
   });
@@ -84,7 +84,7 @@ describe('HeaderNavbarComponent', () => {
     for (let i = 0; i < teamSettings.length; i++) {
       const teamSettingsText = fixture.debugElement.query(
         By.css(
-          `.pipeline-header-navbar-team-settings-dropdown-menu li:nth-child(${
+          `.header-navbar-team-settings-dropdown-menu li:nth-child(${
             i + 1
           }) div`
         )
@@ -101,7 +101,7 @@ describe('HeaderNavbarComponent', () => {
     for (let i = 0; i < teams.length; i++) {
       const teamSettingsText = fixture.debugElement.query(
         By.css(
-          `.pipeline-header-navbar-team-dropdown-menu li:nth-child(${
+          `.header-navbar-team-dropdown-menu li:nth-child(${
             i + 1
           }) div:nth-child(2)`
         )

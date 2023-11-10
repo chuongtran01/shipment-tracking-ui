@@ -1,6 +1,6 @@
 @import "variables";
 
-.pipeline-header-navbar {
+.header-navbar {
   &-container {
     display: flex;
     flex-direction: row;
@@ -11,6 +11,7 @@
     background-color: #ffffff;
     padding: 0.5rem 2.5em;
     height: 100%;
+    box-sizing: unset;
   }
 
   &-team {
@@ -135,11 +136,8 @@
 
           &:hover {
             border: 2px solid $green;
-
-            .pipeline-header-navbar-team-settings-icon {
-              color: $green;
-              transition: 0.2s;
-            }
+            color: $green;
+            transition: 0.2s;
           }
         }
       }

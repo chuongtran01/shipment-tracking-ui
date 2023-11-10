@@ -1,24 +1,24 @@
-<div class="pipeline-header-navbar-container">
-  <div class="pipeline-header-navbar-team-container">
-    <div class="pipeline-header-navbar-team">
-      <div class="pipeline-header-navbar-team-icon">T1</div>
-      <div class="pipeline-header-navbar-team-name">Team 1</div>
+<div class="header-navbar-container">
+  <div class="header-navbar-team-container">
+    <div class="header-navbar-team">
+      <div class="header-navbar-team-icon">T1</div>
+      <div class="header-navbar-team-name">Team 1</div>
       <div
-        class="pipeline-header-navbar-team-arrow"
+        class="header-navbar-team-arrow"
         (click)="handleTeamDropDown()"
       >
         >
       </div>
       <ng-container *ngIf="isTeamDropdownOpen">
-        <ul class="pipeline-header-navbar-team-dropdown-menu">
+        <ul class="header-navbar-team-dropdown-menu">
           <ng-container *ngFor="let team of teams">
             <li
-              [class.pipeline-header-navbar-team-selected]="
+              [class.header-navbar-team-selected]="
                 team.id == currentChoosenTeam
               "
             >
-              <div class="pipeline-header-navbar-team-selection">
-                <div class="pipeline-header-navbar-team-selection-icon">T1</div>
+              <div class="header-navbar-team-selection">
+                <div class="header-navbar-team-selection-icon">T1</div>
                 <div>{{ team.name }}</div>
               </div>
             </li>
@@ -26,17 +26,17 @@
         </ul>
       </ng-container>
     </div>
-    <div class="pipeline-header-navbar-team-settings">
-      <div class="pipeline-header-navbar-team-settings-icon-container">
+    <div class="header-navbar-team-settings">
+      <div class="header-navbar-team-settings-icon-container">
         <fa-icon
-          class="pipeline-header-navbar-team-settings-icon"
+          class="header-navbar-team-settings-icon"
           [icon]="faEllipsis"
           (click)="handleTeamSettingsDropDown()"
         ></fa-icon>
       </div>
 
       <ng-container *ngIf="isTeamDropdownSettingsOpen">
-        <ul class="pipeline-header-navbar-team-settings-dropdown-menu">
+        <ul class="header-navbar-team-settings-dropdown-menu">
           <li [routerLink]="['/settings/team/members']">
             <div>Team Settings</div>
           </li>
@@ -50,16 +50,16 @@
       </ng-container>
     </div>
   </div>
-  <div class="pipeline-header-navbar-bell-container">
-    <div class="pipeline-header-navbar-bell-component">
+  <div class="header-navbar-bell-container">
+    <div class="header-navbar-bell-component">
       <fa-icon [icon]="faBell"></fa-icon>
-      <div class="pipeline-header-navbar-bell-component-dot-container">
+      <div class="header-navbar-bell-component-dot-container">
         <fa-icon
-          class="pipeline-header-navbar-bell-component-dot"
+          class="header-navbar-bell-component-dot"
           [icon]="faCircle"
         ></fa-icon>
       </div>
     </div>
   </div>
-  <div class="pipeline-header-navbar-name">{{ name }}</div>
+  <div class="header-navbar-name">{{ name }}</div>
 </div>

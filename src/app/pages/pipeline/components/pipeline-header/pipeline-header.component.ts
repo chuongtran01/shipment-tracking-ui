@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import {
   faPlus,
-  faArrowUpWideShort,
   faRotateRight,
+  faFilter,
 } from '@fortawesome/free-solid-svg-icons';
 import { constants } from '../../../../utils/app.constants';
 
@@ -14,8 +14,8 @@ import { constants } from '../../../../utils/app.constants';
 export class PipelineHeaderComponent {
   protected readonly CONSTANTS = constants;
   faPlus = faPlus;
-  faArrowUpWideShort = faArrowUpWideShort;
   faRotateRight = faRotateRight;
+  faFilter = faFilter;
   @Output() openPopupEvent = new EventEmitter<boolean>();
 
   openPopup() {

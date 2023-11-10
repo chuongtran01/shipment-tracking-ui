@@ -14,6 +14,7 @@ import { ConfigurationTopbarComponent } from 'src/app/components/configuration-t
 import { ExpandingSearchBarComponent } from 'src/app/components/expanding-search-bar/expanding-search-bar.component';
 import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 import { HeaderNavbarComponent } from 'src/app/components/header-navbar/header-navbar.component';
+import { ToastModule } from 'primeng/toast';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -32,6 +33,7 @@ const MODULES_FOR_EXPORT = [
   ReactiveFormsModule,
   FormsModule,
   FontAwesomeModule,
+  ToastModule,
 ];
 
 @NgModule({

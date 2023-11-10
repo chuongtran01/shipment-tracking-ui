@@ -18,6 +18,11 @@
     gap: 10px;
 
     &-top {
+      height: 10rem;
+
+      &-navbar {
+        height: 2rem;
+      }
 
       &-body {
         background-color: $white;

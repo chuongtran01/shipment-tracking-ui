@@ -34,6 +34,7 @@
     align-items: center;
     gap: 4px;
     padding: 0 8px;
+    box-sizing: unset;
 
     &:hover {
       opacity: 0.8;

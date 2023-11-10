@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "variables";
 @import url("https://fonts.googleapis.com/css2?family=Hind&family=Merriweather+Sans&family=Poppins:wght@400;500;600&display=swap");
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+// * {
+//   box-sizing:unset;
+// }
 
 body {
   margin: 0;
@@ -99,4 +105,30 @@ code {
 .p-h-15 {
   padding-left: 15px !important;
   padding-right: 15px !important;
+}
+
+.p-toast {
+  width: 20rem;
+}
+
+
+.p-toast-message-success {
+  border-width: 0;
+}
+
+.p-toast-message-content {
+  background-color: $white !important;
+}
+
+.p-toast-icon-close {
+  color: $grey;
+}
+
+.p-toast-detail {
+  color: $grey-color-text;
+  font-size: 14px;
+}
+
+.p-toast-summary {
+  font-size: 18px;
 }

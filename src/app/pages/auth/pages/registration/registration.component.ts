@@ -4,6 +4,8 @@ import { AuthService } from '../../services/auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { confirmPasswordValidator } from '../../../../utils/form-validators';
 import { constants } from '../../../../utils/app.constants';
+import { ToastService } from 'src/app/services/toast/toast.service';
+import { ToastParam, ToastType } from 'src/app/models/Toast';
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +24,11 @@ export class RegistrationComponent {
   isSubmitted: boolean = false;
   isRunning: boolean = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toastService: ToastService
+  ) {}
 
   registrationFormGroup = new FormGroup(
     {
@@ -82,6 +88,24 @@ export class RegistrationComponent {
     return false;
   }
 
+  showToast(
+    severity: ToastType,
+    summary: string,
+    detail: string,
+    key: string,
+    navigate?: string
+  ) {
+    let toastParams: ToastParam = {
+      severity: severity,
+      summary: summary,
+      detail: detail,
+      key: key,
+      navigate: navigate,
+    };
+
+    this.toastService.sendToast(toastParams);
+  }
+
   handleRegistration() {
     this.isSubmitted = true;
     this.isRunning = true;
@@ -104,6 +128,13 @@ export class RegistrationComponent {
         next: () => {
           this.router.navigateByUrl('/auth/login').then();
           this.isRunning = false;
+          this.showToast(
+            ToastType.success,
+            'Successfully registered',
+            'You can now log in using the new created account',
+            'key-2',
+            '/auth/login'
+          );
         },
       });
   }
