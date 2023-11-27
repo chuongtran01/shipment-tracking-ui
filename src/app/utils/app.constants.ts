@@ -224,6 +224,14 @@ export const constants = {
     autoMapping: 'Auto mapping Disabled:',
     autoMappingDescription:
       'Enable Auto mapping to automatically map all Event Types in this pipeline',
+    navbar: {
+      importSchemas: 'Import Schemas',
+      previewSource: 'Preview Source',
+      newMapping: 'New Mapping',
+      clear: 'Clear',
+      delete: 'Delete',
+      reviewDeploy: 'Review & Deploy',
+    },
   },
   connection: {
     title: 'Connections',

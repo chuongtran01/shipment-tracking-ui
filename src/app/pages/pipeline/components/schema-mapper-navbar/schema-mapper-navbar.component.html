@@ -1,0 +1,25 @@
+<div class="schema-mapper-navbar">
+  <div class="schema-mapper-navbar-left">
+    <div class="schema-mapper-navbar-left-button-import">{{CONSTANTS.schemaMapper.navbar.importSchemas}}</div>
+    <div class="schema-mapper-navbar-left-button-preview">{{CONSTANTS.schemaMapper.navbar.previewSource}}</div>
+
+    <div class="schema-mapper-navbar-left-option">
+      <fa-icon class="schema-mapper-navbar-left-option-icon" [icon]="faPlus"></fa-icon>
+      <div>{{CONSTANTS.schemaMapper.navbar.newMapping}}</div>
+    </div>
+    <div  class="schema-mapper-navbar-left-option">
+      <fa-icon class="schema-mapper-navbar-left-option-icon" [icon]="faRotateRight"></fa-icon>
+      <div>{{CONSTANTS.schemaMapper.navbar.clear}}</div>
+    </div>
+    <div  class="schema-mapper-navbar-left-option">
+      <fa-icon class="schema-mapper-navbar-left-option-icon" [icon]="faTrashCan"></fa-icon>
+      <div>{{CONSTANTS.schemaMapper.navbar.delete}}</div>
+    </div>
+  </div>
+  <div class="schema-mapper-navbar-right">
+    <app-button classes="button-green font-13 p-v-10 p-h-15">
+      <fa-icon [icon]="faPlay"></fa-icon>
+      <div class="schema-mapper-navbar-right-text">{{CONSTANTS.schemaMapper.navbar.reviewDeploy}}</div>
+    </app-button>
+  </div>
+</div>

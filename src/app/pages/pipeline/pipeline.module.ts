@@ -25,6 +25,7 @@ import { SchemaMapperComponent } from './schema-mapper/schema-mapper.component';
 import { CreateTeamComponent } from 'src/app/pages/pipeline/components/create-team/create-team.component';
 import { PipelineDashboardInformationComponent } from 'src/app/pages/pipeline/components/pipeline-dashboard-information/pipeline-dashboard-information.component';
 import { PipelineDashboardNavbarComponent } from './components/pipeline-dashboard-navbar/pipeline-dashboard-navbar.component';
+import { SchemaMapperNavbarComponent } from './components/schema-mapper-navbar/schema-mapper-navbar.component';
 
 const PIPELINE_COMPONENTS = [
   PipelineHeaderComponent,
@@ -52,6 +53,7 @@ const PIPELINE_COMPONENTS = [
     LoadStatusComponent,
     FinalSettingsComponent,
     SchemaMapperComponent,
+    SchemaMapperNavbarComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
   providers: [PipelineService, JobService, ConnectionService],
