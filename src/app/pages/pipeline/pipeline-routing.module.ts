@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SchemaMapperComponent } from './schema-mapper/schema-mapper.component';
+import { SchemaMapperComponent } from './pages/schema-mapper/schema-mapper.component';
 import { PipelinePageComponent } from './pages/pipeline-page/pipeline-page.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { LoadStatusComponent } from './pages/load-status/load-status.component';
