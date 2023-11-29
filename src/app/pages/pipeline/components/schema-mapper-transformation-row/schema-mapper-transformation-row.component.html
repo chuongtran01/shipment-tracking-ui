@@ -1,0 +1,16 @@
+<div class="transformation-row">
+  <div class="checkbox">
+    <app-checkbox name="transformation-{{mapperId}}"></app-checkbox>
+  </div>
+  <div class="transformation">
+    <fa-icon [icon]="faGripVertical"></fa-icon>
+    {{transformationName}}
+  </div>
+  <div class="status {{status}}">
+    {{ status.charAt(0).toUpperCase() + status.slice(1)}}
+  </div>
+  <div class="date"> {{date}} </div>
+  <div class="ellipsis">
+    <fa-icon [icon]="faEllipsis"></fa-icon>
+  </div>
+</div>
