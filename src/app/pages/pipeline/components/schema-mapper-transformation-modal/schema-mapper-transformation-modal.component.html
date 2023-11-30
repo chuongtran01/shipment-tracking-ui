@@ -1,0 +1,41 @@
+<div class="schema-mapper-transformation-modal-overlay" *ngIf="showModal">
+  <div class="schema-mapper-transformation-modal-content">
+    <div class="schema-mapper-transformation-modal-navbar font-15 text-medium">
+      <app-button classes="button-green p-v-5 p-h-10"
+        >{{CONSTANTS.schemaMapper.modal.addTransformation}}</app-button
+      >
+      <div class="schema-mapper-transformation-modal-navbar-option-filter">
+        {{CONSTANTS.schemaMapper.modal.filterColumn}}
+      </div>
+      <div class="schema-mapper-transformation-modal-navbar-option">
+        <fa-icon
+          class="schema-mapper-transformation-modal-navbar-option-icon"
+          [icon]="faRotateRight"
+        ></fa-icon>
+        <div>{{CONSTANTS.schemaMapper.modal.clear}}</div>
+      </div>
+      <div class="schema-mapper-transformation-modal-navbar-option">
+        <fa-icon
+          class="schema-mapper-transformation-modal-navbar-option-icon"
+          [icon]="faTrashCan"
+        ></fa-icon>
+        <div>{{CONSTANTS.schemaMapper.modal.delete}}</div>
+      </div>
+    </div>
+    <div class="schema-mapper-transformation-modal-body">
+      <div class="schema-mapper-transformation-modal-body-header font-15 text-medium">
+        <div>&nbsp;</div>
+        <div>{{CONSTANTS.schemaMapper.modal.transformation}}</div>
+        <div>{{CONSTANTS.schemaMapper.modal.status}}</div>
+        <div>{{CONSTANTS.schemaMapper.modal.dateCreated}}</div>
+        <div>&nbsp;</div>
+      </div>
+      <div class="schema-mapper-transformation-modal-body-content"></div>
+      <div class="schema-mapper-transformation-modal-body-footer">
+        <div class="schema-mapper-transformation-modal-body-footer-button">
+          <app-button classes="button-green p-h-5 font-16 text-medium">{{CONSTANTS.schemaMapper.modal.save}}</app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

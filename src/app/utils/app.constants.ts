@@ -232,6 +232,16 @@ export const constants = {
       delete: 'Delete',
       reviewDeploy: 'Review & Deploy',
     },
+    modal: {
+      addTransformation: 'Add Transformation',
+      filterColumn: 'Filter Column',
+      clear: 'Clear',
+      delete: 'Delete',
+      save: 'Save',
+      transformation: 'Transformation',
+      status: 'Status',
+      dateCreated: 'Date Created',
+    },
   },
   connection: {
     title: 'Connections',

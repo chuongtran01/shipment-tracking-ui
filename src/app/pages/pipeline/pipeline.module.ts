@@ -28,6 +28,7 @@ import { PipelineDashboardNavbarComponent } from './components/pipeline-dashboar
 import { SchemaMapperNavbarComponent } from './components/schema-mapper-navbar/schema-mapper-navbar.component';
 import { SchemaMapperTransformationRowComponent } from './components/schema-mapper-transformation-row/schema-mapper-transformation-row.component';
 import { MappingService } from './services/mapping/mapping.service';
+import { SchemaMapperTransformationModalComponent } from './components/schema-mapper-transformation-modal/schema-mapper-transformation-modal.component';
 
 const PIPELINE_COMPONENTS = [
   PipelineHeaderComponent,
@@ -43,6 +44,8 @@ const PIPELINE_COMPONENTS = [
   CreateTeamComponent,
   PipelineDashboardInformationComponent,
   PipelineDashboardNavbarComponent,
+  SchemaMapperTransformationModalComponent,
+  SchemaMapperNavbarComponent,
 ];
 
 @NgModule({
@@ -59,11 +62,6 @@ const PIPELINE_COMPONENTS = [
     SchemaMapperTransformationRowComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
-  providers: [
-    PipelineService,
-    JobService,
-    ConnectionService,
-    MappingService
-  ],
+  providers: [PipelineService, JobService, ConnectionService, MappingService],
 })
 export class PipelineModule {}
