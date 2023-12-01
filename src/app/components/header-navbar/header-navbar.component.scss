@@ -92,6 +92,7 @@
       font-size: 20px;
       transform: rotate(90deg);
       cursor: pointer;
+      user-select: none;
 
       &:hover {
         color: $green;
@@ -123,6 +124,7 @@
       &-icon {
         font-size: 15px;
         cursor: pointer;
+        user-select: none;
 
         &-container {
           display: flex;
@@ -183,6 +185,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      user-select: none;
 
       &:hover {
         cursor: pointer;

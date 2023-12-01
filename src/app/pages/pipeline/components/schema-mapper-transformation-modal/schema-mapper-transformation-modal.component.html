@@ -1,6 +1,6 @@
 <div class="schema-mapper-transformation-modal-overlay" *ngIf="showModal">
   <div class="schema-mapper-transformation-modal-content">
-    <div class="schema-mapper-transformation-modal-navbar font-15 text-medium">
+    <div class="schema-mapper-transformation-modal-navbar font-14 text-medium">
       <div
         class="schema-mapper-transformation-modal-navbar-option-add-transformation"
       >
@@ -31,7 +31,7 @@
     </div>
     <div class="schema-mapper-transformation-modal-body">
       <div
-        class="schema-mapper-transformation-modal-body-header font-15 text-medium"
+        class="schema-mapper-transformation-modal-body-header font-14 text-medium"
       >
         <div>&nbsp;</div>
         <div>{{ CONSTANTS.schemaMapper.modal.transformation }}</div>
@@ -39,10 +39,25 @@
         <div>{{ CONSTANTS.schemaMapper.modal.dateCreated }}</div>
         <div>&nbsp;</div>
       </div>
-      <div class="schema-mapper-transformation-modal-body-content"></div>
+      <div
+        cdkDropList
+        class="schema-mapper-transformation-modal-body-content"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let transformation of transformations; let i = index">
+          <div cdkDrag>
+            <app-schema-mapper-transformation-row
+              [mapperId]="transformation.mapperId"
+              [transformationName]="transformation.transformationName"
+              [status]="transformation.status"
+              [date]="transformation.date"
+            ></app-schema-mapper-transformation-row>
+          </div>
+        </div>
+      </div>
       <div class="schema-mapper-transformation-modal-body-footer">
         <div class="schema-mapper-transformation-modal-body-footer-button">
-          <app-button classes="button-green p-h-5 font-16 text-medium"
+          <app-button classes="button-green p-h-5 font-16 text-medium" (click)="handleSave()"
             >{{ CONSTANTS.schemaMapper.modal.save }}
           </app-button>
         </div>

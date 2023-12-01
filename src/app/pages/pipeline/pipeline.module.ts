@@ -29,6 +29,8 @@ import { SchemaMapperNavbarComponent } from './components/schema-mapper-navbar/s
 import { SchemaMapperTransformationRowComponent } from './components/schema-mapper-transformation-row/schema-mapper-transformation-row.component';
 import { MappingService } from './services/mapping/mapping.service';
 import { SchemaMapperTransformationModalComponent } from './components/schema-mapper-transformation-modal/schema-mapper-transformation-modal.component';
+import { ButtonComponent } from 'src/app/components/button/button.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const PIPELINE_COMPONENTS = [
   PipelineHeaderComponent,
@@ -44,8 +46,10 @@ const PIPELINE_COMPONENTS = [
   CreateTeamComponent,
   PipelineDashboardInformationComponent,
   PipelineDashboardNavbarComponent,
-  SchemaMapperTransformationModalComponent,
   SchemaMapperNavbarComponent,
+  SchemaMapperNavbarComponent,
+  SchemaMapperTransformationModalComponent,
+  SchemaMapperTransformationRowComponent,
 ];
 
 @NgModule({
@@ -58,10 +62,9 @@ const PIPELINE_COMPONENTS = [
     LoadStatusComponent,
     FinalSettingsComponent,
     SchemaMapperComponent,
-    SchemaMapperNavbarComponent,
-    SchemaMapperTransformationRowComponent,
   ],
-  imports: [SharedModule, PipelineRoutingModule, CommonModule],
+
+  imports: [SharedModule, PipelineRoutingModule, CommonModule, DragDropModule],
   providers: [PipelineService, JobService, ConnectionService, MappingService],
 })
 export class PipelineModule {}
