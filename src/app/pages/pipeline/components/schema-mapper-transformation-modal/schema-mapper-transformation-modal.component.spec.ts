@@ -5,9 +5,9 @@ import { constants } from 'src/app/utils/app.constants';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { By } from '@angular/platform-browser';
-import { DropdownService } from 'src/app/services/dropdown/search-bar.service';
 import { DropdownComponent } from 'src/app/components/dropdown/dropdown.component';
 import { of } from 'rxjs';
+import { DropdownService } from 'src/app/services/dropdown/dropdown.service';
 
 describe('SchemaMapperTransformationModalComponent', () => {
   let component: SchemaMapperTransformationModalComponent;

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropdownOptions } from 'src/app/models/Dropdown';
-import { DropdownService } from 'src/app/services/dropdown/search-bar.service';
+import { DropdownService } from 'src/app/services/dropdown/dropdown.service';
 
 import { DropdownComponent } from './dropdown.component';
 

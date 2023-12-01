@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { faRotateRight, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { filter, Subscription } from 'rxjs';
 import { DropdownOptions } from 'src/app/models/Dropdown';
-import { DropdownService } from 'src/app/services/dropdown/search-bar.service';
+import { DropdownService } from 'src/app/services/dropdown/dropdown.service';
 import { constants } from 'src/app/utils/app.constants';
 
 @Component({

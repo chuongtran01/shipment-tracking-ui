@@ -15,6 +15,7 @@ import { ExpandingSearchBarComponent } from 'src/app/components/expanding-search
 import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sidebar/general-left-sidebar.component';
 import { HeaderNavbarComponent } from 'src/app/components/header-navbar/header-navbar.component';
 import { ToastModule } from 'primeng/toast';
+import { DropdownComponent } from 'src/app/components/dropdown/dropdown.component';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -27,6 +28,7 @@ const COMPONENTS_FOR_EXPORT = [
   RadioButtonComponent,
   SearchBarComponent,
   ToggleSwitchComponent,
+  DropdownComponent,
 ];
 
 const MODULES_FOR_EXPORT = [
