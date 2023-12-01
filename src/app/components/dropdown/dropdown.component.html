@@ -1,0 +1,17 @@
+<div [class]="'dropdown ' + class">
+  <div class="dropdown-select" (click)="isOpen = !isOpen" >
+    <div class="dropdown-selected">{{ placeholder }}</div>
+    <div class="dropdown-arrow-icon">></div>
+  </div>
+    <ul *ngIf="isOpen" class="dropdown-menu">
+      <ng-container *ngFor="let option of dropdownOptions">
+        <li
+          key="{option.id}"
+          [class.dropdown-active]="option.title === selectedOption"
+          (click)="handleOptionSelect(option.title)"
+        >
+          {{ option.title }}
+        </li>
+      </ng-container>
+    </ul>
+</div>
