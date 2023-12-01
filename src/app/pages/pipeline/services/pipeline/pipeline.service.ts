@@ -8,7 +8,7 @@ import {
 import { environment } from '../../../../../environments/environment';
 
 @Injectable({
-  providedIn: null, // change this to only on pipeline folder and not on root
+  providedIn: null,
 })
 export class PipelineService {
   path = '/metadata/pipeline';

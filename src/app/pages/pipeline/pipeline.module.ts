@@ -27,6 +27,7 @@ import { PipelineDashboardInformationComponent } from 'src/app/pages/pipeline/co
 import { PipelineDashboardNavbarComponent } from './components/pipeline-dashboard-navbar/pipeline-dashboard-navbar.component';
 import { SchemaMapperNavbarComponent } from './components/schema-mapper-navbar/schema-mapper-navbar.component';
 import { SchemaMapperTransformationRowComponent } from './components/schema-mapper-transformation-row/schema-mapper-transformation-row.component';
+import { MappingService } from './services/mapping/mapping.service';
 
 const PIPELINE_COMPONENTS = [
   PipelineHeaderComponent,
@@ -58,6 +59,11 @@ const PIPELINE_COMPONENTS = [
     SchemaMapperTransformationRowComponent,
   ],
   imports: [SharedModule, PipelineRoutingModule, CommonModule],
-  providers: [PipelineService, JobService, ConnectionService],
+  providers: [
+    PipelineService,
+    JobService,
+    ConnectionService,
+    MappingService
+  ],
 })
 export class PipelineModule {}
