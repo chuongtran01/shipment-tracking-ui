@@ -1,17 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faEllipsis, faGripVertical } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-schema-mapper-transformation-row',
   templateUrl: './schema-mapper-transformation-row.component.html',
-  styleUrls: ['./schema-mapper-transformation-row.component.scss']
+  styleUrls: ['./schema-mapper-transformation-row.component.scss'],
 })
 export class SchemaMapperTransformationRowComponent {
   faEllipsis = faEllipsis;
   faGripVertical = faGripVertical;
 
-  @Input({required: true}) mapperId: string = '';
+  @Input({ required: true }) mapperId: string = '';
   @Input() transformationName: string = '';
   @Input() status: 'active' | 'queued' = 'active';
   @Input() date: string = '';
+  @Output() onChange: EventEmitter<string> = new EventEmitter();
+
+  checkboxChanged() {
+    this.onChange.emit(this.mapperId);
+  }
 }

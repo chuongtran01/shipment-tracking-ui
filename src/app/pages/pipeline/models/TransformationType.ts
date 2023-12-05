@@ -1,5 +1,6 @@
 export interface TransformationType {
-  id: string;
-  name: string;
-  description: number;
+  mapperId: string;
+  transformationName: string;
+  status: 'queued' | 'active';
+  date: string;
 }

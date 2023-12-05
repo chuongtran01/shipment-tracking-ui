@@ -1,6 +1,6 @@
 <div class="schema-mapper-transformation-modal-overlay" *ngIf="showModal">
   <div class="schema-mapper-transformation-modal-content">
-    <div class="schema-mapper-transformation-modal-navbar font-14 text-medium">
+    <div class="schema-mapper-transformation-modal-navbar font-15 text-medium">
       <div
         class="schema-mapper-transformation-modal-navbar-option-add-transformation"
       >
@@ -14,14 +14,20 @@
       <div class="schema-mapper-transformation-modal-navbar-option-filter">
         {{ CONSTANTS.schemaMapper.modal.filterColumn }}
       </div>
-      <div class="schema-mapper-transformation-modal-navbar-option">
+      <div
+        class="schema-mapper-transformation-modal-navbar-option"
+        (click)="handleClear()"
+      >
         <fa-icon
           class="schema-mapper-transformation-modal-navbar-option-icon"
           [icon]="faRotateRight"
         ></fa-icon>
         <div>{{ CONSTANTS.schemaMapper.modal.clear }}</div>
       </div>
-      <div class="schema-mapper-transformation-modal-navbar-option">
+      <div
+        class="schema-mapper-transformation-modal-navbar-option"
+        (click)="handleDelete()"
+      >
         <fa-icon
           class="schema-mapper-transformation-modal-navbar-option-icon"
           [icon]="faTrashCan"
@@ -31,7 +37,7 @@
     </div>
     <div class="schema-mapper-transformation-modal-body">
       <div
-        class="schema-mapper-transformation-modal-body-header font-14 text-medium"
+        class="schema-mapper-transformation-modal-body-header font-15 text-medium"
       >
         <div>&nbsp;</div>
         <div>{{ CONSTANTS.schemaMapper.modal.transformation }}</div>
@@ -44,20 +50,21 @@
         class="schema-mapper-transformation-modal-body-content"
         (cdkDropListDropped)="drop($event)"
       >
-        <div *ngFor="let transformation of transformations; let i = index">
-          <div cdkDrag>
-            <app-schema-mapper-transformation-row
-              [mapperId]="transformation.mapperId"
-              [transformationName]="transformation.transformationName"
-              [status]="transformation.status"
-              [date]="transformation.date"
-            ></app-schema-mapper-transformation-row>
-          </div>
-        </div>
+        <ng-container *ngFor="let transformation of transformations">
+          <app-schema-mapper-transformation-row
+            [mapperId]="transformation.mapperId"
+            [transformationName]="transformation.transformationName"
+            [status]="transformation.status"
+            [date]="transformation.date"
+            (onChange)="checkboxOnChanged($event)"
+          ></app-schema-mapper-transformation-row>
+        </ng-container>
       </div>
       <div class="schema-mapper-transformation-modal-body-footer">
         <div class="schema-mapper-transformation-modal-body-footer-button">
-          <app-button classes="button-green p-h-5 font-16 text-medium" (click)="handleSave()"
+          <app-button
+            classes="button-green p-h-5 font-16 text-medium"
+            (click)="handleSave()"
             >{{ CONSTANTS.schemaMapper.modal.save }}
           </app-button>
         </div>

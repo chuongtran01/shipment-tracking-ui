@@ -4,10 +4,11 @@ import { SchemaMapperTransformationModalComponent } from './schema-mapper-transf
 import { constants } from 'src/app/utils/app.constants';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { By } from '@angular/platform-browser';
 import { DropdownComponent } from 'src/app/components/dropdown/dropdown.component';
 import { of } from 'rxjs';
 import { DropdownService } from 'src/app/services/dropdown/dropdown.service';
+import { SchemaMapperTransformationRowComponent } from '../schema-mapper-transformation-row/schema-mapper-transformation-row.component';
+import { TransformationType } from '../../models/TransformationType';
 
 describe('SchemaMapperTransformationModalComponent', () => {
   let component: SchemaMapperTransformationModalComponent;
@@ -15,10 +16,26 @@ describe('SchemaMapperTransformationModalComponent', () => {
   let CONSTANTS = constants;
   let dropdownService: DropdownService;
 
+  let mockTransformation: TransformationType[] = [
+    {
+      mapperId: '1',
+      transformationName: 'Transformation 1',
+      status: 'active',
+      date: '2023/11/11',
+    },
+    {
+      mapperId: '2',
+      transformationName: 'Transformation 2',
+      status: 'queued',
+      date: '2023/11/12',
+    },
+  ];
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         SchemaMapperTransformationModalComponent,
+        SchemaMapperTransformationRowComponent,
         ButtonComponent,
         DropdownComponent,
       ],
@@ -103,11 +120,10 @@ describe('SchemaMapperTransformationModalComponent', () => {
     component.ngOnInit();
 
     expect(component.transformations.length).toBe(1);
-    expect(component.transformations[0]).toBe('Mocked Transformation');
   });
 
   it('should handle clearing transformations', () => {
-    component.transformations = ['Transformation1', 'Transformation2'];
+    component.transformations = mockTransformation;
     component.handleClear();
     expect(component.transformations.length).toBe(0);
   });

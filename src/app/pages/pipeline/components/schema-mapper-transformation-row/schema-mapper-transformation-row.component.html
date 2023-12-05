@@ -1,6 +1,6 @@
-<div class="transformation-row">
+<div cdkDrag class="transformation-row">
   <div class="checkbox">
-    <app-checkbox name="transformation-{{mapperId}}"></app-checkbox>
+    <app-checkbox name="transformation-{{mapperId}}" (onChange)="checkboxChanged()"></app-checkbox>
   </div>
   <div class="transformation">
     <fa-icon [icon]="faGripVertical"></fa-icon>
@@ -11,6 +11,6 @@
   </div>
   <div class="date"> {{date}} </div>
   <div class="ellipsis">
-    <fa-icon [icon]="faEllipsis"></fa-icon>
+    <fa-icon [icon]="faEllipsis" cdkDragHandle></fa-icon>
   </div>
 </div>

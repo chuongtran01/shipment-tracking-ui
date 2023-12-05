@@ -1,24 +1,11 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { faRotateRight, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { filter, Subscription } from 'rxjs';
 import { DropdownOptions } from 'src/app/models/Dropdown';
 import { DropdownService } from 'src/app/services/dropdown/dropdown.service';
 import { constants } from 'src/app/utils/app.constants';
-import {
-  CdkDragDrop,
-  CdkDropList,
-  CdkDrag,
-  moveItemInArray,
-  CdkDragEnter,
-  CdkDragMove,
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TransformationType } from '../../models/TransformationType';
 
 @Component({
   selector: 'app-schema-mapper-transformation-modal',
@@ -33,14 +20,7 @@ export class SchemaMapperTransformationModalComponent
   faRotateRight = faRotateRight;
   faTrashCan = faTrashCan;
   CONSTANTS = constants;
-
-  @ViewChild('dropListContainer') dropListContainer?: ElementRef;
-  dropListReceiverElement?: HTMLElement;
-
-  dragDropInfo?: {
-    dragIndex: number;
-    dropIndex: number;
-  };
+  transformationSelectedSet = new Set<string>();
 
   // TODO: Modify options to contain proper transformation options
   options: DropdownOptions[] = [
@@ -58,7 +38,7 @@ export class SchemaMapperTransformationModalComponent
     },
   ];
 
-  transformations: any = [
+  transformations: TransformationType[] = [
     {
       mapperId: '1',
       transformationName: 'Transformation 1',
@@ -89,7 +69,7 @@ export class SchemaMapperTransformationModalComponent
         .subscribe({
           next: (data) => {
             this.transformations.push({
-              mapperId: this.transformations.length.toString(),
+              mapperId: Math.floor(Math.random() * 1000000).toString(),
               transformationName: data,
               status: 'queued',
               date: '2023/11/12',
@@ -107,12 +87,32 @@ export class SchemaMapperTransformationModalComponent
     );
   }
 
+  checkboxOnChanged(mapperId: string) {
+    if (this.transformationSelectedSet.has(mapperId)) {
+      this.transformationSelectedSet.delete(mapperId);
+    } else {
+      this.transformationSelectedSet.add(mapperId);
+    }
+    console.log(this.transformationSelectedSet);
+  }
+
   //TODO: Modify this function to handle DELETE transformation
-  handleDelete(deletedOption: string) {}
+  handleDelete() {
+    const transformationsToDelete = Array.from(this.transformationSelectedSet);
+
+    this.transformations = this.transformations.filter(
+      (transformation: any) =>
+        !transformationsToDelete.includes(transformation.mapperId)
+    );
+
+    // Clear the selected set after deletion
+    this.transformationSelectedSet.clear();
+  }
 
   //TODO: Modify this function to handle CLEAR all transformations
   handleClear() {
     this.transformations.length = 0;
+    this.transformationSelectedSet.clear();
   }
 
   //TODO: Modify this function to handle SAVE transformations
