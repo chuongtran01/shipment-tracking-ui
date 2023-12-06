@@ -16,6 +16,7 @@ import { GeneralLeftSidebarComponent } from 'src/app/components/general-left-sid
 import { HeaderNavbarComponent } from 'src/app/components/header-navbar/header-navbar.component';
 import { ToastModule } from 'primeng/toast';
 import { DropdownComponent } from 'src/app/components/dropdown/dropdown.component';
+import { DialogModule } from '@angular/cdk/dialog';
 
 const COMPONENTS_FOR_EXPORT = [
   ButtonComponent,
@@ -36,6 +37,7 @@ const MODULES_FOR_EXPORT = [
   FormsModule,
   FontAwesomeModule,
   ToastModule,
+  DialogModule,
 ];
 
 @NgModule({

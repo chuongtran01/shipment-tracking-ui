@@ -29,7 +29,6 @@ import { SchemaMapperNavbarComponent } from './components/schema-mapper-navbar/s
 import { SchemaMapperTransformationRowComponent } from './components/schema-mapper-transformation-row/schema-mapper-transformation-row.component';
 import { MappingService } from './services/mapping/mapping.service';
 import { SchemaMapperTransformationModalComponent } from './components/schema-mapper-transformation-modal/schema-mapper-transformation-modal.component';
-import { ButtonComponent } from 'src/app/components/button/button.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const PIPELINE_COMPONENTS = [
