@@ -16,9 +16,7 @@ export class PipelineService {
   constructor(private http: HttpClient) {}
 
   searchByName(teamId: string, pipelineName: string): Observable<Pipeline[]> {
-    const params = new HttpParams()
-      .set('name', pipelineName)
-      .set('teamId', teamId);
+    const params = new HttpParams().set('name', pipelineName);
 
     return this.http.get<Pipeline[]>(
       environment.apiUrl + this.path + `/search`,
@@ -29,13 +27,12 @@ export class PipelineService {
   }
 
   fetchAll(teamId: string): Observable<Pipeline[]> {
-    return this.http.get<Pipeline[]>(
-      environment.apiUrl + this.path + `/all/${teamId}`
-    );
+    return this.http.get<Pipeline[]>(environment.apiUrl + this.path + `/all`);
   }
 
   fetchById(pipelineId: string, teamId: string): Observable<Pipeline> {
-    const params = new HttpParams().set('id', pipelineId).set('teamId', teamId);
+    const params = new HttpParams().set('id', pipelineId);
+
     return this.http.get<Pipeline>(environment.apiUrl + this.path, { params });
   }
 

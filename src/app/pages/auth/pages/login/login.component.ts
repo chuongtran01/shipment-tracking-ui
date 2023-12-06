@@ -50,6 +50,7 @@ export class LoginComponent {
           this.isRunning = false;
           this.authService.setAccessToken(response.accessToken);
           this.authService.setRefreshToken(response.refreshToken);
+          this.authService.setOrganizationId('101'); //TODO: Modify this line to organizationId
           this.router.navigateByUrl('/pipeline');
         },
         error: (err) => {

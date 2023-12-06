@@ -1,42 +1,71 @@
-import {Injectable} from '@angular/core';
-import {StorageService} from "../../../../services/storage/storage.service";
-import {HttpClient} from "@angular/common/http";
-import {LoginRequest, LoginResponse, RegistrationRequest} from "../../models/Auth";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { HttpClient } from '@angular/common/http';
+import {
+  LoginRequest,
+  LoginResponse,
+  RegistrationRequest,
+} from '../../models/Auth';
+import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(
+    private storageService: StorageService,
+    private http: HttpClient
+  ) {}
 
-  constructor(private storageService: StorageService, private http: HttpClient) {}
-
-  setAccessToken (token: string) {
-    return this.storageService.setData("access-token", token);
+  setAccessToken(token: string) {
+    return this.storageService.setData('access-token', token);
   }
 
-  getAccessToken (): string | null {
-    return this.storageService.getData("access-token");
+  getAccessToken(): string | null {
+    return this.storageService.getData('access-token');
   }
 
-  setRefreshToken (token: string) {
-    return this.storageService.setData("refresh-token", token);
+  setTeamId(teamId: string) {
+    return this.storageService.setData('team-id', teamId);
   }
 
-  getRefreshToken (): string | null {
-    return this.storageService.getData("refresh-token");
+  getTeamId(): string | null {
+    // return this.storageService.getData("team-id"); // TODO: Remove this comment
+    return '1';
   }
 
-  register (userRegistrationInfo: RegistrationRequest): Observable<object> {
-    return this.http.post(environment.apiUrl + "/auth/register", userRegistrationInfo);
+  setOrganizationId(teamId: string) {
+    return this.storageService.setData('organization-id', teamId);
   }
 
-  login (userLoginInfo: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(environment.apiUrl + "/auth/token", userLoginInfo);
+  getOrganizationId(): string | null {
+    return this.storageService.getData('organization-id');
   }
 
-  logout (): Observable<object> {
-    return this.http.post(environment.apiUrl + "/auth/logout", null);
+  setRefreshToken(token: string) {
+    return this.storageService.setData('refresh-token', token);
+  }
+
+  getRefreshToken(): string | null {
+    return this.storageService.getData('refresh-token');
+  }
+
+  register(userRegistrationInfo: RegistrationRequest): Observable<object> {
+    return this.http.post(
+      environment.apiUrl + '/auth/register',
+      userRegistrationInfo
+    );
+  }
+
+  login(userLoginInfo: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
+      environment.apiUrl + '/auth/token',
+      userLoginInfo
+    );
+  }
+
+  logout(): Observable<object> {
+    return this.http.post(environment.apiUrl + '/auth/logout', null);
   }
 }

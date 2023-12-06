@@ -17,10 +17,15 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const accessToken: string | null = this.authService.getAccessToken();
+    const teamId: string | null = this.authService.getTeamId();
+    const organizationId: string | null = this.authService.getOrganizationId();
 
-    if (accessToken) {
+    if (accessToken && teamId && organizationId) {
       const cloned = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${accessToken}`),
+        headers: request.headers
+          .set('Authorization', `Bearer ${accessToken}`)
+          .set('X-team-id', teamId)
+          .set('X-organization-id', organizationId),
       });
       return next.handle(cloned);
     }
