@@ -45,9 +45,7 @@ export class ConfigureJobComponent implements OnInit {
       this.selectType = data['selectType'];
     });
 
-    // TODO: Change team id to the logged in user's team id
-    const teamId = 1;
-    this.connectionService.getAllConnections(teamId).subscribe(data => {
+    this.connectionService.getAllConnections().subscribe(data => {
       this.connections = data
     });
   }

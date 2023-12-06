@@ -33,9 +33,7 @@ export class ConnectionPageComponent {
   filterConnections() {}
 
   refreshConnections() {
-    // TODO: Change team id to the logged in user's team id
-    const teamId = 1;
-    this.connectionService.getAllConnections(teamId).subscribe(data => this.connections = data);
+    this.connectionService.getAllConnections().subscribe(data => this.connections = data);
   }
 
   getConnectionImage(connectionTypeName: string) {

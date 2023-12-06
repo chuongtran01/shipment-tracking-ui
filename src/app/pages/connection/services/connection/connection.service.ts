@@ -11,8 +11,8 @@ export class ConnectionService {
 
   constructor(private http: HttpClient) {}
 
-  getAllConnections(teamId: number | string): Observable<ConnectionResponse[]> {
-    return this.http.get<ConnectionResponse[]>(environment.apiUrl + "/metadata/connections/all?teamId=" + teamId);
+  getAllConnections(): Observable<ConnectionResponse[]> {
+    return this.http.get<ConnectionResponse[]>(environment.apiUrl + "/metadata/connections/all");
   }
 
   getAllConnectionTypes(): Observable<ConnectionTypeResponse[]> {

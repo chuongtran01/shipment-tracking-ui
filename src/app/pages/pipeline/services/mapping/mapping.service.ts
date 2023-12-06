@@ -14,20 +14,16 @@ export class MappingService {
 
   constructor(private http: HttpClient) { }
 
-  getAllMappingsByJob(jobId: string, teamId: string): Observable<Mapping[]> {
-    const params = new HttpParams()
-      .set('jobId', jobId)
-      .set('teamId', teamId);
+  getAllMappingsByJob(jobId: string): Observable<Mapping[]> {
+    const params = new HttpParams().set('jobId', jobId);
 
     return this.http.get<Mapping[]>(
       environment.apiUrl + this.pathMapping + `/allByJob`, { params }
     );
   }
 
-  getMappingById(id: string, teamId: string): Observable<Mapping> {
-    const params = new HttpParams()
-      .set('id', id)
-      .set('teamId', teamId);
+  getMappingById(id: string): Observable<Mapping> {
+    const params = new HttpParams().set('id', id);
 
     return this.http.get<Mapping>(
       environment.apiUrl + this.pathMapping, { params }
@@ -48,7 +44,7 @@ export class MappingService {
 
   getTransformationTypeById(id: string): Observable<TransformationType> {
     const params = new HttpParams().set('id', id);
-    
+
     return this.http.get<TransformationType>(
       environment.apiUrl + this.pathTransformation, { params }
     );
