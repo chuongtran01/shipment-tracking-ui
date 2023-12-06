@@ -21,6 +21,7 @@ describe('LoginComponent', () => {
     login: jasmine.createSpy('login'),
     setAccessToken: jasmine.createSpy('setAccessToken'),
     setRefreshToken: jasmine.createSpy('setRefreshToken'),
+    setOrganizationId: jasmine.createSpy('setOrganizationId'),
   };
 
   AuthServiceStub.login
@@ -35,7 +36,7 @@ describe('LoginComponent', () => {
         lastName: '',
         username: '',
         email: '',
-        organizationId: '',
+        organizationId: '101',
         accessToken: 'sample-access-token',
         refreshToken: 'sample-refresh-token',
       })
@@ -233,6 +234,7 @@ describe('LoginComponent', () => {
       expect(authService.setRefreshToken).toHaveBeenCalledOnceWith(
         'sample-refresh-token'
       );
+      expect(authService.setOrganizationId).toHaveBeenCalledOnceWith('101');
       expect(router.navigateByUrl).toHaveBeenCalledOnceWith('/pipeline');
     });
 
