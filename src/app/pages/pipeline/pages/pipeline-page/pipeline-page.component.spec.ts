@@ -14,14 +14,20 @@ import { CreatePipelineComponent } from 'src/app/pages/pipeline/components/creat
 import { Pipeline } from 'src/app/pages/pipeline/models/Pipeline';
 import { PipelineService } from 'src/app/pages/pipeline/services/pipeline/pipeline.service';
 import { CreateTeamComponent } from 'src/app/pages/pipeline/components/create-team/create-team.component';
+import { Dialog } from '@angular/cdk/dialog';
 
 describe('PipelinePageComponent', () => {
   let component: PipelinePageComponent;
   let fixture: ComponentFixture<PipelinePageComponent>;
   let searchBarService: SearchBarService;
   let pipelineService: PipelineService;
+  let dialog: Dialog;
   const testData = 'Test Search Data';
   let CONSTANTS: any;
+  let dialogSpy: jasmine.SpyObj<Dialog> = jasmine.createSpyObj('Dialog', [
+    'open',
+    'closed',
+  ]);
 
   let mockPipelines: Pipeline[] = [
     {
@@ -54,7 +60,14 @@ describe('PipelinePageComponent', () => {
         CreateTeamComponent,
       ],
       imports: [SharedModule, RouterTestingModule],
-      providers: [SearchBarService, PipelineService],
+      providers: [
+        SearchBarService,
+        PipelineService,
+        {
+          provide: Dialog,
+          useValue: dialogSpy,
+        },
+      ],
     });
     fixture = TestBed.createComponent(PipelinePageComponent);
     component = fixture.componentInstance;
@@ -99,7 +112,6 @@ describe('PipelinePageComponent', () => {
 
   it('should handle search input and fetch pipelines', () => {
     const searchInput = 'TestQuery';
-    const currentTeam = '1';
 
     spyOn(searchBarService, 'receiveSearchInput').and.returnValue(
       of(searchInput)
@@ -111,17 +123,13 @@ describe('PipelinePageComponent', () => {
     fixture.detectChanges();
 
     expect(component.pipelineName).toBe(searchInput);
-    expect(pipelineService.searchByName).toHaveBeenCalledWith(
-      currentTeam,
-      searchInput
-    );
+    expect(pipelineService.searchByName).toHaveBeenCalledWith(searchInput);
     expect(component.pipelines).toEqual(mockPipelines);
     fixture.detectChanges();
   });
 
   it('should handle errors when fetching pipelines', () => {
     const searchInput = 'TestQuery';
-    const currentTeam = '1';
     const errorResponse = new Error('Test Error');
 
     spyOn(searchBarService, 'receiveSearchInput').and.returnValue(
@@ -134,38 +142,8 @@ describe('PipelinePageComponent', () => {
     component.ngOnInit();
 
     expect(component.pipelineName).toBe(searchInput);
-    expect(pipelineService.searchByName).toHaveBeenCalledWith(
-      currentTeam,
-      searchInput
-    );
+    expect(pipelineService.searchByName).toHaveBeenCalledWith(searchInput);
     expect(component.pipelines).toEqual([]);
-  });
-
-  it('should handle the Create Pipeline event', () => {
-    const searchInput = 'TestQuery';
-    const currentTeam = '1';
-
-    spyOn(pipelineService, 'searchByName').and.returnValue(of(mockPipelines));
-
-    component.pipelineName = searchInput;
-    component.handleCreatePipelineEvent();
-
-    expect(pipelineService.searchByName).toHaveBeenCalledWith(
-      currentTeam,
-      searchInput
-    );
-    expect(component.pipelines).toEqual(mockPipelines);
-  });
-
-  it('should toggle create pipeline modal', () => {
-    // Test the initial state
-    expect(component.showCreatePipelineModal).toBe(false);
-
-    // Trigger the method to toggle the modal
-    component.hoverCreatePipelinePopup();
-
-    // Expect the modal to be toggled
-    expect(component.showCreatePipelineModal).toBe(true);
   });
 
   it('should unsubscribe on component destroy', () => {

@@ -31,12 +31,12 @@ export class AuthService {
   }
 
   getTeamId(): string | null {
-    // return this.storageService.getData("team-id"); // TODO: Remove this comment
-    return '1';
+    // return this.storageService.getData("team-id");
+    return '1'; // TODO: Remove this line and uncomment the above line
   }
 
-  setOrganizationId(teamId: string) {
-    return this.storageService.setData('organization-id', teamId);
+  setOrganizationId(organizationId: string) {
+    return this.storageService.setData('organization-id', organizationId);
   }
 
   getOrganizationId(): string | null {

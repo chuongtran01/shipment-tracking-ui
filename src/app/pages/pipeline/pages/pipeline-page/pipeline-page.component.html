@@ -8,12 +8,12 @@
         <app-header-navbar
           name="CM"
           [teams]="teams"
-          (createTeamEvent)="showCreateTeamModal = true"
+          (createTeamEvent)="openCreateTeamDialog()"
         ></app-header-navbar>
       </div>
       <div class="pipeline-right-top-body">
         <app-pipeline-header
-          (openPopupEvent)="hoverCreatePipelinePopup()"
+          (openPopupEvent)="openCreatePipelineDialog()"
         ></app-pipeline-header>
       </div>
     </div>
@@ -34,7 +34,7 @@
               </div>
               <div
                 class="pipeline-right-body-no-pipeline-create-new"
-                (click)="hoverCreatePipelinePopup()"
+                (click)="openCreatePipelineDialog()"
               >
                 {{ CONSTANTS.pipeline.createNew }}
               </div>
@@ -51,13 +51,14 @@
     </div>
   </div>
 </div>
-<app-create-pipeline
+<!-- <app-create-pipeline
   [showCreatePipelineModal]="showCreatePipelineModal"
   (closeModalEvent)="showCreatePipelineModal = false"
   (createPipelineEvent)="handleCreatePipelineEvent()"
-></app-create-pipeline>
-<app-create-team
+></app-create-pipeline> -->
+<!-- <app-create-team
   [showCreateTeamModal]="showCreateTeamModal"
   (closeModalEvent)="showCreateTeamModal = false"
-></app-create-team>
+></app-create-team> -->
+
 

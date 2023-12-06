@@ -121,7 +121,7 @@ export class RegistrationComponent {
         lastName: this.registrationFormGroup.value.lastName as string,
         username: this.registrationFormGroup.value.email as string,
         email: this.registrationFormGroup.value.email as string,
-        organizationId: 'demo-org-1',
+        organizationId: 'demo-org-1', // TODO: Modify organizationId to your choice
         password: this.registrationFormGroup.value.password as string,
       })
       .subscribe({

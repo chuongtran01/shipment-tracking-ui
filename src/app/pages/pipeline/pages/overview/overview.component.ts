@@ -13,6 +13,8 @@ import { Team } from 'src/app/models/Team';
 import { constants } from 'src/app/utils/app.constants';
 import { Pipeline } from '../../models/Pipeline';
 import { PipelineService } from '../../services/pipeline/pipeline.service';
+import { Dialog } from '@angular/cdk/dialog';
+import { CreateTeamComponent } from '../../components/create-team/create-team.component';
 
 @Component({
   selector: 'app-overview',
@@ -30,8 +32,6 @@ export class OverviewComponent {
   faFilter = faFilter;
   faRotateRight = faRotateRight;
   faEllipsisVertical = faEllipsisVertical;
-  showCreatePipelineModal: boolean = false;
-  showCreateTeamModal: boolean = false;
 
   // TODO: Remove later
   currentTeam: string = '1';
@@ -56,7 +56,8 @@ export class OverviewComponent {
     private route: ActivatedRoute,
     private router: Router,
     private jobService: JobService,
-    private pipelineService: PipelineService
+    private pipelineService: PipelineService,
+    private dialog: Dialog
   ) {}
 
   ngOnInit() {
@@ -99,6 +100,17 @@ export class OverviewComponent {
   getLastUpdatedDate(date: string) {
     const newDate = new Date(date);
     return `${String(newDate.getHours())}:${String(newDate.getMinutes())}`;
+  }
+
+  openCreateTeamDialog(): void {
+    const dialogTeamRef = this.dialog.open<string>(CreateTeamComponent, {
+      width: '50%',
+      maxWidth: '30rem',
+    });
+
+    dialogTeamRef.closed.subscribe((result) => {
+      // TODO: Add logic
+    });
   }
 
   ngOnDestroy() {

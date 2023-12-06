@@ -1,9 +1,4 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
@@ -13,24 +8,41 @@ import { CreatePipelineComponent } from './create-pipeline.component';
 import { constants } from '../../../../utils/app.constants';
 import { PipelineService } from 'src/app/pages/pipeline/services/pipeline/pipeline.service';
 import { CreatePipeline } from 'src/app/pages/pipeline/models/Pipeline';
+import { DialogRef } from '@angular/cdk/dialog';
+import { AuthService } from 'src/app/pages/auth/services/auth/auth.service';
 import { of } from 'rxjs';
 
 describe('CreatePipelineComponent', () => {
   let component: CreatePipelineComponent;
   let fixture: ComponentFixture<CreatePipelineComponent>;
   let CONSTANTS = constants;
-  let pipelineService: PipelineService;
+
+  let mockDialogRef: jasmine.SpyObj<DialogRef<string>>;
+  let mockPipelineService: jasmine.SpyObj<PipelineService>;
+  let mockAuthService: jasmine.SpyObj<AuthService>;
+
+  mockDialogRef = jasmine.createSpyObj('DialogRef', ['close']);
+  mockPipelineService = jasmine.createSpyObj('PipelineService', [
+    'createPipeline',
+  ]);
+
+  mockAuthService = jasmine.createSpyObj('AuthService', [
+    'getOrganizationId',
+    'getTeamId',
+  ]);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CreatePipelineComponent, ButtonComponent],
       imports: [FontAwesomeModule, SharedModule],
-      providers: [PipelineService],
+      providers: [
+        { provide: PipelineService, useValue: mockPipelineService },
+        { provide: DialogRef, useValue: mockDialogRef },
+        { provide: AuthService, useValue: mockAuthService },
+      ],
     });
     fixture = TestBed.createComponent(CreatePipelineComponent);
     component = fixture.componentInstance;
-    component.showCreatePipelineModal = true;
-    pipelineService = TestBed.inject(PipelineService);
     fixture.detectChanges();
   });
 
@@ -88,19 +100,9 @@ describe('CreatePipelineComponent', () => {
     expect(buttonElement).toBeTruthy();
   });
 
-  it('should emit closeModalEvent when closePopup is called', () => {
-    const closeSpy = spyOn(component.closeModalEvent, 'emit');
+  it('should close the dialog', () => {
     component.closePopup();
-    expect(closeSpy).toHaveBeenCalledWith(false);
-  });
-
-  it('should reset the form when closePopup is called', () => {
-    const closeSpy = spyOn(component.createPipelineGroup, 'reset');
-    component.createPipelineGroup.controls.name.setValue('Test Pipeline');
-
-    component.closePopup();
-
-    expect(closeSpy).toHaveBeenCalled();
+    expect(mockDialogRef.close).toHaveBeenCalled();
   });
 
   it('should have a valid form when both fields are filled', () => {
@@ -134,34 +136,49 @@ describe('CreatePipelineComponent', () => {
     );
   });
 
-  it('should handle create pipeline', fakeAsync(() => {
-    spyOn(component.createPipelineEvent, 'emit');
-    spyOn(component.closeModalEvent, 'emit');
-    spyOn(pipelineService, 'createPipeline').and.returnValue(of({}));
+  it('should close the dialog', () => {
+    component.closePopup();
+    expect(mockDialogRef.close).toHaveBeenCalled();
+  });
 
-    component.createPipelineGroup.controls['name'].setValue(
-      'pipeline-name-test'
-    );
-    component.createPipelineGroup.controls['description'].setValue(
-      'pipeline-description-test'
-    );
+  it('should handle pipeline creation', () => {
+    spyOn(component, 'handleCreatePipeline').and.callThrough();
 
     const newPipeline: CreatePipeline = {
-      name: 'pipeline-name-test',
-      organizationId: '101',
-      description: 'pipeline-description-test',
-      teamId: '1',
+      name: 'TestPipeline',
+      organizationId: 'TestOrgId',
+      description: 'TestDescription',
+      teamId: 'TestTeamId',
     };
 
-    pipelineService.createPipeline;
+    const buttonComponent = fixture.debugElement.query(
+      By.directive(ButtonComponent)
+    );
+    const button = buttonComponent.nativeElement.querySelector('button');
 
-    component.handleCreatePipeline();
-    tick();
+    expect(button).toBeTruthy();
 
-    expect(component.isRunning).toBe(false);
-    expect(component.closeModalEvent.emit).toHaveBeenCalledWith(false);
-    expect(component.createPipelineEvent.emit).toHaveBeenCalledOnceWith();
+    expect(button.disabled).toBeTrue();
 
-    expect(pipelineService.createPipeline).toHaveBeenCalledWith(newPipeline);
-  }));
+    component.createPipelineGroup.controls.name.setValue('sample.name');
+    component.createPipelineGroup.controls.description.setValue(
+      'sample.description'
+    );
+
+    fixture.detectChanges();
+
+    expect(button.disabled).toBeFalse();
+
+    expect(component.createPipelineGroup.controls.name.valid).toBeTruthy();
+    expect(
+      component.createPipelineGroup.controls.description.valid
+    ).toBeTruthy();
+    expect(component.createPipelineGroup.valid).toBeTruthy();
+
+    button.click();
+
+    expect(component.handleCreatePipeline).toHaveBeenCalled();
+
+    expect(component.isRunning).toBeTrue();
+  });
 });

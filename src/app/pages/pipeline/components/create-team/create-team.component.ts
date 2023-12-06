@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { constants } from '../../../../utils/app.constants';
 import {
@@ -7,6 +7,7 @@ import {
   faGlobe,
   faArrowLeftLong,
 } from '@fortawesome/free-solid-svg-icons';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-create-team',
@@ -14,9 +15,6 @@ import {
   styleUrls: ['./create-team.component.scss'],
 })
 export class CreateTeamComponent {
-  @Input({ required: true }) showCreateTeamModal!: boolean;
-  @Output() closeModalEvent = new EventEmitter();
-
   faXmark = faXmark;
   faLock = faLock;
   faGlobe = faGlobe;
@@ -40,6 +38,8 @@ export class CreateTeamComponent {
     },
   ];
 
+  constructor(public dialogRef: DialogRef<string>) {}
+
   createTeamGroup = new FormGroup({
     teamType: new FormControl('', Validators.required),
     name: new FormControl('', [Validators.required]),
@@ -58,9 +58,7 @@ export class CreateTeamComponent {
   }
 
   closePopup() {
-    this.closeModalEvent.emit();
-    this.isTeamTypeChosen = false;
-    this.createTeamGroup.reset();
+    this.dialogRef.close();
   }
 
   handleChooseTeamType(teamType: string) {
@@ -70,7 +68,7 @@ export class CreateTeamComponent {
 
   handleCreateTeam() {
     // TODO: Connect to the API
-    this.closePopup();
+    this.dialogRef.close('success');
   }
 
   handleBackButton() {

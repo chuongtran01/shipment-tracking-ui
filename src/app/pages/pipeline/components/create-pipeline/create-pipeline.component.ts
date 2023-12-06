@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/pages/auth/services/auth/auth.service';
 import { CreatePipeline } from 'src/app/pages/pipeline/models/Pipeline';
 import { PipelineService } from 'src/app/pages/pipeline/services/pipeline/pipeline.service';
 import { constants } from '../../../../utils/app.constants';
@@ -10,12 +11,9 @@ import { constants } from '../../../../utils/app.constants';
   selector: 'app-create-pipeline',
   templateUrl: './create-pipeline.component.html',
   styleUrls: ['./create-pipeline.component.scss'],
+  providers: [PipelineService],
 })
 export class CreatePipelineComponent {
-  @Input({ required: true }) showCreatePipelineModal!: boolean;
-  @Output() closeModalEvent = new EventEmitter<boolean>();
-  @Output() createPipelineEvent = new EventEmitter();
-
   faXmark = faXmark;
   CONSTANTS = constants;
   pipelineNameError: string = '';
@@ -23,7 +21,8 @@ export class CreatePipelineComponent {
 
   constructor(
     private pipelineService: PipelineService,
-    private router: Router
+    public dialogRef: DialogRef<string>,
+    private authService: AuthService
   ) {}
 
   createPipelineGroup = new FormGroup({
@@ -34,7 +33,8 @@ export class CreatePipelineComponent {
   get showPipelineNameErrorMessage(): boolean {
     if (
       this.createPipelineGroup.controls.name.invalid &&
-      this.createPipelineGroup.controls.name.touched
+      this.createPipelineGroup.controls.name.touched &&
+      this.createPipelineGroup.controls.name.pristine
     ) {
       this.pipelineNameError = 'Please enter Pipeline name';
       return true;
@@ -43,23 +43,21 @@ export class CreatePipelineComponent {
   }
 
   closePopup() {
-    this.closeModalEvent.emit(!this.showCreatePipelineModal);
-    this.createPipelineGroup.reset();
+    this.dialogRef.close();
   }
 
   handleCreatePipeline() {
     this.isRunning = true;
     const newPipeline: CreatePipeline = {
       name: this.createPipelineGroup.controls.name!.value!,
-      organizationId: '101',
+      organizationId: this.authService.getOrganizationId()!,
       description: this.createPipelineGroup.controls.description!.value!,
-      teamId: '1',
+      teamId: this.authService.getTeamId()!,
     };
     this.pipelineService.createPipeline(newPipeline).subscribe({
       next: () => {
         this.isRunning = false;
-        this.closePopup();
-        this.createPipelineEvent.emit();
+        this.dialogRef.close('success');
       },
       error: () => {
         this.isRunning = false;

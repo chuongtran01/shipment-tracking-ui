@@ -15,7 +15,7 @@ export class PipelineService {
 
   constructor(private http: HttpClient) {}
 
-  searchByName(teamId: string, pipelineName: string): Observable<Pipeline[]> {
+  searchByName(pipelineName: string): Observable<Pipeline[]> {
     const params = new HttpParams().set('name', pipelineName);
 
     return this.http.get<Pipeline[]>(

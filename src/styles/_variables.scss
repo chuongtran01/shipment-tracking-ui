@@ -1,3 +1,7 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+
 // Font Variables
 $poppins: 'Poppins', sans-serif;
 

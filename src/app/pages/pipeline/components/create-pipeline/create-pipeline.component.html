@@ -1,4 +1,3 @@
-<div class="create-pipeline-overlay" *ngIf="showCreatePipelineModal">
   <div class="create-pipeline-content">
     <div class="create-pipeline-close-button">
       <fa-icon
@@ -59,12 +58,15 @@
       <div class="create-pipeline-create-button">
         <app-button
           classes="button-green p-v-7 p-h-10"
-          (click)="handleCreatePipeline()"
           [isRunning]="isRunning"
           [disabled]="createPipelineGroup.invalid"
+          (click)="handleCreatePipeline()"
           >{{ CONSTANTS.pipeline.createPipelineModal.create }}</app-button
         >
       </div>
     </div>
   </div>
-</div>
+
+
+
+

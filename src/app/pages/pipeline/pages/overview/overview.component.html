@@ -7,7 +7,7 @@
       <app-header-navbar
         name="CM"
         [teams]="teams"
-        (createTeamEvent)="showCreateTeamModal = true"
+        (createTeamEvent)="openCreateTeamDialog()"
       ></app-header-navbar>
     </div>
     <div class="overview-right-body">
@@ -60,7 +60,4 @@
     </div>
   </div>
 </div>
-<app-create-team
-  [showCreateTeamModal]="showCreateTeamModal"
-  (closeModalEvent)="showCreateTeamModal = false"
-></app-create-team>
+
