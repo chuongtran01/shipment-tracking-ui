@@ -22,10 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (accessToken && teamId && organizationId) {
       const cloned = request.clone({
-        headers: request.headers
-          .set('Authorization', `Bearer ${accessToken}`)
-          .set('X-team-id', teamId)
-          .set('X-organization-id', organizationId),
+        headers: request.headers.set('Authorization', `Bearer ${accessToken}`),
       });
       return next.handle(cloned);
     }

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { PrincipalService } from '../../../../services/principal/principal.service';
-import { constants } from '../../../../utils/app.constants';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +10,6 @@ import { constants } from '../../../../utils/app.constants';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  protected readonly constants = constants;
-
   userNameError: string = '';
   passwordError: string = '';
 

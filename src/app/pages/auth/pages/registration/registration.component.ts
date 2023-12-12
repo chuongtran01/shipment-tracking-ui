@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { confirmPasswordValidator } from '../../../../utils/form-validators';
-import { constants } from '../../../../utils/app.constants';
-import { ToastService } from 'src/app/services/toast/toast.service';
 import { ToastParam, ToastType } from 'src/app/models/Toast';
 
 @Component({
@@ -13,8 +11,6 @@ import { ToastParam, ToastType } from 'src/app/models/Toast';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
-  protected readonly constants = constants;
-
   firstNameError: string = '';
   lastNameError: string = '';
   emailError: string = '';
@@ -24,11 +20,7 @@ export class RegistrationComponent {
   isSubmitted: boolean = false;
   isRunning: boolean = false;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private toastService: ToastService
-  ) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   registrationFormGroup = new FormGroup(
     {
@@ -102,8 +94,6 @@ export class RegistrationComponent {
       key: key,
       navigate: navigate,
     };
-
-    this.toastService.sendToast(toastParams);
   }
 
   handleRegistration() {

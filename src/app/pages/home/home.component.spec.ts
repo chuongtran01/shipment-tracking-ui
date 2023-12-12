@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
-import {SharedModule} from "../../modules/shared/shared.module";
 
-describe('HomeComponent', () => {
+describe('AuthComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
-      imports: [SharedModule]
+      imports: [RouterTestingModule],
     });
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;

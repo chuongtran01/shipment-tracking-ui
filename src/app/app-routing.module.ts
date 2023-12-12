@@ -3,38 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthRouteGuard } from './utils/guards';
 
 const routes: Routes = [
-  {
-    path: '',
-    canActivateChild: [AuthRouteGuard],
-    children: [
-      {
-        path: '',
-        redirectTo: 'pipeline',
-        pathMatch: 'full',
-      },
-      {
-        path: 'pipeline',
-        loadChildren: () =>
-          import('./pages/pipeline/pipeline.module').then(
-            (pipeline) => pipeline.PipelineModule
-          ),
-      },
-      {
-        path: 'connection',
-        loadChildren: () =>
-          import('./pages/connection/connection.module').then(
-            (connection) => connection.ConnectionModule
-          ),
-      },
-      {
-        path: 'settings',
-        loadChildren: () =>
-          import('./pages/settings/settings.module').then(
-            (settings) => settings.SettingsModule
-          ),
-      },
-    ],
-  },
+  // {
+  //   path: '',
+  //   canActivateChild: [AuthRouteGuard],
+  //   children: [
+  //     {
+  //       path: '',
+  //       redirectTo: '',
+  //       pathMatch: 'full',
+  //     },
+  //   ],
+  // },
   {
     path: '',
     loadChildren: () =>

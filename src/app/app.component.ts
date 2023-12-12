@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { ToastParam } from './models/Toast';
-import { ToastService } from './services/toast/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -18,27 +17,7 @@ export class AppComponent implements OnDestroy {
   key!: string;
   _data!: ToastParam;
 
-  constructor(
-    private toastService: ToastService,
-    private messageService: MessageService,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.$subs.add(
-      this.toastService.receiveToast().subscribe({
-        next: (data: ToastParam) => {
-          this._data = data;
-
-          this.addSingle(data.severity, data.summary, data.detail);
-
-          if (data.navigate) {
-            this.router.navigateByUrl(data.navigate);
-          }
-        },
-      })
-    );
-  }
+  constructor(private messageService: MessageService, private router: Router) {}
 
   addSingle(severity: string, summary: string, detail: string) {
     this.messageService.add({

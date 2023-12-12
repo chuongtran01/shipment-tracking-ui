@@ -19,20 +19,7 @@ body {
   background-color: $background-color;
 }
 
-@font-face {
-  font-family: "Hellix-Medium";
-  src: url("assets/fonts/hellix-font/Hellix-Medium.ttf");
-}
 
-@font-face {
-  font-family: "Hellix-SemiBold";
-  src: url("assets/fonts/hellix-font/Hellix-SemiBold.ttf");
-}
-
-@font-face {
-  font-family: "Hellix-Regular";
-  src: url("assets/fonts/hellix-font/Hellix-Regular.ttf");
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
